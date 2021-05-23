@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_142156) do
+ActiveRecord::Schema.define(version: 2021_05_24_142158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,24 @@ ActiveRecord::Schema.define(version: 2021_05_24_142156) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "enterprises", force: :cascade do |t|
+    t.string "name"
+    t.bigint "campaign_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_enterprises_on_campaign_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.date "date"
+    t.integer "nb_steps"
+    t.integer "week"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_steps_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -63,10 +81,15 @@ ActiveRecord::Schema.define(version: 2021_05_24_142156) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "enterprise_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["enterprise_id"], name: "index_users_on_enterprise_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "charity_events"
+  add_foreign_key "enterprises", "campaigns"
+  add_foreign_key "steps", "users"
+  add_foreign_key "users", "enterprises"
 end
