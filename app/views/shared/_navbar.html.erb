@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="btn btn-primary mr-2">
-          <%= link_to "Make a donation", "#", class: "nav-link p-0", :style => "color: white"%>
+          <%= link_to "Make a donation", donate_path, class: "nav-link p-0", :style => "color: white"%>
         </li>
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
