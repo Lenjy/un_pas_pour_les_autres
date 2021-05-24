@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_144106) do
-
-
+ActiveRecord::Schema.define(version: 2021_05_24_144711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,30 +36,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_144106) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "joined_teams", force: :cascade do |t|
-    t.bigint "team_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["team_id"], name: "index_joined_teams_on_team_id"
-    t.index ["user_id"], name: "index_joined_teams_on_user_id"
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-  end
-
-  create_table "steps", force: :cascade do |t|
-    t.date "date"
-    t.integer "nb_steps"
-    t.integer "week"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_steps_on_user_id"
-  end
-
   create_table "campaigns", force: :cascade do |t|
     t.integer "step_conversion"
     t.integer "max_contribution"
@@ -81,6 +55,41 @@ ActiveRecord::Schema.define(version: 2021_05_24_144106) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "joined_campaigns", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "user_donation_event"
+    t.float "conversion_enterprise_donation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_joined_campaigns_on_user_id"
+  end
+
+  create_table "joined_teams", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_joined_teams_on_team_id"
+    t.index ["user_id"], name: "index_joined_teams_on_user_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.date "date"
+    t.integer "nb_steps"
+    t.integer "week"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_steps_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -94,8 +103,9 @@ ActiveRecord::Schema.define(version: 2021_05_24_144106) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "campaigns", "charity_events"
+  add_foreign_key "joined_campaigns", "users"
   add_foreign_key "joined_teams", "teams"
   add_foreign_key "joined_teams", "users"
   add_foreign_key "steps", "users"
-  add_foreign_key "campaigns", "charity_events"
 end
