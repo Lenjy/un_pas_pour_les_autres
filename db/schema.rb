@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_144711) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_enterprises_on_campaign_id"
   end
-  
+
   create_table "joined_campaigns", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.float "user_donation_event"
