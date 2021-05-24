@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_132927) do
+
+ActiveRecord::Schema.define(version: 2021_05_24_142156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +45,23 @@ ActiveRecord::Schema.define(version: 2021_05_24_132927) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_steps_on_user_id"
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "step_conversion"
+    t.integer "max_contribution"
+    t.bigint "charity_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["charity_event_id"], name: "index_campaigns_on_charity_event_id"
+  end
+
+  create_table "charity_events", force: :cascade do |t|
+    t.string "title"
+    t.string "charity_name"
+    t.date "date_beginning"
+    t.date "date_ending"
+    t.integer "total_donation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +78,5 @@ ActiveRecord::Schema.define(version: 2021_05_24_132927) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "steps", "users"
+  add_foreign_key "campaigns", "charity_events"
 end
