@@ -12,6 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2021_05_24_144106) do
 
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +50,33 @@ ActiveRecord::Schema.define(version: 2021_05_24_144106) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.text "description"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.date "date"
+    t.integer "nb_steps"
+    t.integer "week"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_steps_on_user_id"
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer "step_conversion"
+    t.integer "max_contribution"
+    t.bigint "charity_event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["charity_event_id"], name: "index_campaigns_on_charity_event_id"
+  end
+
+  create_table "charity_events", force: :cascade do |t|
+    t.string "title"
+    t.string "charity_name"
+    t.date "date_beginning"
+    t.date "date_ending"
+    t.integer "total_donation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,4 +96,6 @@ ActiveRecord::Schema.define(version: 2021_05_24_144106) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "joined_teams", "teams"
   add_foreign_key "joined_teams", "users"
+  add_foreign_key "steps", "users"
+  add_foreign_key "campaigns", "charity_events"
 end
