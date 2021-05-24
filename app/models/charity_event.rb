@@ -1,0 +1,2 @@
+class CharityEvent < ApplicationRecord
+end
