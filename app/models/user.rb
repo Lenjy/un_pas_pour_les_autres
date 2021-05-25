@@ -1,4 +1,5 @@
 require 'google/apis/fitness_v1'
+require 'googleauth'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -22,12 +23,25 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
     
-    fitness = Google::Apis::FitnessV1::AggregateBy.new
-    fitness.authorization = user.token
+    fitness = Google::Apis::FitnessV1::FitnessService.new
+    fitness.authorization =  access_token.credentials.token
 
-    fitness.list_user_data_sources('me')
-    # Uncomment the section below if you want users to be created if they don't exist
+    aggregate_by = Google::Apis::FitnessV1::AggregateBy.new
+    aggregate_by.data_type_name = 'com.google.step_count.delta'
+    aggregate_by.data_source_id = 'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'
+
+    bucket_by_time = Google::Apis::FitnessV1::BucketByTime.new
+    bucket_by_time.duration_millis = 86400000
+
+    aggregate_request = Google::Apis::FitnessV1::AggregateRequest.new
+    aggregate_request.aggregate_by = [aggregate_by]
+    aggregate_request.bucket_by_time = bucket_by_time
+    aggregate_request.start_time_millis = (Time.new(Time.now.year, Time.now.month, Time.now.day, 0, 0, 0).to_f * 1000).to_i
+    aggregate_request.end_time_millis = (Time.new(Time.now.year, Time.now.month, Time.now.day, 23, 59, 0).to_f * 1000).to_i
+
+    daily_step = fitness.aggregate_dataset('me', aggregate_request)
     raise
+    # Uncomment the section below if you want users to be created if they don't exist
     unless user
         user = User.create(first_name: data['name'],
            email: data['email'],

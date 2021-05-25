@@ -15,7 +15,9 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '5a752eef0e6bc249a2f617572cd8e22af71991ef91c6ac34c1838608da48e40865b3f299288ef51714dbc57e0c86d19d941e7316945c5f52f78f61faf7c0cb61'
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {}
+  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
+    scope: 'userinfo.email, userinfo.profile, https://www.googleapis.com/auth/fitness.activity.read'
+  }
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
