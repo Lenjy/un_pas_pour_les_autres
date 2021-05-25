@@ -1,1 +1,13 @@
 <%= render "shared/banner" %>
+
+<div class="container text-center mt-2">
+  <% if current_user.photo.attached?  %>
+    <%= cl_image_tag current_user.photo.key, class: "avatar-large-centered", crop: :fill %>
+  <% else %>
+    <img class="avatar-large-centered" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+  <% end %>
+  <%= link_to "edit profile", "#", class: 'btn btn-link' %>
+  <h1>DATA</h1>
+  <p>data incoming</p>
+</div>
+
