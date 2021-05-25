@@ -1,3 +1,5 @@
+require 'google/apis/fitness_v1'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -19,7 +21,11 @@ class User < ApplicationRecord
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
+    
+    fitness = Google::Apis::FitnessV1::AggregateBy.new
+    fitness.authorization = user.token
 
+    fitness.list_user_data_sources('me')
     # Uncomment the section below if you want users to be created if they don't exist
     raise
     unless user
