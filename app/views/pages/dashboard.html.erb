@@ -18,7 +18,7 @@
   <div class="d-flex space-between">
     <div class="d-flex">
       <i class="fas fa-shoe-prints"></i>
-      <h2 class="btn btn-lg btn-primary" disabled>45000</h2>
+      <h2 class="btn btn-lg btn-primary" disabled><%= number_with_delimiter(current_user.steps.nb_of_steps, :delimiter => ',') %></h2>
     </div>
     <div class="d-flex">
       <h2 class="btn btn-lg btn-primary" disabled>45</h2>
