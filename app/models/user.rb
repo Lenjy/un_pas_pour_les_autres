@@ -5,8 +5,9 @@ class User < ApplicationRecord
   has_many :joined_teams
   has_many :teams, through: :joined_team
   has_many :campaigns, through: :joined_campaign
+  has_many :steps
   has_one_attached :photo
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -17,4 +18,3 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
 
 end
- 
