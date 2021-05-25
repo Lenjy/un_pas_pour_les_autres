@@ -1,0 +1,21 @@
+<p><%= @campaign.step_conversion %></p>
+<p><%= @campaign.max_contribution %></p>
+
+<ul class="list-group">
+  <% @campaign.charity_events.each do |charity_event| %>
+    <li class="list-group-item"><%= charity_event.content %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Delete #{@charity_event.title}",
+            restaurant_path(@campaign),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+
+<li class="list-group-item">
+  <%= charity_event.content %>
+  <%= link_to "Remove",
+              charity_event_path(charity_event),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+</li>
