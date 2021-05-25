@@ -13,11 +13,13 @@
     <img class="avatar-large-centered" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
   <% end %>
   <%= link_to "éditer son profil", dashboard_path, class: 'btn btn-link' %>
+
 </div>
 
 <div class="container text-center">
 
   <div class="d-flex justify-content-between">
+
     <div class="counter-left">
       <h4>Nombre de pas</h4>
       <div class="d-flex align-items-center">
@@ -25,6 +27,7 @@
         <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.last.nb_steps, :delimiter => ',') %></h2>
       </div>
     </div>
+
     <div class="counter-right">
       <h4>Dons totaux</h4>
       <div class="d-flex align-items-center">
@@ -33,6 +36,12 @@
       </div>
     </div>
   </div>
+
+
+  <%= render 'shared/tasks_navbar', label: "Vos statistiques", tab_one: "Semaine", tab_two: "Mois", tab_three: "Kilomètres" %>
+
+  <%= render 'shared/tasks_navbar', label: "Vos teams", tab_one: "Team 1", tab_two: "Team 2", tab_three: "Team 3" %>
+
 
 </div>
 
