@@ -11,3 +11,25 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+
+// Arthur personal CSS
+
+.counter-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -255px;
+  right: -80px;
+}
+
+.counter-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -255px;
+  left: -80px;
+}

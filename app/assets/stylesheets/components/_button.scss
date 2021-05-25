@@ -1,0 +1,11 @@
+#charity-button {
+  color: rgb(210, 51, 51);
+  background-color: rgb(232, 214, 216);
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+  &:hover {
+    color: rgb(232, 214, 216);
+    background-color: rgb(210, 51, 51);
+    opacity: 1;
+  }
+}
