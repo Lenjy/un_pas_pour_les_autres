@@ -7,11 +7,12 @@
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  position: relative;
-  top: -120px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  border: 4px solid $primary;
+  // position: relative;
+  // top: -120px;
+  // display: block;
+  // margin-left: auto;
+  // margin-right: auto;
 }
 
 .avatar-bordered {
