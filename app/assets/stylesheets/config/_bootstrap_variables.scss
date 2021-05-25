@@ -11,11 +11,20 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
+// $primary:    $blue; BS DEFAULT
+// $success:    $green; BS DEFAULT
+// $info:       $yellow; BS DEFAULT
 $danger:     $red;
 $warning:    $orange;
+
+
+// UN PAS POUR LES AUTRES - PALETTE
+$primary:    rgb(89, 98, 112);
+$success:    rgb(109, 168, 179);
+$info:       rgb(196, 239, 234);
+
+
+
 
 // Buttons & inputs' radius
 $border-radius:    2px;
