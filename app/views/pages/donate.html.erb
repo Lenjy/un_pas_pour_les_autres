@@ -1,0 +1,48 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "croix_rouge.jpeg"%>'); height: calc(50vh - 50px);">
+  <div class="container d-flex align-items-center justify-content-center">
+        <h1>LA CROIX ROUGE</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-8 ">
+            <div class="row">
+                <div class="col-8 ">
+                    <h2>Présentation de l'asso</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-8 ">
+                    <h2>Ce que fait l'asso</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-8 ">
+                    <h2>A quoi sert l'argent</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+            </div>
+        </div> 
+
+        <div class="col-4 ">
+            <%# user.nb_steps.charity_event_id.key %>
+        </div>       
+    </div>
+</div>
+
+
+    <div class="banner">
+      <div style="height: 45px; margin-bottom: 25px">
+        <span id="banner" style="color: white"></span>
+      </div>
+      <div class= "row justify-content-center mt-4">
+        <%= link_to '<button type="button" style="padding: 4px 92px" class="btn mb-2 mb-md-0 btn-primary btn-block"><span>PAYMENT</span>
+                      <div class="icon d-flex align-items-center justify-content-center">
+                      </div>
+                    </button>'.html_safe, donate_path%>
+      </div>
+    </div>
