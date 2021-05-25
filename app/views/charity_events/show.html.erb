@@ -1,5 +1,17 @@
-<h2><%= @charity_event.title %></h2>
-<p><%= @charity_event.charity_name %></p>
-<p><%= @charity_event.date_biginning %></p>
-<p><%= @charity_event.date_ending %></p>
-<p><%= @charity_event.total_donation %></p>
+<div classe="container">
+  <h1><%= @charity_event.title %></h1>
+
+  <div class="d-flex justify-content-between">
+    <div  class="col-8">
+      <h2><%= @charity_event.charity_name %></h2>
+      <p><%= @charity_event.description %></p>
+    </div>
+
+    <div class="col-4">
+      <p><%= @charity_event.date_biginning %></p>
+      <p><%= @charity_event.date_ending %></p>
+      <p><%= @charity_event.total_donation %></p>
+    </div>
+  </div>
+
+</div>

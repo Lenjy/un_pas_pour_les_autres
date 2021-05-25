@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_144712) do
   create_table "charity_events", force: :cascade do |t|
     t.string "title"
     t.string "charity_name"
+    t.text "description"
     t.date "date_beginning"
     t.date "date_ending"
     t.integer "total_donation"
