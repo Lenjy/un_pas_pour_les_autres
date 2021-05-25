@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :find_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_campaign
 
   def show
   end
@@ -42,4 +43,9 @@ class CampaignsController < ApplicationController
   def find_campaign
     @campaign = Campaign.find(params[:id])
   end
+
+  def authorize_campaign
+    authorize @campaign
+  end
+
 end
