@@ -1,2 +1,8 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%# omniauth-google-oauth2 1.0.0 uses OmniAuth 2 and requires using HTTP Post to initiate authentication: %>
+<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
+
+<%# Devise prior 4.1.0: %>
+<%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>

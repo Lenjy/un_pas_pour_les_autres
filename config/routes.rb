@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  devise_for :users do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do
     resources :friends, only: [new, :create, :show]
   end
   resources :campaign
@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :teams, only: [:show]
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'donate', to: 'pages#donate', as: 'donate'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

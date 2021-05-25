@@ -30,6 +30,8 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
