@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :friends, only: [:new, :create, :show]
     resources :steps, only: [:new, :create, :show]
   end
-  resources :campaign
+  resources :campaigns
   resources :charity_events, only: [:show]
   resources :teams, only: [:show]
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
