@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :enterprise, optional: true
   has_many :joined_teams
-  has_many :teams, through: :joined_team
+  has_many :teams, through: :joined_teams
   has_many :campaigns, through: :joined_campaign
   has_many :steps
   has_one_attached :photo

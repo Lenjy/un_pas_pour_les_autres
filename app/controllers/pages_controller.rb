@@ -5,9 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    # private methods
+    # private methods PERSONAL STATISTICS
     week_array_generation
     month_array_generation
+    # private methods TEAM STATISTICS
+    team_one_array_generation
   end
 
   def donate
@@ -35,6 +37,15 @@ class PagesController < ApplicationController
       @month_steps[steps.date.strftime('%F')] = steps.nb_steps
     end
     @month_message = "Mois de #{@month.first.date.strftime("%B %Y")}"
+  end
+
+  def team_one_array_generation
+    @team_one_steps = []
+    @team = current_user.teams.first.users
+    @team.each do |member|
+      @team_one_steps << ["#{member.first_name} #{member.last_name}", member.steps.where(date: Date.today).first.nb_steps]
+    end
+    @team_message = "Aujourd'hui"
   end
 
 end

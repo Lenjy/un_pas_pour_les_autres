@@ -1,4 +1,4 @@
-<div class="d-block show col-md-auto col-md-auto" style="margin-top: -170px;">
+<div class="d-block show col-md-auto col-md-auto <%= myclass %>" style="margin-top: -170px;">
     <h1><%= label %></h1>
     <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist">
       <li class="nav-item btn-success col-4" role="presentation">
@@ -15,14 +15,14 @@
     <div class="tab-content" id="myTabContent">
 
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <h2 style="margin-top: 20px"><%= @week_message %></h2>
-        <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
+        <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
+        <div id="chart-<%= id_tab_one %>" style="height: 300px; margin-top: 40px" data-steps="<%= steps_tab_one.to_json %>"></div>
       </div>
 
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div>
-          <h2 style="margin-top: 20px"><%= @month_message %></h2>
-          <div id="chart-month" style="height: 300px; margin-top: 40px" data-steps="<%= @month_steps.to_json %>"></div>
+          <h2 style="margin-top: 20px"><%= message_tab_two %></h2>
+          <div id="chart-<%= id_tab_two %>" style="height: 300px; margin-top: 40px" data-steps="<%= steps_tab_two.to_json %>"></div>
         </div>
       </div>
 

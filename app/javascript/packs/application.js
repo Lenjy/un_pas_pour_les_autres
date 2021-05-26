@@ -30,12 +30,14 @@ import "chartkick/chart.js";
 // import { initSelect2 } from '../components/init_select2';
 import { initChartkickWeek } from "../plugins/init_chartkick";
 import { initChartkickMonth } from "../plugins/init_chartkick";
+import { initChartkickTeamOne } from "../plugins/init_chartkick";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initChartkickWeek();
   initChartkickMonth();
+  initChartkickTeamOne();
 });
 
 // Vega setup - Data vizualisation (Arthur Maguin)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_135243) do
+ActiveRecord::Schema.define(version: 2021_05_26_155108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(version: 2021_05_25_135243) do
     t.bigint "charity_event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "enterprise_id", null: false
     t.index ["charity_event_id"], name: "index_campaigns_on_charity_event_id"
+    t.index ["enterprise_id"], name: "index_campaigns_on_enterprise_id"
   end
 
   create_table "charity_events", force: :cascade do |t|
@@ -58,10 +60,8 @@ ActiveRecord::Schema.define(version: 2021_05_25_135243) do
 
   create_table "enterprises", force: :cascade do |t|
     t.string "name"
-    t.bigint "campaign_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["campaign_id"], name: "index_enterprises_on_campaign_id"
   end
 
   create_table "joined_campaigns", force: :cascade do |t|
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2021_05_25_135243) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "campaign_id", null: false
+    t.index ["campaign_id"], name: "index_teams_on_campaign_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,10 +122,11 @@ ActiveRecord::Schema.define(version: 2021_05_25_135243) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "charity_events"
-  add_foreign_key "enterprises", "campaigns"
+  add_foreign_key "campaigns", "enterprises"
   add_foreign_key "joined_campaigns", "users"
   add_foreign_key "joined_teams", "teams"
   add_foreign_key "joined_teams", "users"
   add_foreign_key "steps", "users"
+  add_foreign_key "teams", "campaigns"
   add_foreign_key "users", "enterprises"
 end
