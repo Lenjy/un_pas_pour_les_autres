@@ -11,7 +11,7 @@ const initChartkickWeek = () => {
 const initChartkickMonth = () => {
   const div_month = document.getElementById('chart-month');
   const data_month = JSON.parse(div_month.dataset.steps);
-  new Chartkick.LineChart("chart-month", data_month);
+  new Chartkick.LineChart("chart-month", data_month, { curve: true });
 }
 
 const initChartkickTeamOne = () => {
