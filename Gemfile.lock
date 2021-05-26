@@ -138,6 +138,9 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -345,6 +348,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   google-apis-fitness_v1 (~> 0.3.0)
+  httparty
   jbuilder (~> 2.7)
   listen (~> 3.2)
   omniauth-google-oauth2
