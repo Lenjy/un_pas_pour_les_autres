@@ -5,16 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @week_steps = []
-    # La semaine est fixe ! Il faut rendre la semaine dynamique
-    current_user.steps.where(week: 1).each do |steps|
-      @week_steps << [steps.date.strftime('%A'), steps.nb_steps]
-    end
-    # Pareil pour le mois
-    @month_steps = {}
-    current_user.steps.each do |steps|
-      @month_steps[steps.date.strftime('%F')] = steps.nb_steps
-    end
+    week_array_generation
+    month_array_generation
   end
 
   def donate
@@ -22,6 +14,26 @@ class PagesController < ApplicationController
     @step_count = current_user.steps.where("date BETWEEN ? AND ?", @charity_event.date_beginning, @charity_event.date_ending).sum(:nb_steps)
     #define the status / ou filtre date
 
+  end
+
+  private
+
+  def week_array_generation
+    @week_steps = []
+    @week = current_user.steps.select { |ins| ins.date.cweek == Date.today.cweek }
+    @week.each do |steps|
+      @week_steps << [steps.date.strftime('%A'), steps.nb_steps]
+    end
+    @week_message = "Semaine du #{@week.first.date.strftime('%B %d, %Y')} au #{@week.last.date.strftime('%B %d, %Y')}"
+  end
+
+  def month_array_generation
+    @month_steps = {}
+    @month = current_user.steps.select { |ins| ins.date.month == Date.today.month }
+    @month.each do |steps|
+      @month_steps[steps.date.strftime('%F')] = steps.nb_steps
+    end
+    @month_message = "Mois de #{@month.first.date.strftime("%B %Y")}"
   end
 
 end
