@@ -24,7 +24,6 @@ class User < ApplicationRecord
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
-    user.token = access_token.credentials.token
     
     # fitness = Google::Apis::FitnessV1::FitnessService.new
     # fitness.authorization =  access_token.credentials.token
@@ -61,11 +60,10 @@ class User < ApplicationRecord
         user = User.create(first_name: data['first_name'],
           last_name: data['last_name'],
           email: data['email'],
-          password: Devise.friendly_token[0,20],
-          token: access_token.credentials.token
+          password: Devise.friendly_token[0,20]
         )
-        redirect_to edit_user_path
     end
+    user.token = access_token.credentials.token
     user
   end
 
