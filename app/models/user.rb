@@ -24,7 +24,6 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
     user.token = access_token.credentials.token
-    raise
     
     # fitness = Google::Apis::FitnessV1::FitnessService.new
     # fitness.authorization =  access_token.credentials.token
