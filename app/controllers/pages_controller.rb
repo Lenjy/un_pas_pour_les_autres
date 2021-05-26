@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # private methods
     week_array_generation
     month_array_generation
   end
