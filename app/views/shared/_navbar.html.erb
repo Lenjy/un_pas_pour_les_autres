@@ -39,6 +39,12 @@
           <% end  %>
         </li>
       <% else %>
+        <li class="nav-item mr-3">
+          <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+        </li>
+        <li class="btn btn-success mr-2">
+          <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
+        </li>
         <li class="nav-item">
           <%# <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           <%= link_to "Log in", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-info" %>
