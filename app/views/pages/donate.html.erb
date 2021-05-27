@@ -7,7 +7,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-8 ">
+        <div class="col-6 ">
             <div class="row">
                 <div class="col-8 ">
                     <h2>Présentation de l'asso</h2>
@@ -28,13 +28,27 @@
             </div>
         </div> 
 
-        <div class="col-4 ">
-            <p><%= @step_count %></p>
-            <input type="number" name="" id="user_steps">
-        </div>       
+        <div class="col-6 card-category">
+            <div>
+                <div class="d-flex mt-3 ">
+                    <input disabled type="number" value=<%= @step_count %> id="total_steps" name="" class="box-donate">
+                    <i class="fas fa-shoe-prints ml-2 shoes"></i>
+                </div>
+                
+                <div class="d-flex mt-3">
+                    <input type="number" name="" class="box-donate" id="conversion_proposal">
+                    <i class="fas fa-shoe-prints ml-2 shoes"></i>
+                    <i class="fas fa-euro-sign ml-2 euro"></i>
+                </div>
+
+                <div class="d-flex mt-3">
+                    <input disabled type="number" name="" class="box-donate" id="donation_output">
+                    <i class="fas fa-praying-hands ml-2 hands"></i><br/>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
     <div class="banner">
       <div style="height: 45px; margin-bottom: 25px">
@@ -47,3 +61,7 @@
                     </button>'.html_safe, donate_path%>
       </div>
     </div>
+
+    <!-- querySelector pour sélectionner mes deux inputs -->
+    <!-- eventlistener sur le changement de valeur de user-steps -->
+    <!-- dans cet event listener, que cela mettre à jour le donation_figures -->
