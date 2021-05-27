@@ -1,4 +1,4 @@
-require "open-uri"
+# require "open-uri"
 
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :secret ]
@@ -133,71 +133,71 @@ class PagesController < ApplicationController
     #   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
     #   user_id: maylis.id)
 
-    end
+  
 
-    puts "Created #{Step.all.size} steps instances for users in seeds.rb"
-
-
-    # TEAMS
-
-    uppla = Team.create!(
-    name: "Un pas pour les autres",
-    description: "The best team ever seen at the Wagon",
-    campaign: campaign_le_wagon)
-
-    Team.create!(
-    name: "Gamer meets",
-    description: "These guys are so lame",
-    campaign: campaign_le_wagon)
-
-    Team.create!(
-    name: "Tinder for brands",
-    description: "These guys are so lame",
-    campaign: campaign_le_wagon)
-
-    Team.create!(
-    name: "Le plateau",
-    description: "These guys are so lame",
-    campaign: campaign_le_wagon)
-
-    Team.create!(
-    name: "Book society",
-    description: "These guys are so lame",
-    campaign: campaign_le_wagon)
-
-    Team.create!(
-    name: "Sound on",
-    description: "These guys are so lame",
-    campaign: campaign_le_wagon)
+    # puts "Created #{Step.all.size} steps instances for users in seeds.rb"
 
 
-    puts "Created #{Team.all.size} team instances in seeds.rb"
+    # # TEAMS
+
+    # uppla = Team.create!(
+    # name: "Un pas pour les autres",
+    # description: "The best team ever seen at the Wagon",
+    # campaign: campaign_le_wagon)
+
+    # Team.create!(
+    # name: "Gamer meets",
+    # description: "These guys are so lame",
+    # campaign: campaign_le_wagon)
+
+    # Team.create!(
+    # name: "Tinder for brands",
+    # description: "These guys are so lame",
+    # campaign: campaign_le_wagon)
+
+    # Team.create!(
+    # name: "Le plateau",
+    # description: "These guys are so lame",
+    # campaign: campaign_le_wagon)
+
+    # Team.create!(
+    # name: "Book society",
+    # description: "These guys are so lame",
+    # campaign: campaign_le_wagon)
+
+    # Team.create!(
+    # name: "Sound on",
+    # description: "These guys are so lame",
+    # campaign: campaign_le_wagon)
+
+
+    # puts "Created #{Team.all.size} team instances in seeds.rb"
 
 
 
-    # JOINED TEAMS
+    # # JOINED TEAMS
 
 
-    JoinedTeam.create!(
-      user: arthur,
-      team: uppla)
+    # JoinedTeam.create!(
+    #   user: arthur,
+    #   team: uppla)
 
-    JoinedTeam.create!(
-      user: basil,
-      team: uppla)
+    # JoinedTeam.create!(
+    #   user: basil,
+    #   team: uppla)
 
-    JoinedTeam.create!(
-      user: benjamin,
-      team: uppla)
+    # JoinedTeam.create!(
+    #   user: benjamin,
+    #   team: uppla)
 
-    JoinedTeam.create!(
-      user: maylis,
-      team: uppla)
+    # JoinedTeam.create!(
+    #   user: maylis,
+    #   team: uppla)
 
 
-    puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
+    # puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
 
-    redirect_to root_path
+    # redirect_to root_path
 
   end
 
