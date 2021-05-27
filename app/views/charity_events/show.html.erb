@@ -17,9 +17,10 @@
 
 <div class="container mt-4">
   <div class="row">
-    <div  class="col-7">
-      <h2 class="text-center"><%= @charity_event.charity_name %></h2>
-      <div class="row text-justify mt-2">
+    <div  class="col-7 card-text">
+      <h2><%= @charity_event.charity_name %></h2>
+      <div class="row text-justify mt-4">
+        <h4><%= @charity_event.charity_name  %> c'est quoi ?</h4>
         <p><%= @charity_event.description %></p>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
@@ -27,11 +28,12 @@
     </div>
 
     <div class="col-5 text-center">
-      <p class="text-center">Total donation</p>
-      <div>
-        <%= @charity_event.total_donation %> €
+      <h4>Total donation</h4>
+      <div class="d-flex justify-content-center mt-4">
+        <h2 class="btn btn-lg btn-outline-primary mr-2" disabled><%= @charity_event.total_donation %> €</h2>
+        <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
       </div>
-
+      <iframe src="https://www.youtube.com/embed/X7-FvBlfiPs" width="400" height="290" frameborder="0"></iframe>
     </div>
 
   </div>
