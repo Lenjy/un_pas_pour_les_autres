@@ -41,3 +41,21 @@
   // position: relative;
   // left: -20px;
 }
+
+.sticky {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 999;
+}
+
+.countdown-box {
+  font-size: 50px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 0px;
+  margin-left: 10px;
+  padding: 12px;
+  background: rgba(109, 168, 179, 0.4);
+  width: fit-content;
+  border-radius: 4px;
+}

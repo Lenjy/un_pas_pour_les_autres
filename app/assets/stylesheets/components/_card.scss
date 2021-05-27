@@ -21,7 +21,7 @@
 
 .card-trip {
   overflow: hidden;
-  background: white;
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   // opacity: 0.8;
 }
@@ -33,17 +33,27 @@
 .card-trip h2 {
   font-weight: bold;
   margin: 0;
-  color: black;
+  color: white;
 }
 
 .card-trip p {
   margin: 0;
-  color: black;
+  color: white;
 }
 
 .card-trip h1 {
   margin: 0;
-  color: black;
+  color: white;
+}
+
+.card-trip h3 {
+  margin: 0;
+  color: white;
+}
+
+.card-trip h5 {
+  margin: 0;
+  color: white;
 }
 
 
@@ -114,12 +124,11 @@
 .card-product {
   overflow: hidden;
   height: 160px;
-  width: 800px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 4  px;
+  border-radius: 4px;
 }
 
 .card-product img {
