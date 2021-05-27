@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png", :style => "width: 200px" %>
     <% end %>
@@ -18,7 +18,7 @@
             <%= link_to "The charity event", root_path , class: "nav-link", id: "charity-button" %>
           <% end %>
         </li>
-        <li class="btn btn-primary mr-2">
+        <li class="btn btn-success mr-2">
           <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
         </li>
         <li class="nav-item active">

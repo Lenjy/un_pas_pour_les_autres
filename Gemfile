@@ -41,7 +41,6 @@ gem 'httparty'
 
 gem 'cloudinary', '~> 1.16.0'
 
-# Bar charts visualization
 
 
 

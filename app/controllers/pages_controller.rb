@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :secret ]
 
   def home
+    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
   end
 
   def dashboard
@@ -206,7 +207,7 @@ class PagesController < ApplicationController
 
   def daily_step
     # Daily step api fitness
-    if current_user.steps.where( date: Date.today) != nil 
+    if current_user.steps.where( date: Date.today) != nil
       today = current_user.steps.where( date: Date.today).first
       today.nb_steps = FitnessApi.new(current_user, current_user.token).get_daily_step
       today.save
@@ -230,7 +231,7 @@ class PagesController < ApplicationController
     @month.each do |steps|
       @month_steps[steps.date.strftime('%F')] = steps.nb_steps
     end
-    
+
     @month_message = "Mois de #{@month.first.date.strftime("%B %Y")}"
 
   end
