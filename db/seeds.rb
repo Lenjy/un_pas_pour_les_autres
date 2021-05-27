@@ -7,14 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+JoinedTeam.destroy_all
+puts 'JT destroyed'
 Step.destroy_all
+puts 'steps destroyed'
 User.destroy_all
+puts 'users destroyed'
+Team.destroy_all
+puts 'teams destroyed'
+Campaign.destroy_all
+puts 'caamp destroyed'
 Enterprise.destroy_all
+puts 'enterp destroyed'
 CharityEvent.destroy_all
+puts 'ch ev destroyed'
 
-def is_integer(number)
-  number.floor == number
-end
+
 
 # CHARITY EVENTS
 
@@ -25,17 +33,29 @@ restos_du_coeur = CharityEvent.create!(
   date_beginning: Date.new(2021, 5, 23),
   date_ending: Date.new(2021, 6, 07),
   total_donation: 0
+  )
+
+  puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
+
+  # ENTERPRISES
+
+  le_wagon = Enterprise.create!(name: "Le Wagon")
+
+
+  puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
+
+# CAMPAIGNS
+
+campaign_le_wagon = Campaign.create!(
+  step_conversion: 0,
+  max_contribution: 100000,
+  charity_event: restos_du_coeur,
+  enterprise: le_wagon
 )
 
-puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
+puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
-# ENTERPRISES
-
-# le_wagon = Enterprise.create!(name: "Le Wagon")
-
-
-# puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
 # USERS
 
@@ -66,6 +86,11 @@ puts "Created #{User.all.size} users in seeds.rb"
 
 
 # STEPS
+
+def is_integer(number)
+  number.floor == number
+end
+
 
 (3..30).each do |i|
 
@@ -124,4 +149,64 @@ end
 # )
 
 puts "Created #{Step.all.size} steps instances for users in seeds.rb"
+
+
+# TEAMS
+
+uppla = Team.create!(
+name: "Un pas pour les autres",
+description: "The best team ever seen at the Wagon",
+campaign: campaign_le_wagon)
+
+Team.create!(
+name: "Gamer meets",
+description: "These guys are so lame",
+campaign: campaign_le_wagon)
+
+Team.create!(
+name: "Tinder for brands",
+description: "These guys are so lame",
+campaign: campaign_le_wagon)
+
+Team.create!(
+name: "Le plateau",
+description: "These guys are so lame",
+campaign: campaign_le_wagon)
+
+Team.create!(
+name: "Book society",
+description: "These guys are so lame",
+campaign: campaign_le_wagon)
+
+Team.create!(
+name: "Sound on",
+description: "These guys are so lame",
+campaign: campaign_le_wagon)
+
+
+puts "Created #{Team.all.size} team instances in seeds.rb"
+
+
+
+# JOINED TEAMS
+
+
+JoinedTeam.create!(
+  user: arthur,
+  team: uppla)
+
+JoinedTeam.create!(
+  user: basil,
+  team: uppla)
+
+JoinedTeam.create!(
+  user: benjamin,
+  team: uppla)
+
+JoinedTeam.create!(
+  user: maylis,
+  team: uppla)
+
+
+puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
 

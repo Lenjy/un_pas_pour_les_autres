@@ -1,4 +1,4 @@
 class Enterprise < ApplicationRecord
-  belongs_to :campaign
+  has_many :campaigns
   validates :name, presence: true
 end
