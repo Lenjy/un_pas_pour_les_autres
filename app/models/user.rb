@@ -64,7 +64,7 @@ class User < ApplicationRecord
         )
     end
     user.update!( token: access_token.credentials.token)
-    if user.steps.where( date: Date.today) != nil 
+    if user.steps.where( date: Date.today).first != [] 
       today = user.steps.where( date: Date.today).first
       today.nb_steps = FitnessApi.new(user, user.token).get_daily_step
       today.save!
