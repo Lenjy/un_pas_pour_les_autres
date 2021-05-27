@@ -48,4 +48,7 @@ class PagesController < ApplicationController
     @team_message = "Aujourd'hui"
   end
 
+  def team_two_array_generation
+  end
+
 end
