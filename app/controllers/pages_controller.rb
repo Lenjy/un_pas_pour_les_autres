@@ -42,8 +42,13 @@ class PagesController < ApplicationController
 
   def week_array_generation
     @week_steps = []
-    @week = current_user.steps.select { |ins| ins.date.cweek == Date.today.cweek }
-    @week.each do |steps|
+    date_to_check = Date.today
+    @week = [] 
+    7.times do
+      @week << current_user.steps.where(date: date_to_check).first
+      date_to_check = date_to_check.yesterday
+    end
+    @week.reverse!.each do |steps|
       @week_steps << [steps.date.strftime('%A'), steps.nb_steps]
     end
     @week_message = "Semaine du #{@week.first.date.strftime('%B %d, %Y')} au #{@week.last.date.strftime('%B %d, %Y')}"
