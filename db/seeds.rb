@@ -11,8 +11,8 @@ JoinedTeam.destroy_all
 puts 'JT destroyed'
 Step.destroy_all
 puts 'steps destroyed'
-User.destroy_all
-puts 'users destroyed'
+# User.destroy_all
+# puts 'users destroyed'
 Team.destroy_all
 puts 'teams destroyed'
 Campaign.destroy_all
@@ -58,14 +58,18 @@ puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
 # USERS
+basil = User.all.where(email: "basil.lizotte@gmail.com").first
+arthur = User.all.where(email: "maguinarthur@gmail.com").first
+benjamin = User.all.where(email: "be.eycken@gmail.com").first
+maylis = User.all.where(email: "mdlmaylis@gmail.com").first
 
-basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
+# basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
 
-arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maguinarthur@gmail.com", password: "123456", password_confirmation: "123456")
+# arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "arthur@gmail.com", password: "123456", password_confirmation: "123456")
 
-benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456")
+# benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456")
 
-maylis = User.create!(first_name: "Maylis", last_name: "De La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maylis@gmail.com", password: "123456", password_confirmation: "123456")
+# maylis = User.create!(first_name: "Maylis", last_name: "De La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maylis@gmail.com", password: "123456", password_confirmation: "123456")
 
 photo_basil = URI.open('./app/assets/images/basil.jpeg')
 basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')

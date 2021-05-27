@@ -12,7 +12,11 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item mr-3">
-          <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+          <% if CharityEvent.last != nil  %>
+            <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+          <% else %>
+            <%= link_to "The charity event", root_path , class: "nav-link", id: "charity-button" %>
+          <% end %>
         </li>
         <li class="btn btn-success mr-2">
           <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
