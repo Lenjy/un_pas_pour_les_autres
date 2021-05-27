@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     # puts 'enterp destroyed'
     # CharityEvent.destroy_all
     # puts 'ch ev destroyed'
-    
+
     # restos_du_coeur = CharityEvent.create!(
     # title: "Evenement Coluche 2021",
     # charity_name: "Les Restos du Coeur",
@@ -96,7 +96,7 @@ class PagesController < ApplicationController
     # photo_maylis = URI.open('./app/assets/images/maylis.webp')
     # maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
 
-    
+
     # puts "Created #{User.all.size} users in seeds.rb"
 
 
@@ -134,7 +134,7 @@ class PagesController < ApplicationController
     #   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
     #   user_id: maylis.id)
 
-  
+
 
     # puts "Created #{Step.all.size} steps instances for users in seeds.rb"
 
@@ -240,14 +240,14 @@ class PagesController < ApplicationController
     @team_one_steps = []
     @team = current_user.teams.first.users
     @team.each do |member|
-      @team_one_steps << ["#{member.first_name} #{member.last_name}", member.steps.where(date: Date.today).first.nb_steps]
+      @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, member.steps.where(date: Date.today).first.nb_steps]
     end
     @team_message = "Aujourd'hui"
   end
 
   def team_two_array_generation
   end
-  
+
   def is_integer(number)
     number.floor == number
   end
