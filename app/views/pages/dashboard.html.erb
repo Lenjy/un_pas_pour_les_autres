@@ -38,9 +38,29 @@
   </div>
 
 
-  <%= render 'shared/tasks_navbar', label: "Vos statistiques", tab_one: "Semaine", tab_two: "Mois", tab_three: "Kilomètres" %>
+  <%= render 'shared/tasks_navbar_personal',
+  label: "Vos statistiques",
+  tab_one: "Semaine",
+  tab_two: "Mois",
+  tab_three: "Kilomètres",
+  id_tab_one: "week", message_tab_one: @week_message, steps_tab_one: @week_steps,
+  id_tab_two: "month", message_tab_two: @month_message, steps_tab_two: @month_steps,
+  myclass: "" %>
 
-  <%# <%= render 'shared/tasks_navbar', label: "Vos teams", tab_one: "Team 1", tab_two: "Team 2", tab_three: "Team 3" %>
+  <%= render 'shared/tasks_navbar_team',
+  label: "Vos teams",
+  tab_one: "Team 1",
+  tab_two: "Team 2",
+  tab_three: "Team 3",
+  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps, id_tab_two: "team-two", message_tab_two: @month_message, steps_tab_two: @month_steps,
+  myclass: "mt-5" %>
+
+  <div class="d-flex justify-content-around">
+    <% @team.each do |member| %>
+      <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
+    <% end %>
+  </div>
+
 
 
 </div>
