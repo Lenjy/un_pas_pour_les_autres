@@ -23,5 +23,6 @@ class DonationPaymentsController < ApplicationController
     def show
         @donation_payment = current_user.donation_payments.find(params[:id])
         authorize @donation_payment
+        redirect_to dashboard_path
     end
 end

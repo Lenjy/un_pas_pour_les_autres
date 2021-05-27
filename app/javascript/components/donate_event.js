@@ -9,10 +9,12 @@ const calculate = (conversion_proposal) => {
 
 const donate_event = () => {
     const conversion_proposal = document.querySelector('#conversion_proposal');
+    if (conversion_proposal) {
     conversion_proposal.addEventListener('keyup', (event) => {
         calculate(conversion_proposal)
 
     });    
+}
     /* const conversion_proposal.addEventListener('change', calculate); */
 }
 

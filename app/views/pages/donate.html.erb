@@ -30,7 +30,7 @@
 
          <div class="col-4 card-category">
             <div>
-                <%= form_tag donation_payments_path do %>
+                <%= form_tag donation_payments_path, method: "post" do %>
                         <div class="d-flex">
                             <input disabled type="number" value=<%= @step_count %> id="total_steps" name="" class="box-donate">
                             <i class="fas fa-shoe-prints ml-2 shoes"></i>
@@ -48,8 +48,8 @@
                         </div>
                 </div>
             </div>
-            <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
-            <%= submit_tag 'Donate', class: 'donate-button' %>
+                <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
+                <%= submit_tag 'Donate', class: 'donate-button' %>
             <% end %>
         </div>
 
