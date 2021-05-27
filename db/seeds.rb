@@ -43,7 +43,7 @@ basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizot
 
 arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "arthur@gmail.com", password: "123456", password_confirmation: "123456")
 
-benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456", token: "ya29.a0AfH6SMCiExNSe4fHjl-ZcMWGjtsYmFaV7Z4g_JpYjWK-cJ6meU-qU7xEtoXZbvBs28ZHwqYfOWqEPs-BirKlHJ5bB3uOCgCPhTiy2jRxaFor2-ACbQLNF6xQernbCvX8sNFeDBYjGHYRpMSb3Ysp8Q5ba6h_")
+benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456")
 
 maylis = User.create!(first_name: "Maylis", last_name: "De La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maylis@gmail.com", password: "123456", password_confirmation: "123456")
 
