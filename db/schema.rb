@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_05_26_155108) do
+ActiveRecord::Schema.define(version: 2021_05_27_103305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,18 +36,6 @@ ActiveRecord::Schema.define(version: 2021_05_26_155108) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
   create_table "campaigns", force: :cascade do |t|
     t.integer "step_conversion"
     t.integer "max_contribution"
@@ -69,6 +56,18 @@ ActiveRecord::Schema.define(version: 2021_05_26_155108) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
+  end
+
+  create_table "donation_payments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "charity_event_id", null: false
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["charity_event_id"], name: "index_donation_payments_on_charity_event_id"
+    t.index ["user_id"], name: "index_donation_payments_on_user_id"
   end
 
   create_table "enterprises", force: :cascade do |t|
@@ -137,6 +136,8 @@ ActiveRecord::Schema.define(version: 2021_05_26_155108) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "campaigns", "charity_events"
   add_foreign_key "campaigns", "enterprises"
+  add_foreign_key "donation_payments", "charity_events"
+  add_foreign_key "donation_payments", "users"
   add_foreign_key "joined_campaigns", "users"
   add_foreign_key "joined_teams", "teams"
   add_foreign_key "joined_teams", "users"

@@ -9,3 +9,23 @@
     opacity: 1;
   }
 }
+
+.donate-button {
+  color: white;
+  background-color: $success;
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+  font-size: 30px;
+  border-style: none!important;
+  position: relative;
+  left: 758px;
+  top: -818px;
+  width: 384px;
+  height: 50px;
+  border-radius: 10px;
+  &:hover {
+    color: rgb(232, 214, 216);
+    background-color:$success;
+    opacity: 1;
+  }
+}
