@@ -5,11 +5,14 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+
     # private methods PERSONAL STATISTICS
     week_array_generation
     month_array_generation
     # private methods TEAM STATISTICS
     team_one_array_generation
+    # private daily step
+    daily_step
   end
 
   def donate
@@ -20,6 +23,17 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def daily_step
+    # Daily step api fitness
+    if current_user.steps.where( date: Date.today) != nil 
+      today = current_user.steps.where( date: Date.today).first
+      today.nb_steps = FitnessApi.new(current_user, current_user.token).get_daily_step
+      today.save
+    else
+      Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
+    end
+  end
 
   def week_array_generation
     @week_steps = []
@@ -35,15 +49,6 @@ class PagesController < ApplicationController
     @month = current_user.steps.select { |ins| ins.date.month == Date.today.month }
     @month.each do |steps|
       @month_steps[steps.date.strftime('%F')] = steps.nb_steps
-    end
-
-    # Daily step api fitness
-    if current_user.steps.where( date: Date.today) != nil 
-      today = current_user.steps.where( date: Date.today).first
-      today.nb_steps = FitnessApi.new(current_user, current_user.token).get_daily_step
-      today.save
-    else
-      Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
     end
     
     @month_message = "Mois de #{@month.first.date.strftime("%B %Y")}"

@@ -1,8 +1,8 @@
 require 'google/apis/fitness_v1'
 
 class FitnessApi 
-  def initialize(user, access_token)
-    @user = user
+  def initialize(current_user, access_token)
+    @user = current_user
     @access_token = access_token
   end
 
