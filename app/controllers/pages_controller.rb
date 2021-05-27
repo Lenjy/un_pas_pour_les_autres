@@ -246,22 +246,7 @@ class PagesController < ApplicationController
 
   def team_two_array_generation
   end
-
-  def secret
-    Step.destroy_all
-    (3..30).each do |i|
-
-      Step.create!(
-      date: Date.parse("2021-05-#{i}") ,
-      nb_steps: rand(1000..15000),
-      week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-      user_id: current_user.id)
-    end
-    redirect_to root_path
-  end
-
-  private
-
+  
   def is_integer(number)
     number.floor == number
   end
