@@ -9,8 +9,8 @@ require "open-uri"
 
 JoinedTeam.destroy_all
 puts 'JT destroyed'
-# Step.destroy_all
-# puts 'steps destroyed'
+Step.destroy_all
+puts 'steps destroyed'
 # User.destroy_all
 # puts 'users destroyed'
 Team.destroy_all
