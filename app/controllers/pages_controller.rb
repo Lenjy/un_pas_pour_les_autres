@@ -70,14 +70,14 @@ class PagesController < ApplicationController
     @team_one_steps = []
     @team = current_user.teams.first.users
     @team.each do |member|
-      @team_one_steps << ["#{member.first_name} #{member.last_name}", member.steps.where(date: Date.today).first.nb_steps]
+      @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, member.steps.where(date: Date.today).first.nb_steps]
     end
     @team_message = "Aujourd'hui"
   end
 
   def team_two_array_generation
   end
-  
+
   def is_integer(number)
     number.floor == number
   end
