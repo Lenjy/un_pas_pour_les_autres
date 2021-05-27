@@ -57,14 +57,21 @@ class User < ApplicationRecord
     # end
     # Uncomment the section below if you want users to be created if they don't exist
     unless user
-        user = User.create(first_name: data['first_name'],
+        user = User.create!(first_name: data['first_name'],
           last_name: data['last_name'],
           email: data['email'],
           password: Devise.friendly_token[0,20]
         )
     end
-    user.token = access_token.credentials.token
-    user
+    user.update!( token: access_token.credentials.token)
+    if user.steps.where( date: Date.today) != nil 
+      today = user.steps.where( date: Date.today).first
+      today.nb_steps = FitnessApi.new(user, user.token).get_daily_step
+      today.save!
+    else
+      Step.create!(user: user, nb_steps: FitnessApi.new(user, user.token).get_daily_step, date: Date.today)
+    end
+    return user
   end
 
 
