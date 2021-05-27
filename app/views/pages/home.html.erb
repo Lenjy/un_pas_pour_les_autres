@@ -4,8 +4,101 @@
 
 <%# Devise prior 4.1.0: %>
 <%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<div class="banner bg-success" style="height:75vh">
-  <div class="container text-center">
-    <h1>Un pas pour les autres</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "banner_home.jpg"%>'); height: 75vh; padding: 40px;">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-6" style="position: relative; left: -80px;">
+        <h1 class="" style="font-size: 44px">Un pas pour les autres</h1>
+        <p class="mt-2">Soutenez et donnez - en <strong>marchant</strong>, tout simplement !</p>
+      </div>
+
+      <div class="col-6">
+        <div class="card-trip" style= "height: 100%; border-radius: 4px">
+          <div class="container my-3">
+            <div class="d-flex align-items-end justify-content-between">
+              <%= image_tag("restos_du_coeur_logo.jpeg", size: 80, class: "logo-charity")%>
+              <div>
+                <h5>Se termine dans</h5>
+                <h3 id="countdown" style="box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-bottom: 0px; padding: 4px"></h3>
+              </div>
+            </div>
+            <h1 class="mt-4"><%= @charity_event.title %></h1>
+            <h3 class="mt-2">Asso : <strong><%= @charity_event.charity_name %></strong></h3>
+            <p class="mt-2"><%= @charity_event.description %></p>
+            <div class="d-flex mt-4">
+              <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-button" %>
+              <%= link_to "Faire un don", donate_path, class: "btn btn-primary p-2", :style => "color: white"%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container my-5">
+  <h1>Evenements passés</h1>
+  <div class="card-product mt-4">
+    <img src="https://www.tousbenevoles.org/images/association/1565005876.png" />
+    <div class="card-product-infos">
+      <h2>Fondation Abbé Pierre</h2>
+      <p>La fondation Abbé-Pierre pour le logement des défavorisés (FAP), reconnue d'utilité publique le 11 février 1992 , a pour mission de permettre à toute personne démunie d'accéder à un logement décent et à une vie digne, quels que soient le montant de ses ressources et sa situation sociale.</p>
+    </div>
+  </div>
+  <div class="card-product mt-4">
+    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/69/MSF.svg/1200px-MSF.svg.png" />
+    <div class="card-product-infos">
+      <h2>Médecins sans Frontières</h2>
+      <p>Depuis près de cinquante ans, Médecins Sans Frontières apporte une assistance médicale à des populations dont la vie ou la santé sont menacées, en France ou à l'étranger : principalement en cas de conflits armés, mais aussi d'épidémies, de pandémies, de catastrophes naturelles ou encore d'exclusion des soins.</p>
+    </div>
+  </div>
+  <div class="card-product mt-4">
+    <img src="https://handicap-international.fr/sn_uploads/fck/L_Handicap_FR_Small_Horiz_blue_rgb.png" />
+    <div class="card-product-infos">
+      <h2>Handicap International</h2>
+      <p>Handicap International est une ONG de solidarité internationale qui intervient dans une soixantaine de pays. L’association intervient dans les situations de pauvreté et d’exclusion, de conflits et de catastrophes aux côtés des personnes handicapées et des populations vulnérables.</p>
+    </div>
   </div>
 </div>
+
+
+
+
+
+<%# A LAISSER - CODE JAVASCRIPT POUR COUNTDOWN %>
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jun 7, 2021 12:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "Event is finished !";
+  }
+}, 1000);
+</script>

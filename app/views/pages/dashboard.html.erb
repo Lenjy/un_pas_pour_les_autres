@@ -24,7 +24,7 @@
       <h4>Nombre de pas</h4>
       <div class="d-flex align-items-center">
         <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.last.nb_steps, :delimiter => ',') %></h2>
+        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
       </div>
     </div>
 
