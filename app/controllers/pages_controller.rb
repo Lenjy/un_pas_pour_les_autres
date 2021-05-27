@@ -197,6 +197,8 @@ class PagesController < ApplicationController
 
     puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
 
+    redirect_to root_path
+
   end
 
 
