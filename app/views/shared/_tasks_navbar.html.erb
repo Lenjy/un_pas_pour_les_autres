@@ -15,11 +15,13 @@
     <div class="tab-content" id="myTabContent">
 
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h2 style="margin-top: 20px"><%= @week_message %></h2>
         <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
       </div>
 
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div>
+          <h2 style="margin-top: 20px"><%= @month_message %></h2>
           <div id="chart-month" style="height: 300px; margin-top: 40px" data-steps="<%= @month_steps.to_json %>"></div>
         </div>
       </div>
