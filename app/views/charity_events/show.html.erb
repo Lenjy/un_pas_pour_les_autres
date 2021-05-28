@@ -3,25 +3,22 @@
     <h1 class="charity_event_title"><%= @charity_event.title %></h1>
   </div>
   <div class="d-flex justify-content-center mt-4">
-    <% if Date.today < @charity_event.date_beginning %>
-     <h1> du <%= @charity_event.date_beginning.strftime("%d-%m-%Y") %> au <%= @charity_event.date_ending.strftime("%d-%m-%Y") %></h1>
-    <% elsif @charity_event.date_beginning <= Date.today && Date.today <= @charity_event.date_ending %>
-     <h1> <%=distance_of_time_in_words(Time.current, @charity_event.date_ending)%></h1>
-    <% else %>
-      <h1>Cet evenement est terminé</h1>
-    <% end %>
+     <h1> du <%= @charity_event.date_beginning.strftime("%d %B") %> au <%= @charity_event.date_ending.strftime("%d %B") %></h1>
   </div>
 </div>
 
 
 <div class="container mt-4">
   <div class="row">
-    <div  class="col-7 card-text">
-      <h2><%= @charity_event.charity_name %></h2>
-      <div class="row text-justify mt-4">
+    <div  class="col-7 card-text mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2><%= @charity_event.charity_name %></h2>
+        <%= link_to "En savoir plus", "https://www.restosducoeur.org/", class: "btn btn-success", target:"_blank", style: "color:white" %>
+      </div>
+      <div class="row text-justify mt-5">
         <h4><%= @charity_event.charity_name  %> c'est quoi ?</h4>
         <p><%= @charity_event.description %></p>
-        <p>Elle a pour objectif d'aider les plus démunis et de participer à la lutte contre l'exclusion sociale. Les personnes accueillies bénéficiant de ces aides sont des personnes dans la précarité, et malheureusement tous les profils sont représentés, qu'il s'agisse de personnes seules ou de familles monoparentales, des chômeurs en fin de droit (la moitié des personnes accueillies sont au chômage, déclarait Olivier Berthe en novembre 201325), de retraités disposant du seul « minimum vieillesse » ou encore de jeunes de moins de 25 ans ne disposant pas du RSA. Les Restos du cœur parlent d'une pauvreté prenant un autre visage, avec la venue des travailleurs pauvres26,27. En 2016, 926 000 personnes ont été accueillies par les Restos du Cœur. C'est un nombre qui, contrairement à ce que pensait Coluche à sa création, augmente chaque année.</p>
+        <p>Elle a pour objectif d'aider les plus démunis et de participer à la lutte contre l'exclusion sociale. Les personnes accueillies bénéficiant de ces aides sont des personnes dans la précarité, et malheureusement tous les profils sont représentés, qu'il s'agisse de personnes seules ou de familles monoparentales, des chômeurs en fin de droit (la moitié des personnes accueillies sont au chômage, déclarait Olivier Berthe en novembre 2013), de retraités disposant du seul « minimum vieillesse » ou encore de jeunes de moins de 25 ans ne disposant pas du RSA. Les Restos du cœur parlent d'une pauvreté prenant un autre visage, avec la venue des travailleurs pauvres. En 2016, 926 000 personnes ont été accueillies par les Restos du Cœur. C'est un nombre qui, contrairement à ce que pensait Coluche à sa création, augmente chaque année.</p>
         <p>Les Restos du cœur sont attentifs au bon emploi des fonds mis à leur disposition par les donateurs et les collectivités publiques. Organisation essentiellement financée par les donateurs et les collectivités publiques et animée par des bénévoles, les frais généraux sont très réduits (7 % des ressources en 2012-2013), les dépenses superflues sont éliminées. La procédure d'appels d'offres permet d'obtenir les meilleurs prix. Ainsi, plus de 90 % des ressources financières sont consacrées aux actions.</p>
       </div>
     </div>
@@ -29,11 +26,10 @@
     <div class="col-5 text-center">
       <div class="text-center card-text p-5 mb-4">
         <h4 class="mb-5"><strong>Merci pour vos dons !</strong></h4>
-        <p style="border:1px solid black; padding:20px">21 410 €</p>
+        <h2 style="border:1px solid black; padding:20px"><strong>21 410 €</strong></h2>
         <%# @charity_event.total_donation %>
       </div>
        <iframe src="https://www.youtube.com/embed/X7-FvBlfiPs" width="400" height="290" frameborder="0"></iframe>
-      <%= link_to "En savoir plus", "https://www.restosducoeur.org/", class: "btn btn-success mt-4", target:"_blank", style: "color:white" %>
     </div>
 
   </div>
