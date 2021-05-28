@@ -2,7 +2,6 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-import { donate_event } from "../components/donate_event";
 
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -31,6 +30,7 @@ import "chartkick/chart.js";
 import { initChartkickWeek } from "../plugins/init_chartkick";
 import { initChartkickMonth } from "../plugins/init_chartkick";
 import { initChartkickTeamOne } from "../plugins/init_chartkick";
+import { donate_event } from "../components/donate_event";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

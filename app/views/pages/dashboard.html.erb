@@ -24,12 +24,12 @@
       <h4>Nombre de pas</h4>
       <div class="d-flex align-items-center">
         <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.last.nb_steps, :delimiter => ',') %></h2>
+        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
       </div>
     </div>
 
     <div class="counter-right">
-      <h4>Dons totaux</h4>
+      <h4>Total dons</h4>
       <div class="d-flex align-items-center">
         <h2 class="btn btn-lg btn-outline-primary mr-2" disabled>45</h2>
         <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
@@ -55,9 +55,14 @@
   id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps, id_tab_two: "team-two", message_tab_two: @month_message, steps_tab_two: @month_steps,
   myclass: "mt-5" %>
 
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
     <% @team.each do |member| %>
-      <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
+      <div style="    background-color: white;
+    padding: 10px 54px;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(133, 164, 233, 50%); margin-top: 7px">
+        <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
+      </div>
     <% end %>
   </div>
 
