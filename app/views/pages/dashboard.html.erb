@@ -33,7 +33,9 @@
       <h4><strong>Total dons</strong></h4>
       <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
-        <h2 class="btn btn-lg btn-primary mr-2 disabled">45</h2>
+
+        <h2 class="btn btn-lg btn-outline-primary mr-2" disabled><%=current_user.donation_payments.map{|payment| payment.amount_cents}.sum/100%></h2>
+
         <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
       </div>
     </div>
