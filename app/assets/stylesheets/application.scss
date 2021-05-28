@@ -59,3 +59,12 @@
   width: fit-content;
   border-radius: 4px;
 }
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
