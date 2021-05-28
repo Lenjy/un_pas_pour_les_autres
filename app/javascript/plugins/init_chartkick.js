@@ -1,10 +1,12 @@
 import Chartkick from "chartkick";
 
+
+
 const initChartkickWeek = () => {
   const div_week = document.getElementById('chart-week');
   if (div_week) {
     const data_week = JSON.parse(div_week.dataset.steps);
-    new Chartkick.ColumnChart("chart-week", data_week, { colors: ["rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 1)"]});
+    new Chartkick.ColumnChart("chart-week", data_week, { colors: ["rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 0.5)", "rgba(109, 168, 179, 1)"], dataset: { borderWidth: 3, borderColor: 'rgba(109, 168, 179, 1)' }});
   };}
 
 const initChartkickMonth = () => {

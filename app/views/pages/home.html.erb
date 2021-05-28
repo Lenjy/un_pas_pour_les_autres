@@ -16,7 +16,7 @@
           <p class="mt-2">Faites un pas pour ceux qui ne peuvent pas - et donnez, en <strong>marchant</strong>, tout simplement !</p>
         </div>
         <div style="color: white">
-          <h1 style="font-size: 24px; margin-bottom: 20px">Fin des dons dans:</h1>
+          <h1 style="font-size: 36px; margin-bottom: 20px">Fin des dons dans :</h1>
           <div class="d-flex justify-content-center">
             <h3 id="countdown-d" class="countdown-box"></h3>
             <h3 id="countdown-h" class="countdown-box"></h3>
@@ -70,7 +70,7 @@
           <p>Depuis près de cinquante ans, Médecins Sans Frontières apporte une assistance médicale à des populations dont la vie ou la santé sont menacées, en France ou à l'étranger : principalement en cas de conflits armés, mais aussi d'épidémies, de pandémies, de catastrophes naturelles ou encore d'exclusion des soins.</p>
         </div>
       </div>
-      <div class="card-product mt-4">
+      <div class="card-product mt-4 ">
         <img src="https://handicap-international.fr/sn_uploads/fck/L_Handicap_FR_Small_Horiz_blue_rgb.png" />
         <div class="card-product-infos">
           <h2>Handicap International</h2>
@@ -81,14 +81,14 @@
 
     <div class="col-4">
       <h1>Dons récoltés</h1>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>145 067 €</h1>
+      <div class="card-product mt-4 justify-content-around">
+        <h1 class=''><strong>145 067 </strong>€</h1>
       </div>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>90 256 €</h1>
+      <div class="card-product mt-4 justify-content-around">
+        <h1 class=''><strong>90 256 </strong>€</h1>
       </div>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>456 304 €</h1>
+      <div class="card-product mt-4 justify-content-around">
+        <h1 class=''><strong>456 304 </strong>€</h1>
       </div>
     </div>
 
@@ -114,10 +114,22 @@ var x = setInterval(function() {
   var distance = countDownDate - now;
 
   // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000).toLocaleString('en-US', {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
 
   // Output the result in an element with id="demo"
   <%# document.getElementById("countdown-d").innerHTML = days + "j " + hours + "h "
