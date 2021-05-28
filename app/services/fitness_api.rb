@@ -33,9 +33,11 @@ class FitnessApi
 
     if !JSON.parse(response.body)["bucket"].nil?
       # if user.steps.include?
-      daily_step = JSON.parse(response.body)["bucket"][0]["dataset"][0]["point"][0]["value"][0]["intVal"]
-    else
-      daily_step=0
+      if JSON.parse(response.body)["bucket"][0]["dataset"][0]["point"] == []
+        daily_step = 0
+      else
+        daily_step = JSON.parse(response.body)["bucket"][0]["dataset"][0]["point"][0]["value"][0]["intVal"]
+      end
     end
   end
 
