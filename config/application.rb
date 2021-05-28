@@ -15,8 +15,8 @@ module UnPasPourLesAutres
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    I18n.available_locales = [:en, :fr]
 
+    config.i18n.available_locales = [:en, :fr]
     config.i18n.default_locale = :fr
 
     # Settings in config/environments/* take precedence over those specified here.
