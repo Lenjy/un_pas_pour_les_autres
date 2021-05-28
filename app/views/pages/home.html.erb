@@ -79,16 +79,31 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class=" flex-container col-4">
       <h1>Dons récoltés</h1>
-      <div class="card-product mt-4 justify-content-around">
-        <h1 class=''><strong>145 067 </strong>€</h1>
+
+      <div style="width: 260px; height: 170px; margin-top: 40px;    display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+          <h1 class='m-0 text-white'>145 067 €</h1>
+        </div>
       </div>
-      <div class="card-product mt-4 justify-content-around">
-        <h1 class=''><strong>90 256 </strong>€</h1>
+
+      <div style="width: 260px; height: 185px;display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+        <h1 class='m-0 text-white'>90 256 €</h1>
+        </div>
       </div>
-      <div class="card-product mt-4 justify-content-around">
-        <h1 class=''><strong>456 304 </strong>€</h1>
+      <div style="width: 260px; height: 200px;display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+        <h1 class='m-0 text-white'>456 304 €</h1>
+        </div>
+
       </div>
     </div>
 
@@ -134,11 +149,12 @@ var x = setInterval(function() {
   // Output the result in an element with id="demo"
   <%# document.getElementById("countdown-d").innerHTML = days + "j " + hours + "h "
   + minutes + "m " + seconds + "s "; %>
-  document.getElementById("countdown-d").innerHTML = days + " j";
-  document.getElementById("countdown-h").innerHTML = hours + " h";
-  document.getElementById("countdown-m").innerHTML = minutes + " m";
-  document.getElementById("countdown-s").innerHTML = seconds + " s";
-
+  if (document.getElementById("countdown-d")){
+    document.getElementById("countdown-d").innerHTML = days + " j";
+    document.getElementById("countdown-h").innerHTML = hours + " h";
+    document.getElementById("countdown-m").innerHTML = minutes + " m";
+    document.getElementById("countdown-s").innerHTML = seconds + " s";
+  }
   // If the count down is over, write some text
   if (distance < 0) {
     clearInterval(x);

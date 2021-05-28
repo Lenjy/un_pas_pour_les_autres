@@ -50,7 +50,7 @@ class PagesController < ApplicationController
       date_to_check = date_to_check.yesterday
     end
     @week.reverse!.each do |steps|
-      @week_steps << [steps.date.strftime('%A'), steps.nb_steps]
+      @week_steps << [l(steps.date, format:"%A"), steps.nb_steps]
     end
     @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
   end
