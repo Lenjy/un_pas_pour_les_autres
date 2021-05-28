@@ -21,17 +21,19 @@
   <div class="d-flex justify-content-between">
 
     <div class="counter-left">
-      <h4>Nombre de pas</h4>
+      <h4><strong>Nombre de pas</strong></h4>
+      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
         <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
+        <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter(current_user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
       </div>
     </div>
 
     <div class="counter-right">
-      <h4>Total dons</h4>
+      <h4><strong>Total dons</strong></h4>
+      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
-        <h2 class="btn btn-lg btn-outline-primary mr-2" disabled>45</h2>
+        <h2 class="btn btn-lg btn-primary mr-2 disabled">45</h2>
         <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
       </div>
     </div>
@@ -60,7 +62,7 @@
       <div style="    background-color: white;
     padding: 10px 54px;
     border-radius: 2px;
-    box-shadow: 0 0 6px rgba(133, 164, 233, 50%); margin-top: 7px">
+    box-shadow: 0 0 6px rgba(109, 168, 179, 50%); margin-top: 7px">
         <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
       </div>
     <% end %>
