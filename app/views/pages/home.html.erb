@@ -135,11 +135,12 @@ var x = setInterval(function() {
   // Output the result in an element with id="demo"
   <%# document.getElementById("countdown-d").innerHTML = days + "j " + hours + "h "
   + minutes + "m " + seconds + "s "; %>
-  document.getElementById("countdown-d").innerHTML = days + " j";
-  document.getElementById("countdown-h").innerHTML = hours + " h";
-  document.getElementById("countdown-m").innerHTML = minutes + " m";
-  document.getElementById("countdown-s").innerHTML = seconds + " s";
-
+  if (document.getElementById("countdown-d")){
+    document.getElementById("countdown-d").innerHTML = days + " j";
+    document.getElementById("countdown-h").innerHTML = hours + " h";
+    document.getElementById("countdown-m").innerHTML = minutes + " m";
+    document.getElementById("countdown-s").innerHTML = seconds + " s";
+  }
   // If the count down is over, write some text
   if (distance < 0) {
     clearInterval(x);
