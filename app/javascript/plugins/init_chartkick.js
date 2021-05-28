@@ -5,7 +5,7 @@ const initChartkickWeek = () => {
   console.log(div_week);
   const data_week = JSON.parse(div_week.dataset.steps);
   console.log(data_week);
-  new Chartkick.ColumnChart("chart-week", data_week);
+  new Chartkick.ColumnChart("chart-week", data_week, { colors: ["#b00", "#b00", "#b00", "#b00", "#b00", "#b00", "#666"] });
 }
 
 const initChartkickMonth = () => {
