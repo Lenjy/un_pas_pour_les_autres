@@ -54,15 +54,12 @@
   tab_one: "Team 1",
   tab_two: "Team 2",
   tab_three: "Team 3",
-  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps, id_tab_two: "team-two", message_tab_two: @month_message, steps_tab_two: @month_steps,
+  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
   myclass: "mt-5" %>
 
   <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
     <% @team.each do |member| %>
-      <div style="    background-color: white;
-    padding: 10px 54px;
-    border-radius: 2px;
-    box-shadow: 0 0 6px rgba(133, 164, 233, 50%); margin-top: 7px">
+      <div style="background-color: white; padding: 10px 54px; border-radius: 2px; box-shadow: 0 0 6px rgba(133, 164, 233, 50%); margin-top: 7px">
         <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
       </div>
     <% end %>

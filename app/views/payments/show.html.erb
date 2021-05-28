@@ -1,0 +1,15 @@
+<!-- app/views/orders/show.html.erb -->
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"></div>
+    <div class="col">
+      <h1>Your Donation #<%= @donation_payment.id %> <small><span class="badge badge-primary"><%= @donation_payment.state %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong><%= @donation_payment.created_at.to_date %></li>
+        <li><strong>CHARITY</strong><%= @donation_payment.charity_event.title %></li>
+        <li><strong>TOTAL</strong><%= humanized_money_with_symbol @donation_payment.amount %></li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
