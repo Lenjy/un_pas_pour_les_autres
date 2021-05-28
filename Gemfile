@@ -41,7 +41,7 @@ gem 'httparty'
 
 gem 'cloudinary', '~> 1.16.0'
 
-
+gem 'rails-i18n'
 
 
 group :development, :test do  gem 'pry-byebug'

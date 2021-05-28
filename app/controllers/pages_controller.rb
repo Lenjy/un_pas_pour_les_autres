@@ -44,7 +44,7 @@ class PagesController < ApplicationController
   def week_array_generation
     @week_steps = []
     date_to_check = Date.today
-    @week = [] 
+    @week = []
     7.times do
       @week << current_user.steps.where(date: date_to_check).first
       date_to_check = date_to_check.yesterday
@@ -52,17 +52,17 @@ class PagesController < ApplicationController
     @week.reverse!.each do |steps|
       @week_steps << [steps.date.strftime('%A'), steps.nb_steps]
     end
-    @week_message = "Semaine du #{@week.first.date.strftime('%B %d, %Y')} au #{@week.last.date.strftime('%B %d, %Y')}"
+    @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
   end
 
   def month_array_generation
     @month_steps = {}
     @month = current_user.steps.select { |ins| ins.date.month == Date.today.month }
     @month.each do |steps|
-      @month_steps[steps.date.strftime('%F')] = steps.nb_steps
+      @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
 
-    @month_message = "Mois de #{@month.first.date.strftime("%B %Y")}"
+    @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
 
   end
 
@@ -72,7 +72,7 @@ class PagesController < ApplicationController
     @team.each do |member|
       @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, member.steps.where(date: Date.today).first.nb_steps]
     end
-    @team_message = "Aujourd'hui"
+    @team_message = "Aujourd'hui, #{I18n.l Date.today, format:"%d %B %Y"}"
   end
 
   def team_two_array_generation
