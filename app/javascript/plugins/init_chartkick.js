@@ -2,6 +2,7 @@ import Chartkick from "chartkick";
 
 const initChartkickWeek = () => {
   const div_week = document.getElementById('chart-week');
+
   if (div_week){
     console.log(div_week);
     const data_week = JSON.parse(div_week.dataset.steps);

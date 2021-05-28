@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png", :style => "width: 200px" %>
     <% end %>
@@ -12,22 +12,23 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item mr-3">
-          <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+          <% if CharityEvent.last != nil  %>
+            <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+          <% else %>
+            <%= link_to "The charity event", root_path , class: "nav-link", id: "charity-button" %>
+          <% end %>
         </li>
-        <li class="btn btn-primary mr-2">
+        <li class="btn btn-success mr-2">
           <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Accueil", root_path, class: "nav-link" %>
-        </li>
         <li class="nav-item">
-          <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+          <%= link_to "Profil", dashboard_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown ml-2">
           <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Paramètres", "#", class: "dropdown-item" %>
+            <%= link_to "Edit", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
           <% else %>
@@ -35,6 +36,12 @@
           <% end  %>
         </li>
       <% else %>
+        <li class="nav-item mr-3">
+          <%= link_to "Découvrir #{CharityEvent.last.charity_name}", charity_event_path(CharityEvent.last), class: "nav-link", id: "charity-button" %>
+        </li>
+        <li class="btn btn-success mr-2">
+          <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
+        </li>
         <li class="nav-item">
           <%# <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           <%= link_to "Log in", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-info" %>

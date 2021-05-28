@@ -12,7 +12,7 @@
   <% else %>
     <img class="avatar-large-centered" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
   <% end %>
-  <%= link_to "éditer son profil", dashboard_path, class: 'btn btn-link' %>
+  <%= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-link' %>
 
 </div>
 
@@ -21,17 +21,21 @@
   <div class="d-flex justify-content-between">
 
     <div class="counter-left">
-      <h4>Nombre de pas</h4>
+      <h4><strong>Nombre de pas</strong></h4>
+      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
         <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <h2 class="btn btn-lg btn-outline-primary" disabled><%= number_with_delimiter(current_user.steps.last.nb_steps, :delimiter => ',') %></h2>
+        <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter(current_user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
       </div>
     </div>
 
     <div class="counter-right">
-      <h4>Dons totaux</h4>
+      <h4><strong>Total dons</strong></h4>
+      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
+
         <h2 class="btn btn-lg btn-outline-primary mr-2" disabled><%=current_user.donation_payments.map{|payment| payment.amount_cents}.sum/100%></h2>
+
         <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
       </div>
     </div>
@@ -52,12 +56,14 @@
   tab_one: "Team 1",
   tab_two: "Team 2",
   tab_three: "Team 3",
-  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps, id_tab_two: "team-two", message_tab_two: @month_message, steps_tab_two: @month_steps,
+  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
   myclass: "mt-5" %>
 
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
     <% @team.each do |member| %>
-      <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
+      <div style="background-color: white; padding: 10px 54px; border-radius: 2px; box-shadow: 0 0 6px rgba(133, 164, 233, 50%); margin-top: 7px">
+        <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
+      </div>
     <% end %>
   </div>
 
