@@ -34,7 +34,9 @@ class User < ApplicationRecord
         )
         FitnessApi.new(user, user.token).get_info_month
     end
+
     user.update!( token: access_token.credentials.token)
+
     if user.steps.where( date: Date.today) != [] 
       today = user.steps.where( date: Date.today).first
       today.nb_steps = FitnessApi.new(user, user.token).get_daily_step
@@ -42,6 +44,7 @@ class User < ApplicationRecord
     else
       Step.create!(user: user, nb_steps: FitnessApi.new(user, user.token).get_daily_step, date: Date.today)
     end
+    
     return user
   end
 
