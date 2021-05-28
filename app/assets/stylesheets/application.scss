@@ -38,6 +38,7 @@
 .logo-charity {
   filter: drop-shadow(0 0 0.25rem black);
   border-radius: 2px;
+  width: 80px;
   // position: relative;
   // left: -20px;
 }
@@ -58,4 +59,24 @@
   background: rgba(109, 168, 179, 0.4);
   width: fit-content;
   border-radius: 4px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box-donate{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+       box-shadow: 0 10px 6px -6px #777;
+       width: 240px;
+       height: 70px;
+       display: flex;
+    justify-content: center;
+    align-items: center;
 }

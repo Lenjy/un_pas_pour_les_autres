@@ -4,7 +4,7 @@
 
 <%# Devise prior 4.1.0: %>
 <%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "banner_home.jpg"%>'); height: 65vh; padding: 40px;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 65vh; padding: 40px;">
 
   <div class="container">
 
@@ -30,7 +30,7 @@
         <div class="card-trip" style= "height: 100%; border-radius: 4px">
           <div class="container my-3">
             <div class="d-flex align-items-center">
-              <%= image_tag("restos_du_coeur_logo.jpeg", size: 80, class: "logo-charity")%>
+              <%= cl_image_tag "rvmakbvta1d8hsdxfddk", class: "logo-charity"%>
               <h3 class="mt-2 ml-4"><strong><%= @charity_event.charity_name %></strong></h3>
             </div>
             <h1 class="mt-4"><%= @charity_event.title %></h1>
@@ -79,16 +79,29 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class=" flex-container col-4">
       <h1>Dons récoltés</h1>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>145 067 €</h1>
+      <div style="width: 260px; height: 170px; margin-top: 40px;    display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate" style="border-radius: 5px">
+          <h1 class='m-0 text-white'>145 067 €</h1>
+        </div>
       </div>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>90 256 €</h1>
+
+      <div style="width: 260px; height: 185px;display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate" style="border-radius: 5px">
+        <h1 class='m-0 text-white'>90 256 €</h1>
+        </div>
       </div>
-      <div class="card-product mt-4">
-        <h1 class='ml-2'>456 304 €</h1>
+      <div style="width: 260px; height: 200px;display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <div class=" bg-success text-center box-donate" style="border-radius: 5px">
+        <h1 class='m-0 text-white'>456 304 €</h1>
+        </div>
       </div>
     </div>
 
@@ -122,11 +135,12 @@ var x = setInterval(function() {
   // Output the result in an element with id="demo"
   <%# document.getElementById("countdown-d").innerHTML = days + "j " + hours + "h "
   + minutes + "m " + seconds + "s "; %>
-  document.getElementById("countdown-d").innerHTML = days + " j";
-  document.getElementById("countdown-h").innerHTML = hours + " h";
-  document.getElementById("countdown-m").innerHTML = minutes + " m";
-  document.getElementById("countdown-s").innerHTML = seconds + " s";
-
+  if (document.getElementById("countdown-d")){
+    document.getElementById("countdown-d").innerHTML = days + " j";
+    document.getElementById("countdown-h").innerHTML = hours + " h";
+    document.getElementById("countdown-m").innerHTML = minutes + " m";
+    document.getElementById("countdown-s").innerHTML = seconds + " s";
+  }
   // If the count down is over, write some text
   if (distance < 0) {
     clearInterval(x);
