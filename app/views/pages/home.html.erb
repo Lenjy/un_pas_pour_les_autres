@@ -4,7 +4,7 @@
 
 <%# Devise prior 4.1.0: %>
 <%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "banner_home.jpg"%>'); height: 65vh; padding: 40px;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 65vh; padding: 40px;">
 
   <div class="container">
 
@@ -30,7 +30,7 @@
         <div class="card-trip" style= "height: 100%; border-radius: 4px">
           <div class="container my-3">
             <div class="d-flex align-items-center">
-              <%= image_tag("restos_du_coeur_logo.jpeg", size: 80, class: "logo-charity")%>
+              <%= cl_image_tag "rvmakbvta1d8hsdxfddk", class: "logo-charity"%>
               <h3 class="mt-2 ml-4"><strong><%= @charity_event.charity_name %></strong></h3>
             </div>
             <h1 class="mt-4"><%= @charity_event.title %></h1>
