@@ -68,3 +68,14 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.box-donate{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+       box-shadow: 0 10px 6px -6px #777;
+       width: 240px;
+       height: 70px;
+       display: flex;
+    justify-content: center;
+    align-items: center;
+}
