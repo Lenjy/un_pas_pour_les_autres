@@ -42,6 +42,11 @@ gem 'httparty'
 gem 'cloudinary', '~> 1.16.0'
 
 
+gem 'money-rails'
+gem 'stripe'
+gem 'stripe_event'
+gem 'rails-i18n'
+
 
 
 group :development, :test do  gem 'pry-byebug'

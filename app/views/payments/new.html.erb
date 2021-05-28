@@ -1,0 +1,23 @@
+<!-- app/views/payments/new.html.erb -->
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"></div> <!-- verify the photo formula-->
+    <div class="col">
+      <h1>Checkout summary</h1>
+      <p>Donate to <strong><%= @donation_payment.charity_event.title %></strong> for <strong><%= humanized_money_with_symbol @donation_payment.amount_cents/100.0 %></strong></p>
+      <button id="pay" class="btn btn-primary">Pay</button>
+      
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @donation_payment.checkout_session %>'
+          });
+        });
+        paymentButton.click();
+      </script>
+    </div>
+  </div>
+</div>

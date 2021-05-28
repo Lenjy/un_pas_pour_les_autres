@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :teams, through: :joined_teams
   has_many :campaigns, through: :joined_campaign
   has_many :steps
+  has_many :donation_payments
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
