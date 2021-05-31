@@ -26,6 +26,51 @@ puts 'ch ev destroyed'
 
 # CHARITY EVENTS
 
+handicap_international = CharityEvent.new(
+  title: "Evenement Handicap International 2021",
+  charity_name: "Handicap International",
+  description: "Handicap International est une ONG de solidarité internationale qui intervient dans une soixantaine de pays. L’association intervient dans les situations de pauvreté et d’exclusion, de conflits et de catastrophes aux côtés des personnes handicapées et des populations vulnérables.",
+  date_beginning: Date.new(2021, 1, 01),
+  date_ending: Date.new(2021, 1, 25),
+  total_donation: 456067
+  )
+
+handicap_international.save
+
+photo_handicap_international = URI.open('https://handicap-international.fr/sn_uploads/fck/L_Handicap_FR_Small_Horiz_blue_rgb.png')
+handicap_international.photo.attach(io: photo_handicap_international, filename: 'handicap_international.png', content_type: 'image/png')
+
+
+
+medecins_sans_frontieres = CharityEvent.new(
+  title: "Evenement Sans Frontières 2021",
+  charity_name: "Médecins sans Frontières",
+  description: "Depuis près de cinquante ans, Médecins Sans Frontières apporte une assistance médicale à des populations dont la vie ou la santé sont menacées, en France ou à l'étranger : principalement en cas de conflits armés, mais aussi d'épidémies, de pandémies, de catastrophes naturelles ou encore d'exclusion des soins.",
+  date_beginning: Date.new(2021, 2, 01),
+  date_ending: Date.new(2021, 2, 25),
+  total_donation: 90256
+  )
+
+medecins_sans_frontieres.save
+
+photo_medecins_sans_frontieres = URI.open('https://upload.wikimedia.org/wikipedia/fr/thumb/6/69/MSF.svg/1200px-MSF.svg.png')
+medecins_sans_frontieres.photo.attach(io: photo_medecins_sans_frontieres, filename: 'medecins_sans_frontieres.png', content_type: 'image/png')
+
+
+
+fondation_abbe_pierre = CharityEvent.create!(
+  title: "Evenement Abbé Pierre 2021",
+  charity_name: "Fondation Abbé Pierre",
+  description: "La fondation Abbé-Pierre pour le logement des défavorisés (FAP), reconnue d'utilité publique le 11 février 1992 , a pour mission de permettre à toute personne démunie d'accéder à un logement décent et à une vie digne, quels que soient le montant de ses ressources et sa situation sociale.",
+  date_beginning: Date.new(2021, 4, 01),
+  date_ending: Date.new(2021, 4, 25),
+  total_donation: 145304
+  )
+
+photo_fondation_abbe_pierre = URI.open('https://www.tousbenevoles.org/images/association/1565005876.png')
+fondation_abbe_pierre.photo.attach(io: photo_fondation_abbe_pierre, filename: 'fondation_abbe_pierre.png', content_type: 'image/png')
+
+
 restos_du_coeur = CharityEvent.create!(
   title: "Evenement Coluche 2021",
   charity_name: "Les Restos du Coeur",
@@ -36,6 +81,7 @@ restos_du_coeur = CharityEvent.create!(
   )
 
   puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
+
 
   # ENTERPRISES
 

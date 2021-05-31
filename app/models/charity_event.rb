@@ -5,4 +5,5 @@ class CharityEvent < ApplicationRecord
   validates :date_beginning, presence: true
   validates :date_ending, presence: true
   validates :total_donation, presence: true
+  has_one_attached :photo
 end
