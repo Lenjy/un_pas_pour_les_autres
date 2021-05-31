@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  get 'friend_requests/create'
+  get 'friend_requests/new'
+  get 'friend_requests/show'
   get 'steps/new'
   get 'steps/show'
   root to: 'pages#home'
   
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do
-    resources :friends, only: [:new, :create, :show]
-  end
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  resources :users, only: [:show] do 
+    resources :friend_requests, only: [:create]
+  end 
   resources :campaigns
   resources :charity_events, only: [:show]
   resources :teams, only: [:show]

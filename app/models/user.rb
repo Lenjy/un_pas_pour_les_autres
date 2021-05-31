@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :campaigns, through: :joined_campaign
   has_many :steps
   has_many :donation_payments
+  has_many :friend_requests_as_asker, class_name: "FriendRequest", foreign_key: :asker_id
+  has_many :friend_requests_as_receiver, class_name: "FriendRequest", foreign_key: :receiver_id
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
