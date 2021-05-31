@@ -1,9 +1,10 @@
 class FriendRequestsController < ApplicationController
-  skip_before_request :authenticate_user!
+  before_action :authenticate_user!
 
   def create
-    @user = User.find(params[:user_id])
-    @friend_request = FriendRequest.new
+    @friend_request = FriendRequest.new(asker_id: current_user.id, receiver_id: params[:user_id])
+    @friend_request.save!
+    redirect_to dashboard_path
     authorize @friend_request
   end
 
@@ -19,6 +20,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def show
+    
   end
 
 private 
