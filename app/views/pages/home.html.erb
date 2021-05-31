@@ -51,64 +51,39 @@
 
 <%# A CREER AVEC DES SEEDS DE CHARITY EVENTS PASSES %>
 <div class="container my-5">
-
   <div class="row">
 
-    <div class="col-8">
-      <h1>Evenements passés</h1>
-      <div class="card-product mt-4">
-        <img src="https://www.tousbenevoles.org/images/association/1565005876.png" />
-        <div class="card-product-infos">
-          <h2>Fondation Abbé Pierre</h2>
-          <p>La fondation Abbé-Pierre pour le logement des défavorisés (FAP), reconnue d'utilité publique le 11 février 1992 , a pour mission de permettre à toute personne démunie d'accéder à un logement décent et à une vie digne, quels que soient le montant de ses ressources et sa situation sociale.</p>
+    <div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="col-8">
+          <h1>Evenements passés</h1>
         </div>
-      </div>
-      <div class="card-product mt-4">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/69/MSF.svg/1200px-MSF.svg.png" />
-        <div class="card-product-infos">
-          <h2>Médecins sans Frontières</h2>
-          <p>Depuis près de cinquante ans, Médecins Sans Frontières apporte une assistance médicale à des populations dont la vie ou la santé sont menacées, en France ou à l'étranger : principalement en cas de conflits armés, mais aussi d'épidémies, de pandémies, de catastrophes naturelles ou encore d'exclusion des soins.</p>
-        </div>
-      </div>
-      <div class="card-product mt-4 ">
-        <img src="https://handicap-international.fr/sn_uploads/fck/L_Handicap_FR_Small_Horiz_blue_rgb.png" />
-        <div class="card-product-infos">
-          <h2>Handicap International</h2>
-          <p>Handicap International est une ONG de solidarité internationale qui intervient dans une soixantaine de pays. L’association intervient dans les situations de pauvreté et d’exclusion, de conflits et de catastrophes aux côtés des personnes handicapées et des populations vulnérables.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class=" flex-container col-4">
-      <h1>Dons récoltés</h1>
-
-      <div style="width: 260px; height: 170px; margin-top: 40px;    display: flex;
-    flex-direction: column;
-    align-items: center;">
-        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-          <h1 class='m-0 text-white'>145 067 €</h1>
+        <div class="col-4">
+          <h1 style="text-align: center">Dons récoltés</h1>
         </div>
       </div>
 
-      <div style="width: 260px; height: 185px;display: flex;
-    flex-direction: column;
-    align-items: center;">
-        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-        <h1 class='m-0 text-white'>90 256 €</h1>
+      <% @charity_events_past.each do |event| %>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="col-8">
+            <div class="card-product mt-4">
+              <%= cl_image_tag event.photo.key, crop: :fill %>
+              <div class="card-product-infos">
+                <h2><%= event.charity_name %></h2>
+                <p><%= event.description %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="bg-success text-center box-donate2" style="border-radius: 5px; margin:0 auto;">
+              <h1 class='m-0 text-white'><%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</h1>
+            </div>
+          </div>
         </div>
-      </div>
-      <div style="width: 260px; height: 200px;display: flex;
-    flex-direction: column;
-    align-items: center;">
-        <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-        <h1 class='m-0 text-white'>456 304 €</h1>
-        </div>
-
-      </div>
+      <% end %>
     </div>
 
   </div>
-
 </div>
 
 
