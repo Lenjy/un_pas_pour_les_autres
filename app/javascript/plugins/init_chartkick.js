@@ -24,7 +24,20 @@ const initChartkickTeamOne = () => {
     new Chartkick.ColumnChart("chart-team-one", data_team_one, { colors: ["rgb(109, 168, 179)"], label: "Nombre de pas"  });
   };}
 
+const initChartkickTopCompanies = () => {
+  // const div_home = document.getElementById('chart-home-company-1');
+  const three_companies = document.querySelectorAll('*[id^="chart-home-company"]');
+  if (three_companies) {
+    three_companies.forEach((company, index) => {
+      // console.log(index + 1);
+      const data_company = JSON.parse(company.dataset.steps);
+      // console.log(data_company);
+      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)"]});
+    });
+  };
+}
 
 export { initChartkickWeek };
 export { initChartkickMonth };
 export { initChartkickTeamOne };
+export { initChartkickTopCompanies };

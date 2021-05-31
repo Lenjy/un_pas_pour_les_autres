@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def home
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @top_companies = [[["# de pas - Entreprise", 1492], ["Donation en-cours", 300], ["# de pas moyen (employé", 300]], [["# de pas - Entreprise", 1692], ["Donation en-cours", 600], ["# de pas moyen (employé", 500]], [["# de pas - Entreprise", 1892], ["Donation en-cours", 800], ["# de pas moyen (employé)", 900]]]
   end
 
   def dashboard
@@ -76,6 +77,11 @@ class PagesController < ApplicationController
   end
 
   def team_two_array_generation
+  end
+
+
+  def top_three_companies_generation
+    @top_three_companies_stats = []
   end
 
   def is_integer(number)
