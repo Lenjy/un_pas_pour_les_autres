@@ -9,8 +9,10 @@ class User < ApplicationRecord
   has_many :teams, through: :joined_teams
   has_many :joined_campaigns
   has_many :campaigns, through: :joined_campaign
-  has_many :steps
+  has_many :steps, dependent: :destroy
   has_many :donation_payments
+  has_many :friend_requests_as_asker, class_name: "FriendRequest", foreign_key: :asker_id
+  has_many :friend_requests_as_receiver, class_name: "FriendRequest", foreign_key: :receiver_id
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
@@ -34,10 +36,10 @@ class User < ApplicationRecord
           password: Devise.friendly_token[0,20],
           token: access_token.credentials.token
         )
-        FitnessApi.new(user, user.token).get_info_month
-    end
-
+      end
+      
     user.update!( token: access_token.credentials.token)
+    FitnessApi.new(user, user.token).get_info_month
 
     if user.steps.where( date: Date.today) != []
       today = user.steps.where( date: Date.today).first

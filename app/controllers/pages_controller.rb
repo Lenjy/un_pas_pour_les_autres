@@ -10,10 +10,11 @@ class PagesController < ApplicationController
     top_three_companies_generation
     top_three_walkers_generation
     top_three_teams_generation
+    @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
+
   end
 
   def dashboard
-
     # private methods PERSONAL STATISTICS
     week_array_generation
     month_array_generation
@@ -55,14 +56,30 @@ class PagesController < ApplicationController
       date_to_check = date_to_check.yesterday
     end
     @week.reverse!.each do |steps|
-      @week_steps << [l(steps.date, format:"%A"), steps.nb_steps]
+      if steps.nil?
+        @week_steps << [l(date_to_check, format:"%A"), 0]
+      else
+        @week_steps << [l(steps.date, format:"%A"), steps.nb_steps]
+      end
+      date_to_check = date_to_check.next_day
     end
-    @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
+    if @week.last.nil?
+      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+    elsif
+      date_tmp = Date.today
+      6.times do
+        date_tmp = date_tmp.yesterday
+      end
+      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l date_tmp, format:"%d %B %Y"}"
+    else
+      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
+    end
   end
 
   def month_array_generation
     @month_steps = {}
     @month = current_user.steps.select { |ins| ins.date.month == Date.today.month }
+    @month = @month.sort_by { |ins| ins.date }
     @month.each do |steps|
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
@@ -75,7 +92,11 @@ class PagesController < ApplicationController
     @team_one_steps = []
     @team = current_user.teams.first.users
     @team.each do |member|
-      @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, member.steps.where(date: Date.today).first.nb_steps]
+      if member.steps.where(date: Date.today) == []
+        @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, 0 ]
+      else
+        @team_one_steps << ["#{member.first_name} #{member.last_name}".html_safe, member.steps.where(date: Date.today).first.nb_steps]
+      end
     end
     @team_message = "Aujourd'hui, #{I18n.l Date.today, format:"%d %B %Y"}"
   end
