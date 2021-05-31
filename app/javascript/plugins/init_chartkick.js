@@ -31,8 +31,33 @@ const initChartkickTopCompanies = () => {
     three_companies.forEach((company, index) => {
       // console.log(index + 1);
       const data_company = JSON.parse(company.dataset.steps);
-      // console.log(data_company);
-      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)"]});
+      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)"] });
+    });
+  };
+}
+
+const initChartkickTopWalkers = () => {
+  // const div_home = document.getElementById('chart-home-company-1');
+  const three_walkers = document.querySelectorAll('*[id^="chart-home-walker"]');
+  if (three_walkers) {
+    three_walkers.forEach((walker, index) => {
+      // console.log(walker);
+      // console.log(index + 1);
+      const data_walkers = JSON.parse(walker.dataset.steps);
+      new Chartkick.BarChart(`chart-home-walker-${index + 1}`, data_walkers, { colors: ["rgb(109, 168, 179)"]});
+    });
+  };
+}
+
+const initChartkickTopTeams = () => {
+  // const div_home = document.getElementById('chart-home-company-1');
+  const three_teams = document.querySelectorAll('*[id^="chart-home-walker"]');
+  if (three_teams) {
+    three_teams.forEach((team, index) => {
+      // console.log(walker);
+      // console.log(index + 1);
+      const data_teams = JSON.parse(team.dataset.steps);
+      new Chartkick.BarChart(`chart-home-team-${index + 1}`, data_teams, { colors: ["rgb(109, 168, 179)"] });
     });
   };
 }
@@ -41,3 +66,6 @@ export { initChartkickWeek };
 export { initChartkickMonth };
 export { initChartkickTeamOne };
 export { initChartkickTopCompanies };
+export { initChartkickTopWalkers };
+export { initChartkickTopTeams };
+

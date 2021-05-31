@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :enterprise, optional: true
   has_many :joined_teams
   has_many :teams, through: :joined_teams
+  has_many :joined_campaigns
   has_many :campaigns, through: :joined_campaign
   has_many :steps
   has_many :donation_payments

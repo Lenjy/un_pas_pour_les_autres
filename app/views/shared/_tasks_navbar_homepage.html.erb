@@ -17,43 +17,92 @@
 
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-        <div class="row">
-          <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
-          <% steps_tab_one.each_with_index do |company, i| %>
+          <div class="row">
 
-            <div class="col-3 d-flex justify-content-center">
-              <div style="width: 120px; display: flex; align-items: center; justify-content: center">
-                <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-                  <h1 class='m-0 text-white'># <%= i + 1%></h1>
+            <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
+            <% steps_tab_one.each_with_index do |company, i| %>
+
+              <div class="col-3 d-flex justify-content-center">
+                <div style="width: 120px; display: flex; align-items: center; justify-content: center">
+                  <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+                    <h1 class='m-0 text-white'># <%= i + 1%></h1>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-9">
-              <div class="card-product mt-4">
-                <% if company[0][-1].photo.attached? %>
-                  <%= cl_image_tag company[0][-1].photo.key %>
-                <% else %>
-                  <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
-                <% end %>
-                <div id="chart-home-company-<%= i + 1%>" style="margin-left: 16px" data-steps="<%= company.last(3).to_json %>"></div>
+              <div class="col-9">
+                <div class="card-product mt-4">
+                  <% if company[0][-1].photo.attached? %>
+                    <%= cl_image_tag company[0][-1].photo.key %>
+                  <% else %>
+                    <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
+                  <% end %>
+                  <div id="chart-home-company-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= company.last(3).to_json %>"></div>
+                </div>
               </div>
-            </div>
 
-          <% end %>
+            <% end %>
 
-        </div>
+          </div>
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <div>
-            <h2 style="margin-top: 20px"><%= %></h2>
+
+            <div class="row">
+            <h2 style="margin-top: 20px"><%= message_tab_two %></h2>
+            <% steps_tab_two.each_with_index do |walker, i| %>
+
+              <div class="col-3 d-flex justify-content-center">
+                <div style="width: 120px; display: flex; align-items: center; justify-content: center">
+                  <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+                    <h1 class='m-0 text-white'># <%= i + 1%></h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-9">
+                <div class="card-product mt-4">
+                  <% if walker[0][-1].photo.attached? %>
+                    <%= cl_image_tag walker[0][-1].photo.key %>
+                  <% else %>
+                    <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
+                  <% end %>
+                  <div id="chart-home-walker-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= walker.last(2).to_json %>"></div>
+                </div>
+              </div>
+
+            <% end %>
+
           </div>
         </div>
 
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-          <div>
-            <p style="height: 400px; font-size: 20px; margin: 70px 70px 0px 70px">Sorry, we haven't configured this data yet with <strong>Google APIs</strong>. Our developers are currently working to make this data available.</p>
+           <div class="row">
+
+            <h2 style="margin-top: 20px"><%= message_tab_three %></h2>
+            <% steps_tab_three.each_with_index do |team, i| %>
+
+              <div class="col-3 d-flex justify-content-center">
+                <div style="width: 120px; display: flex; align-items: center; justify-content: center">
+                  <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
+                    <h1 class='m-0 text-white'># <%= i + 1%></h1>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-9">
+                <div class="card-product mt-4">
+                  <% if team[0][-1].photo.attached? %>
+                    <%= cl_image_tag team[0][-1].photo.key %>
+                  <% else %>
+                    <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
+                  <% end %>
+                  <div id="chart-home-team-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= team.last(2).to_json %>"></div>
+                </div>
+              </div>
+
+            <% end %>
+
           </div>
         </div>
     </div>
