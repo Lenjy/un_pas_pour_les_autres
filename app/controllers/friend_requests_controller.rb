@@ -29,7 +29,7 @@ private
 
   def find_friend_request
     @friend_request = FriendRequest.find(params[:id])
-    @authorize @friend_request
+    authorize @friend_request
   end 
 
 end
