@@ -19,20 +19,24 @@
 
         <div class="row">
           <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
-          <% (1..3).each do |i| %>
+          <% steps_tab_one.each_with_index do |company, i| %>
 
             <div class="col-3 d-flex justify-content-center">
               <div style="width: 120px; display: flex; align-items: center; justify-content: center">
                 <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-                  <h1 class='m-0 text-white'># <%= i %></h1>
+                  <h1 class='m-0 text-white'># <%= i + 1%></h1>
                 </div>
               </div>
             </div>
 
             <div class="col-9">
               <div class="card-product mt-4">
-                <img src="https://www.tousbenevoles.org/images/association/1565005876.png" />
-                <div id="chart-home-company-<%= i %>" style="margin-left: 16px" data-steps="<%= steps_tab_one[i - 1].to_json %>"></div>
+                <% if company[0][-1].photo.attached? %>
+                  <%= cl_image_tag company[0][-1].photo.key %>
+                <% else %>
+                  <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
+                <% end %>
+                <div id="chart-home-company-<%= i + 1%>" style="margin-left: 16px" data-steps="<%= company.last(3).to_json %>"></div>
               </div>
             </div>
 

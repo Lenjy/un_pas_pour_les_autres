@@ -39,10 +39,10 @@ restos_du_coeur = CharityEvent.create!(
 
   # ENTERPRISES
 
-  le_wagon = Enterprise.create!(name: "Le Wagon")
+le_wagon = Enterprise.create!(name: "Le Wagon")
 
 
-  puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
+puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
 # CAMPAIGNS
 
@@ -62,6 +62,12 @@ basil = User.all.where(email: "basil.lizotte@gmail.com").first
 arthur = User.all.where(email: "maguinarthur@gmail.com").first
 benjamin = User.all.where(email: "be.eycken@gmail.com").first
 maylis = User.all.where(email: "mdlmaylis@gmail.com").first
+
+basil.enterprise = le_wagon
+arthur.enterprise = le_wagon
+benjamin.enterprise = le_wagon
+maylis.enterprise = le_wagon
+
 
 # basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
 

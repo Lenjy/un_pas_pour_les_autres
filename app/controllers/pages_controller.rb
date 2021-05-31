@@ -5,7 +5,9 @@ class PagesController < ApplicationController
 
   def home
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # FAKE DATA BEFORE ENTERPRISE SEEDS ARE CREATED
     @top_companies = [[["# de pas - Entreprise", 1492], ["Donation en-cours", 300], ["# de pas moyen (employé", 300]], [["# de pas - Entreprise", 1692], ["Donation en-cours", 600], ["# de pas moyen (employé", 500]], [["# de pas - Entreprise", 1892], ["Donation en-cours", 800], ["# de pas moyen (employé)", 900]]]
+    top_three_companies_generation
   end
 
   def dashboard
@@ -82,6 +84,18 @@ class PagesController < ApplicationController
 
   def top_three_companies_generation
     @top_three_companies_stats = []
+    @sorted_companies = []
+    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @date_beginning = @charity_event.date_beginning
+    @date_ending = @charity_event.date_ending
+    Enterprise.all.each do |enterprise|
+      sum_steps = enterprise.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
+      @sorted_companies << [["Entreprise instance", enterprise],
+                               ["# de pas - Entreprise", sum_steps],
+                               ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
+                               ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+    end
+    @top_three_companies = @sorted_companies.sort! { |array| array[-1][-1]}.first(3)
   end
 
   def is_integer(number)
