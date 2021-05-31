@@ -104,6 +104,7 @@ puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
 # USERS
+
 basil = User.all.where(email: "basil.lizotte@gmail.com").first
 arthur = User.all.where(email: "maguinarthur@gmail.com").first
 benjamin = User.all.where(email: "be.eycken@gmail.com").first
