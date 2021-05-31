@@ -14,6 +14,10 @@
   <% end %>
   <%#= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-link' %>
 
+<%= simple_form_for [@user, @friend_request] do |f| %>
+  <%= f.submit "Add Friends", id: 'donate-button'%>
+<% end %>
+
 </div>
 
 <div class="container text-center">

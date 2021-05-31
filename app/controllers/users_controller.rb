@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     #   Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
     # end
     @user = User.find(params[:id])
+    @friend_request = FriendRequest.new(receiver_id: @user.id)
     authorize @user
     # private methods PERSONAL STATISTICS
     week_array_generation
