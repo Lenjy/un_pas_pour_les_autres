@@ -25,7 +25,11 @@
       <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
       <div class="d-flex align-items-center">
         <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
+        <% if @user.steps.where(date: Date.today).first.nil? %>
+          <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter("no data", :delimiter => ',') %></h2>
+        <% else %>
+          <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
+        <% end %>
       </div>
     </div>
 
@@ -49,7 +53,7 @@
   myclass: "" %>
 
 
-  <%= render 'shared/tasks_navbar_team',
+  <%# <%= render 'shared/tasks_navbar_team',
   label: "Vos teams",
   tab_one: "Team 1",
   tab_two: "Team 2",
