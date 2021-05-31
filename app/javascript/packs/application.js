@@ -30,6 +30,11 @@ import "chartkick/chart.js";
 import { initChartkickWeek } from "../plugins/init_chartkick";
 import { initChartkickMonth } from "../plugins/init_chartkick";
 import { initChartkickTeamOne } from "../plugins/init_chartkick";
+import { initChartkickTopCompanies } from "../plugins/init_chartkick";
+import { initChartkickTopWalkers } from "../plugins/init_chartkick";
+import { initChartkickTopTeams } from "../plugins/init_chartkick";
+
+
 import { donate_event } from "../components/donate_event";
 
 document.addEventListener('turbolinks:load', () => {
@@ -39,6 +44,9 @@ document.addEventListener('turbolinks:load', () => {
   initChartkickWeek();
   initChartkickMonth();
   initChartkickTeamOne();
+  initChartkickTopCompanies();
+  initChartkickTopWalkers();
+  initChartkickTopTeams();
 });
 
 // Vega setup - Data vizualisation (Arthur Maguin)

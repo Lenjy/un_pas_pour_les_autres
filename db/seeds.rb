@@ -83,13 +83,17 @@ restos_du_coeur = CharityEvent.create!(
   puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
 
 
+
+le_wagon = Enterprise.create!(name: "Le Wagon")
+
 #   # ENTERPRISES
+
 
  tables_5_6 = Enterprise.create!(name: "Tables 5 et 6")
  tables_1_2 = Enterprise.create!(name: "Tables 1 et 2")
  tables_3_4 = Enterprise.create!(name: "Tables 3 et 4")
 
-  puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
+puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
 # # CAMPAIGNS
 
@@ -119,6 +123,14 @@ puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
 
+basil.enterprise = le_wagon
+arthur.enterprise = le_wagon
+benjamin.enterprise = le_wagon
+maylis.enterprise = le_wagon
+
+
+# basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
+
 # # USERS=
 # basil = User.all.where(email: "basil.lizotte@gmail.com").first
 # arthur = User.all.where(email: "maguinarthur@gmail.com").first
@@ -127,6 +139,7 @@ puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
 # # basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
+
 
 # # arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "arthur@gmail.com", password: "123456", password_confirmation: "123456")
 
