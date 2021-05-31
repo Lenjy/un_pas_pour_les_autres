@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user
+  before_action :authenticate_user!
 
   def show
     # if current_user.steps.where( date: Date.today) != nil 
@@ -8,11 +8,8 @@ class UsersController < ApplicationController
     # else
     #   Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
     # end
-  end
-
-  private
-
-  def authorize_user
+    @user = User.find(params[:id])
     authorize @user
   end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_103305) do
+ActiveRecord::Schema.define(version: 2021_05_31_080531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 2021_05_27_103305) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.bigint "asker_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asker_id"], name: "index_friend_requests_on_asker_id"
+    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+  end
+
   create_table "joined_campaigns", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.float "user_donation_event"
@@ -138,6 +148,8 @@ ActiveRecord::Schema.define(version: 2021_05_27_103305) do
   add_foreign_key "campaigns", "enterprises"
   add_foreign_key "donation_payments", "charity_events"
   add_foreign_key "donation_payments", "users"
+  add_foreign_key "friend_requests", "users", column: "asker_id"
+  add_foreign_key "friend_requests", "users", column: "receiver_id"
   add_foreign_key "joined_campaigns", "users"
   add_foreign_key "joined_teams", "teams"
   add_foreign_key "joined_teams", "users"
