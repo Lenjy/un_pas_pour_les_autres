@@ -85,21 +85,36 @@ restos_du_coeur = CharityEvent.create!(
 
 #   # ENTERPRISES
 
-#   le_wagon = Enterprise.create!(name: "Le Wagon")
+ tables_5_6 = Enterprise.create!(name: "Tables 5 et 6")
+ tables_1_2 = Enterprise.create!(name: "Tables 1 et 2")
+ tables_3_4 = Enterprise.create!(name: "Tables 3 et 4")
 
-
-#   puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
+  puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
 # # CAMPAIGNS
 
-# campaign_le_wagon = Campaign.create!(
-#   step_conversion: 0,
-#   max_contribution: 100000,
-#   charity_event: restos_du_coeur,
-#   enterprise: le_wagon
-# )
+campaign_restos_du_coeur_tables_5_6 = Campaign.create!(
+  step_conversion: 0,
+  max_contribution: 100000,
+  charity_event: restos_du_coeur,
+  enterprise: tables_5_6,
+)
 
-# puts "Created #{Campaign.all.size} campaigns in seeds.rb"
+campaign_restos_du_coeur_tables_1_2 = Campaign.create!(
+  step_conversion: 0,
+  max_contribution: 100000,
+  charity_event: restos_du_coeur,
+  enterprise: tables_1_2,
+)
+
+campaign_restos_du_coeur_tables_3_4 = Campaign.create!(
+  step_conversion: 0,
+  max_contribution: 100000,
+  charity_event: restos_du_coeur,
+  enterprise: tables_3_4,
+)
+
+puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 
 
@@ -205,38 +220,38 @@ restos_du_coeur = CharityEvent.create!(
 
 # # TEAMS
 
-# uppla = Team.create!(
-# name: "Un pas pour les autres",
-# description: "The best team ever seen at the Wagon",
-# campaign: campaign_le_wagon)
+uppla = Team.create!(
+name: "Un pas pour les autres",
+description: "The best team ever seen at the Wagon",
+campaign: campaign_restos_du_coeur_tables_5_6)
 
-# Team.create!(
-# name: "Gamer meets",
-# description: "These guys are so lame",
-# campaign: campaign_le_wagon)
+Team.create!(
+name: "Gamer meets",
+description: "These guys are so lame",
+campaign: campaign_restos_du_coeur_tables_5_6)
 
-# Team.create!(
-# name: "Tinder for brands",
-# description: "These guys are so lame",
-# campaign: campaign_le_wagon)
+Team.create!(
+name: "Tinder for brands",
+description: "These guys are so lame",
+campaign: campaign_restos_du_coeur_tables_3_4)
 
-# Team.create!(
-# name: "Le plateau",
-# description: "These guys are so lame",
-# campaign: campaign_le_wagon)
+Team.create!(
+name: "Le plateau",
+description: "These guys are so lame",
+campaign: campaign_restos_du_coeur_tables_1_2)
 
-# Team.create!(
-# name: "Book society",
-# description: "These guys are so lame",
-# campaign: campaign_le_wagon)
+Team.create!(
+name: "Book society",
+description: "These guys are so lame",
+campaign: campaign_restos_du_coeur_tables_1_2)
 
-# Team.create!(
-# name: "Sound on",
-# description: "These guys are so lame",
-# campaign: campaign_le_wagon)
+Team.create!(
+name: "Sound on",
+description: "These guys are so lame",
+campaign: campaign_restos_du_coeur_tables_3_4)
 
 
-# puts "Created #{Team.all.size} team instances in seeds.rb"
+puts "Created #{Team.all.size} team instances in seeds.rb"
 
 
 
