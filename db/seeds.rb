@@ -103,11 +103,13 @@ restos_du_coeur = CharityEvent.create!(
 
 
 
-# # USERS
+
+# # USERS=
 # basil = User.all.where(email: "basil.lizotte@gmail.com").first
 # arthur = User.all.where(email: "maguinarthur@gmail.com").first
 # benjamin = User.all.where(email: "be.eycken@gmail.com").first
 # maylis = User.all.where(email: "mdlmaylis@gmail.com").first
+
 
 # # basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
 
