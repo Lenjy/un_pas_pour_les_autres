@@ -1,17 +1,26 @@
-<div class="card-product">
-        <% @pending_friend_requests.each do |friend_request| %>
-            <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
-            <div class="card-product-infos">
-                <div>
-                    <h2><%= friend_request.asker.nickname %></h2>
-                    <p><%= friend_request.asker.teams.first.name %></p>
-                </div>
+<div>
+    <% @pending_friend_requests.each do |friend_request| %>
+    <div class="row card-product">
+        <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
+        <div class="card-product-infos">
+            <div>
+                <h2><%= friend_request.asker.first_name%></h2>
+                <p><%= friend_request.asker.teams.first.name %></p>
+                <p><%= if friend_request.asker.enterprise.nil?
+                        
+                    else 
+                        friend_request.asker.enterprise.first.name 
+                    end %></p>
+                <p><%#= friend_request.asker.steps.where(date: Date.today).first.nb_steps %></p>
             </div>
-            <div class="card-product-infos">
-                <div class="d-flex justify-content-end mt-2">
-                        <%= link_to 'Accept', accept_user_friend_request_path(friend_request.asker, friend_request, status: :accepted), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-primary" %>
-                        <%= link_to 'Decline', decline_user_friend_request_path(friend_request.asker, friend_request, status: :declined), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link text-primary" %>
-                </div>
+        </div>
+
+        <div class="card-product-infos">
+            <div class="d-flex justify-content-end mt-2">
+                    <%= link_to 'Accept', accept_user_friend_request_path(friend_request.asker, friend_request, status: :accepted), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-primary" %>
+                    <%= link_to 'Decline', decline_user_friend_request_path(friend_request.asker, friend_request, status: :declined), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link text-primary" %>
             </div>
-        <% end %>
+        </div>
+    </div>
+    <% end %>
 </div>

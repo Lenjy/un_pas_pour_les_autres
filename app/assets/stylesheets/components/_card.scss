@@ -147,6 +147,19 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 16px;
+
+  &.card-product-with-link{
+    position: relative;
+    a{
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+  }
 }
 
 .card-product img {
@@ -173,3 +186,8 @@
   padding: 16px;
 }
 
+.avatar_bio {
+  display: none;
+  background-color: white;
+  border-radius: 10px;
+}
