@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     # FAKE DATA BEFORE ENTERPRISE SEEDS ARE CREATED
     # @top_companies = [[["# de pas - Entreprise", 1492], ["Donation en-cours", 300], ["# de pas moyen (employé", 300]], [["# de pas - Entreprise", 1692], ["Donation en-cours", 600], ["# de pas moyen (employé", 500]], [["# de pas - Entreprise", 1892], ["Donation en-cours", 800], ["# de pas moyen (employé)", 900]]]
-    top_three_companies_generation
-    top_three_walkers_generation
-    top_three_teams_generation
+    # top_three_companies_generation
+    # top_three_walkers_generation
+    # top_three_teams_generation
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
 
   end
@@ -51,9 +51,17 @@ class PagesController < ApplicationController
     @week_steps = []
     date_to_check = Date.today
     @week = []
-    7.times do
-      @week << current_user.steps.where(date: date_to_check).first
-      date_to_check = date_to_check.yesterday
+    if current_user.steps.where( date: Date.today) != nil
+      7.times do
+        @week << current_user.steps.where(date: date_to_check).first
+        date_to_check = date_to_check.yesterday
+      end
+    else
+      fictional_date = Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
+      7.times do
+        @week << current_user.steps.where(date: fictional_date).first
+        fictional_date = fictional_date.yesterday
+      end
     end
     @week.reverse!.each do |steps|
       if steps.nil?
