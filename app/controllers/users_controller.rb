@@ -57,7 +57,12 @@ class UsersController < ApplicationController
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
 
-    @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    if @month.first.nil? 
+
+      @month_message = "in progress"
+    else 
+      @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    end  
 
   end
 
