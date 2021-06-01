@@ -15,6 +15,8 @@ DonationPayment.destroy_all
 puts '- Donation Payments destroyed'
 Step.destroy_all
 puts '- Steps destroyed'
+FriendRequest.destroy_all
+puts '- Friends request destroyed'
 User.destroy_all
 puts '- Users destroyed'
 Team.destroy_all
