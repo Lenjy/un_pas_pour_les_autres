@@ -4,23 +4,23 @@
 
 <%# Devise prior 4.1.0: %>
 <%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<div class="banner" style="background-image: linear-gradient(rgba(8, 33, 37,0.5),rgba(109, 167, 178, 0.5)), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 80vh; padding: 40px;">
+<div class="banner bannerh" style="background-image: linear-gradient(139deg, rgba(8, 33, 37,0.5),rgba(109, 167, 178, 0.5) 65.8%, white 66%), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 80vh;">
 
   <div class="container">
 
-    <div class="row">
+    <div class="row justify-content-center align-items-start">
 
-      <div class="col-6 d-flex flex-column justify-content-between" style="position: relative; left: -80px">
+      <div class="col-6" style="">
         <div>
-          <h1 class="" style="font-size: 44px">Faites un pas pour ceux qui ne peuvent pas et donnez, en marchant, tout simplement !</h1>
+          <h1 class="" style="font-size: 40px">Faites un pas pour ceux qui ne peuvent pas et donnez, en marchant, tout simplement !</h1>
         </div>
         <div style="color: white">
-          <h3 style="color: white; font-size: 30px; margin-bottom: 20px; margin-top: 50px">Fin des dons dans :</h3>
+          <h5 style="color: white; font-size: 30px; margin-bottom: 20px; margin-top: 50px">Fin des dons dans :</h5>
           <div class="d-flex">
-            <span class="countdown-box"><h2 id="countdown-d"></h2><h5>jours</h5></span>
-            <span class="countdown-box"><h2 id="countdown-h"></h2><h5>heures</h5></span>
-            <span class="countdown-box"><h2 id="countdown-m"></h2><h5>minutes</h5></span>
-            <span class="countdown-box"><h2 id="countdown-s"></h2><h5>secondes</h5></span>
+            <span class="countdown-box"><h1 id="countdown-d"></h1><h5>jours</h5></span>
+            <span class="countdown-box"><h1 id="countdown-h"></h1><h5>heures</h5></span>
+            <span class="countdown-box"><h1 id="countdown-m"></h1><h5>minutes</h5></span>
+            <span class="countdown-box"><h1 id="countdown-s"></h1><h5>secondes</h5></span>
           </div>
         </div>
       </div>
@@ -38,8 +38,8 @@
             <p class="mt-2"><%= @charity_event.description %></p>
             <p class="mt-2 mb-2"> <span style="color: green">Evenement ouvert</span>  Ferme le 6 juin 2021</p>
             <div class="d-flex mt-4">
-              <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-button" %>
-              <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white"%>
+              <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-btn" %>
+              <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px"%>
             </div>
           </div>
         </div>
