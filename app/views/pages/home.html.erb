@@ -4,37 +4,39 @@
 
 <%# Devise prior 4.1.0: %>
 <%# <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 65vh; padding: 40px;">
+<div class="banner" style="background-image: linear-gradient(rgba(8, 33, 37,0.5),rgba(109, 167, 178, 0.5)), url('<%= cl_image_path("gzs2fzcyylsfmadmn1br")%>'); height: 80vh; padding: 40px;">
 
   <div class="container">
 
     <div class="row">
 
-      <div class="col-6 d-flex flex-column justify-content-between" style="position: relative; left: -80px; text-align: center">
+      <div class="col-6 d-flex flex-column justify-content-between" style="position: relative; left: -80px">
         <div>
-          <h1 class="" style="font-size: 44px">Un pas pour les autres</h1>
-          <p class="mt-2">Faites un pas pour ceux qui ne peuvent pas - et donnez, en <strong>marchant</strong>, tout simplement !</p>
+          <h1 class="" style="font-size: 44px">Faites un pas pour ceux qui ne peuvent pas et donnez, en marchant, tout simplement !</h1>
         </div>
         <div style="color: white">
-          <h1 style="font-size: 36px; margin-bottom: 20px">Fin des dons dans :</h1>
-          <div class="d-flex justify-content-center">
-            <h3 id="countdown-d" class="countdown-box"></h3>
-            <h3 id="countdown-h" class="countdown-box"></h3>
-            <h3 id="countdown-m" class="countdown-box"></h3>
-            <h3 id="countdown-s" class="countdown-box"></h3>
+          <h3 style="color: white; font-size: 30px; margin-bottom: 20px; margin-top: 50px">Fin des dons dans :</h3>
+          <div class="d-flex">
+            <span class="countdown-box"><h2 id="countdown-d"></h2><h5>jours</h5></span>
+            <span class="countdown-box"><h2 id="countdown-h"></h2><h5>heures</h5></span>
+            <span class="countdown-box"><h2 id="countdown-m"></h2><h5>minutes</h5></span>
+            <span class="countdown-box"><h2 id="countdown-s"></h2><h5>secondes</h5></span>
           </div>
         </div>
       </div>
 
       <div class="col-6 ">
-        <div class="card-trip" style= "height: 100%; border-radius: 4px">
+        <div class="card-trip" style= "height: 100%; border-radius: 20px;">
           <div class="container my-3">
             <div class="d-flex align-items-center">
               <%= cl_image_tag "rvmakbvta1d8hsdxfddk", class: "logo-charity"%>
-              <h3 class="mt-2 ml-4"><strong><%= @charity_event.charity_name %></strong></h3>
+              <div>
+                <h3 class="mt-2 ml-4"><strong><%= @charity_event.charity_name %></strong></h3>
+                <p class="ml-4"><%= @charity_event.title %></p>
+              </div>
             </div>
-            <h1 class="mt-4"><%= @charity_event.title %></h1>
             <p class="mt-2"><%= @charity_event.description %></p>
+            <p class="mt-2 mb-2"> <span style="color: green">Evenement ouvert</span>  Ferme le 6 juin 2021</p>
             <div class="d-flex mt-4">
               <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-button" %>
               <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white"%>
@@ -56,31 +58,24 @@
   <div class="row">
     <div>
       <div class="d-flex justify-content-between align-items-center">
-        <div class="col-8">
-          <h1>Evenements passés</h1>
-        </div>
-        <div class="col-4">
-          <h1 style="text-align: center">Dons récoltés</h1>
-        </div>
+        <h1>Evenements passés</h1>
       </div>
       <% @charity_events_past.each do |event| %>
         <div class="d-flex justify-content-between align-items-center">
-          <div class="col-8">
-            <div class="card-product mt-4">
-              <% if event.photo.attached? %>
-                <%= cl_image_tag event.photo.key, crop: :fill %>
-              <% else %>
-                <%= cl_image_tag 'kejqlbte4g06qwqijunz', crop: :fill %>
-              <% end %>
-              <div class="card-product-infos">
+          <div class="card-product mt-4">
+            <% if event.photo.attached? %>
+              <%= cl_image_tag event.photo.key, crop: :fill %>
+            <% else %>
+              <%= cl_image_tag 'kejqlbte4g06qwqijunz', crop: :fill %>
+            <% end %>
+            <div class="card-product-infos">
+              <div>
                 <h2><%= event.charity_name %></h2>
                 <p><%= event.description %></p>
               </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="bg-success text-center box-donate2" style="border-radius: 5px; margin:0 auto;">
-              <h1 class='m-0 text-white'><%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</h1>
+              <div class="text-center box-donate2" style="border-radius: 5px;">
+                <p class='m-0'><strong>Dons récoltés: <%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</strong></p>
+              </div>
             </div>
           </div>
         </div>
@@ -93,7 +88,7 @@
 
 <%# <div class="container text-center mt-5 mb-3">
 
-  <%= render 'shared/tasks_navbar_homepage',
+  <%# <%= render 'shared/tasks_navbar_homepage',
   label: "Palmarès en cours",
   tab_one: "Meilleures Entreprises",
   tab_two: "Meilleurs Marcheurs",
@@ -144,10 +139,10 @@ var x = setInterval(function() {
   <%# document.getElementById("countdown-d").innerHTML = days + "j " + hours + "h "
   + minutes + "m " + seconds + "s "; %>
   if (document.getElementById("countdown-d")){
-    document.getElementById("countdown-d").innerHTML = days + " j";
-    document.getElementById("countdown-h").innerHTML = hours + " h";
-    document.getElementById("countdown-m").innerHTML = minutes + " m";
-    document.getElementById("countdown-s").innerHTML = seconds + " s";
+    document.getElementById("countdown-d").innerHTML = days;
+    document.getElementById("countdown-h").innerHTML = hours;
+    document.getElementById("countdown-m").innerHTML = minutes;
+    document.getElementById("countdown-s").innerHTML = seconds;
   }
   // If the count down is over, write some text
   if (distance < 0) {

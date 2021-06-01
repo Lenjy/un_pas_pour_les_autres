@@ -36,7 +36,7 @@
 
 
 .logo-charity {
-  filter: drop-shadow(0 0 0.25rem black);
+  // filter: drop-shadow(0 0 0.25rem black);
   border-radius: 2px;
   width: 80px;
   // position: relative;
@@ -56,9 +56,10 @@
   margin-bottom: 0px;
   margin-left: 10px;
   padding: 12px;
-  background: rgba(109, 168, 179, 0.4);
-  width: fit-content;
+  background-color: #5699A5;
+  width: 110px;
   border-radius: 4px;
+  text-align: center;
 }
 
 .flex-container {
@@ -71,15 +72,15 @@
 }
 
 .box-donate2{
-  -webkit-box-shadow: 0 10px 6px -6px #777;
-  -moz-box-shadow: 0 10px 6px -6px #777;
-       box-shadow: 0 10px 6px -6px #777;
-       width: 240px;
-       height: 70px;
-       display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 23px;
+
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background-color: #DFEBED;
+  color: #6DA7B2;
 }
 
 .notif{
@@ -102,3 +103,4 @@
 .show{
   text-decoration: none !important;
 }
+
