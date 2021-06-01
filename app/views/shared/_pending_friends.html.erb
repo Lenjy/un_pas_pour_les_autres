@@ -9,8 +9,8 @@
             </div>
             <div class="card-product-infos">
                 <div class="d-flex justify-content-end mt-2">
-                        <%= link_to 'Accept', friend_requests_new_path(friend_request, status: :accepted), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-primary" %>
-                        <%= link_to 'Decline', friend_requests_new_path(friend_request, status: :declined), method: :patch, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link text-primary" %>
+                        <%= link_to 'Accept', accept_user_friend_request_path(friend_request.asker, friend_request, status: :accepted), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-primary" %>
+                        <%= link_to 'Decline', decline_user_friend_request_path(friend_request.asker, friend_request, status: :declined), method: :patch, remote: true, data: {confirm: 'Are you sure you want to accept ?'}, class: "btn btn-link text-primary" %>
                 </div>
             </div>
         <% end %>

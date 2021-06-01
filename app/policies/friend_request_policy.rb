@@ -8,4 +8,13 @@ class FriendRequestPolicy < ApplicationPolicy
   def create?
     user.present?
   end
+
+  def accept?
+    user.present?
+  end
+
+  def decline?
+    user.present?
+  end
+
 end
