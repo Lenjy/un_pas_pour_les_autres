@@ -22,6 +22,7 @@ class PagesController < ApplicationController
     team_one_array_generation
     # private daily step
     daily_step
+    set_friend_requests
   end
 
   def donate
@@ -84,7 +85,13 @@ class PagesController < ApplicationController
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
 
-    @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    if @month.first.nil? 
+
+      @month_message = "in progress"
+    else 
+      @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    end
+
 
   end
 
@@ -157,5 +164,11 @@ class PagesController < ApplicationController
   def is_integer(number)
     number.floor == number
   end
+
+  def set_friend_requests  
+    @pending_friend_requests = current_user.friend_requests_as_receiver.where(status: :pending)
+    @accepted_friend_requests_received = current_user.friend_requests_as_receiver.where(status: :accepted)
+    @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
+  end 
 
 end
