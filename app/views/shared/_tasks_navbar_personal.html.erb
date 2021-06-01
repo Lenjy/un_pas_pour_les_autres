@@ -11,18 +11,15 @@
         <li class="nav-item col-4" role="presentation" style="padding-right: 0px; padding-left: 0px">
           <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%= tab_three %></a>
         </li>
-      </ul>
+      </ul> %>
 
-      <div class="tab-content" id="myTabContent">
-
+      <div class="tab-content" id="myTabContent"> 
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
           <div id="chart-<%= id_tab_one %>" style="height: 300px; margin-top: 40px" data-steps="<%= steps_tab_one.to_json %>"></div>
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div>
-            <h2 style="margin-top: 20px"><%= message_tab_two %></h2>
             <div id="chart-<%= id_tab_two %>" style="height: 300px; margin-top: 40px" data-steps="<%= steps_tab_two.to_json %>"></div>
           </div>
         </div>
@@ -32,7 +29,7 @@
             <p style="height: 400px; font-size: 20px; margin: 70px 70px 0px 70px">Sorry, we haven't configured this data yet with <strong>Google APIs</strong>. Our developers are currently working to make this data available.</p>
           </div>
         </div>
-    </div>
+      </div>
 
     </div>
   </div>

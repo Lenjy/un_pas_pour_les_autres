@@ -1,7 +1,7 @@
 <%# <%= render "shared/banner" %>
-<div style="    width: 100%;background-color: #6da8b3;height: 300px;"> 
+<div style="    width: 100%;background-color: #6da8b3;height: 200px;"> 
 </div>
-<div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center;">
+<div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
   <div style="display: flex;align-items: center;">
     <% if current_user.photo.attached?  %>
       <%= cl_image_tag current_user.photo.key, style:"width: 220px;height: 220px;border-radius: 50%;", crop: :fill %>
@@ -24,7 +24,7 @@
       <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
         <div style="margin: 10px 10px;">
           <p style="margin: 6px 0px;"> Total don </p>
-          <h1><strong>45</strong></h1>
+          <h1><strong>45€</strong></h1>
         </div>
       </div>
     </div>
@@ -33,20 +33,69 @@
     <%= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-success' %>
   </div>
 </div>
+<div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div style="padding-top: 30px;">
+    <h1> Vos statistiques </h1>
+    <h5 style="opacity: 0.5;"><%= @week_message %> </h5>
+  </div>
+  <div class="card-trip-statistics" style="padding: 20px 220px;">
+    <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist" style="">
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">semaines</a>
+      </li>
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">mois</a>
+      </li>
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Kilomètres</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+      <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
+    </div>
 
-<div class="container text-center">
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div>
+        <div id="chart-month" style="height: 300px; margin-top: 40px" data-steps="<%= @month_steps.to_json %>"></div>
+      </div>
+    </div>
 
-
-  <%= render 'shared/tasks_navbar_personal',
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div>
+        <p style="height: 400px; font-size: 20px; margin: 70px 70px 0px 70px">Sorry, we haven't configured this data yet with <strong>Google APIs</strong>. Our developers are currently working to make this data available.</p>
+      </div>
+    </div>
+  </div>
+  <%# <%= render 'shared/tasks_navbar_personal',
   label: "Vos statistiques",
   tab_one: "Semaine",
   tab_two: "Mois",
   tab_three: "Kilomètres",
   id_tab_one: "week", message_tab_one: @week_message, steps_tab_one: @week_steps,
   id_tab_two: "month", message_tab_two: @month_message, steps_tab_two: @month_steps,
-  myclass: "" %>
+  myclass: "" %> 
+</div>
 
-
+<div class="container text-center bg-white" style="width: 100%;margin-top: 40px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"  >
+  <div style="padding-top: 30px;">
+    <h1> Vos teams</h1>
+    <h5 style="opacity: 0.5;"><%= @team_message %> </h5>
+  </div>
+  <div class="card-trip-statistics" style="padding: 20px 220px;">
+    <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist" style="">
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab active" id="team1-tab left" data-toggle="tab" href="#team1" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">Team 1</a>
+      </li>
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab" id="team2-tab" data-toggle="tab" href="#team2" role="tab" aria-controls="profile" aria-selected="false">Team 2</a>
+      </li>
+      <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+        <a class="nav-link user-tasks-navbar-tab" id="team3-tab" data-toggle="tab" href="#team3" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Team 3</a>
+      </li>
+    </ul>
+  </div>
   <%= render 'shared/tasks_navbar_team',
   label: "Vos teams",
   tab_one: "Team 1",
@@ -54,15 +103,14 @@
   tab_three: "Team 3",
   id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
   myclass: "mt-5" %>
-
   <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
     <% @team.each do |member| %>
-      <div style="background-color: white; padding: 10px 54px; border-radius: 2px; box-shadow: 0 0 6px rgba(109, 168, 179, 50%); margin-top: 7px">
-        <%= cl_image_tag member.photo.key, class: "avatar-bordered"%>
-      </div>
+    <div style="display: flex;align-items: center;">
+      <%= cl_image_tag member.photo.key, class: "avatar-bordered", style:"margin-right: 8px;"%>
+      <p style="margin-top: 15px;"><%="#{member.first_name} #{member.last_name}"%></p>
+    </div>
     <% end %>
   </div>
-
 </div>
 
 <div class="container text-center">

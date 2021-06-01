@@ -1,4 +1,30 @@
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     background-color: rgb(109, 168, 179);
+    color: #6da8b3;
 }
 
+.nav-tabs .nav-link {
+    margin: 0px -1px;
+    border:2px solid rgb(109, 168, 179);
+    color: #6da8b3;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #6da8b3 #6da8b3 #6da8b3;
+    color: #6da8b3;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: white;
+    background-color: #6da8b3 #6da8b3 #6da8b3;
+    border-color: #6da8b3 #6da8b3 #6da8b3;
+}
+
+#lef{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.nav-tabs {
+    border-bottom: 0px solid #dee2e6;
+}
