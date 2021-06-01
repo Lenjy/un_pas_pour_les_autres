@@ -1,23 +1,21 @@
-    <div>
-    <div>
+    <div class="card-product">
         <% @accepted_friend_requests_received.each do |friend_request| %>
-            <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-plus"} %>
-            <div>
+            <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
+            <div class="card-product-infos">
                 <div>
                     <h2><%= friend_request.asker.nickname %></h2>
-                    <p><%= friend_request.asker.teams.name %></p>
+                    <p><%= friend_request.asker.teams.first.name %></p>
                 </div>
             </div>
         <% end %>
 
         <% @accepted_friend_requests_sent.each do |friend_request| %>
-            <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-plus"} %>
-            <div>
+            <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-bordered"} %>
+            <div class="card-product-infos">
                 <div>
                     <h2><%= friend_request.receiver.nickname %></h2>
-                    <p><%= friend_request.receiver.teams.name %></p>
+                    <p><%= friend_request.receiver.first.name %></p>
                 </div>
             </div>
         <% end %>
-    </div>
 </div>

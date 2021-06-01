@@ -22,6 +22,19 @@ class FriendRequestsController < ApplicationController
   def show
     
   end
+  
+
+  def accept
+    find_friend_request
+    @friend_request.update(status: :accepted)
+    redirect_to dashboard_path
+  end
+
+  def decline
+    find_friend_request
+    @friend_request.update(status: :decline)
+    redirect_to dashboard_path
+  end
 
 private 
 
