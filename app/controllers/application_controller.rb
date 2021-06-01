@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  before_action :count_new_notifs
+  before_action :notifs
+  
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
@@ -22,5 +25,25 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def count_new_notifs
+    if current_user
+      if current_user.friend_requests_as_receiver.nil?
+        return 0
+      else
+        return @count_new_notifs = current_user.friend_requests_as_receiver.where(status: :pending).count
+      end
+    end
+  end
+
+  def notifs
+    if current_user
+      if current_user.friend_requests_as_receiver.nil?
+        return 0
+      else
+        return @notifs = current_user.friend_requests_as_receiver.where(status: :pending)
+      end
+    end
   end
 end
