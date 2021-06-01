@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   def home
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
-    top_three_companies_generation
-    top_three_walkers_generation
+    # top_three_companies_generation
+    # top_three_walkers_generation
     # top_three_teams_generation
 
   end
