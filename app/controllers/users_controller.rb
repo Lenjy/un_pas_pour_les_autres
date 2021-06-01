@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = policy_scope(User)
+    if params[:query].present?
+      @users = policy_scope(User).search_by_full_name(params[:query])
+    else
+      @users = policy_scope(User)
+    end
   end
 
   def show

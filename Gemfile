@@ -47,6 +47,7 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'rails-i18n'
 
+gem 'pg_search', '~> 2.3.0'
 
 
 group :development, :test do  gem 'pry-byebug'

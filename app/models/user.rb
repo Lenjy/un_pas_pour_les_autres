@@ -25,6 +25,13 @@ class User < ApplicationRecord
   # validates :address, presence: true
   # validates :nickname, presence: true, uniqueness: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_full_name,
+    against: [ :first_name, :last_name ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
 
   def self.from_omniauth(access_token)
     data = access_token.info
