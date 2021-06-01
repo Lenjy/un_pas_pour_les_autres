@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     # FAKE DATA BEFORE ENTERPRISE SEEDS ARE CREATED
     # @top_companies = [[["# de pas - Entreprise", 1492], ["Donation en-cours", 300], ["# de pas moyen (employé", 300]], [["# de pas - Entreprise", 1692], ["Donation en-cours", 600], ["# de pas moyen (employé", 500]], [["# de pas - Entreprise", 1892], ["Donation en-cours", 800], ["# de pas moyen (employé)", 900]]]
-    top_three_companies_generation
-    top_three_walkers_generation
-    top_three_teams_generation
+    # top_three_companies_generation
+    # top_three_walkers_generation
+    # top_three_teams_generation
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
 
   end
@@ -22,6 +22,7 @@ class PagesController < ApplicationController
     team_one_array_generation
     # private daily step
     daily_step
+    set_friend_requests
   end
 
   def donate
@@ -92,7 +93,13 @@ class PagesController < ApplicationController
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
 
-    @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    if @month.first.nil? 
+
+      @month_message = "in progress"
+    else 
+      @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    end
+
 
   end
 
@@ -165,5 +172,11 @@ class PagesController < ApplicationController
   def is_integer(number)
     number.floor == number
   end
+
+  def set_friend_requests  
+    @pending_friend_requests = current_user.friend_requests_as_receiver.where(status: :pending)
+    @accepted_friend_requests_received = current_user.friend_requests_as_receiver.where(status: :accepted)
+    @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
+  end 
 
 end
