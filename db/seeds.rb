@@ -169,7 +169,7 @@ jiwon = User.create!(first_name: "Jiwon", last_name: "Eun", nickname: "jiwon", a
 
 audrey = User.create!(first_name: "Audrey", last_name: "Lm", nickname: "audrey", address: "20 rue Victor Masse", phone_number: "0675674512", email: "audreylm33@gmail.com", password: "123456", password_confirmation: "123456")
 
-anne = User.create!(first_name: "Anne", last_name: "Lepetit", nickname: "nne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
+anne = User.create!(first_name: "Anne", last_name: "Lepetit", nickname: "anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
 
 mathieu = User.create!(first_name: "Mathieu", last_name: "Chaplain", nickname: "mathieu", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mathieuchaplain@gmail.com", password: "123456", password_confirmation: "123456")
 
@@ -293,31 +293,14 @@ date = Date.today
 
 (3..61).each do |i|
 
-  Step.create!(
-  date: date,
-  nb_steps: rand(1000..15000),
-  week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-  user_id: basil.id)
-
-  Step.create!(
-  date: date,
-  nb_steps: rand(1000..15000),
-  week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-  user_id: arthur.id)
-
-  Step.create!(
-  date: date,
-  nb_steps: rand(1000..15000),
-  week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-  user_id: benjamin.id)
-
-  Step.create!(
-  date: date,
-  nb_steps: rand(1000..15000),
-  week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-  user_id: maylis.id)
-
-  date = date.yesterday
+  User.all.each do |user|
+    Step.create!(
+      date: date,
+      nb_steps: rand(1000..15000),
+      week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
+      user_id: user.id)
+    date = date.yesterday
+  end
 
 end
 
