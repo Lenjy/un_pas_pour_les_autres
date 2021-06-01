@@ -2,14 +2,11 @@
     <h1><%= label %></h1>
     <div class="card-trip-statistics">
       <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist">
-        <li class="nav-item col-4" role="presentation" style="padding-right: 0px; padding-left: 0px">
+        <li class="nav-item col-6" role="presentation" style="padding-right: 0px; padding-left: 0px">
           <a class="nav-link user-tasks-navbar-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><%= tab_one %></a>
         </li>
-        <li class="nav-item col-4" role="presentation" style="padding-right: 0px; padding-left: 0px">
+        <li class="nav-item col-6" role="presentation" style="padding-right: 0px; padding-left: 0px">
           <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><%= tab_two %></a>
-        </li>
-        <li class="nav-item col-4" role="presentation" style="padding-right: 0px; padding-left: 0px">
-          <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><%= tab_three %></a>
         </li>
       </ul>
 
@@ -65,39 +62,9 @@
                   <% if walker[0][-1].photo.attached? %>
                     <%= cl_image_tag walker[0][-1].photo.key %>
                   <% else %>
-                    <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
+                    <%= cl_image_tag 'pq_lvrytp' %>
                   <% end %>
-                  <div id="chart-home-walker-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= walker.last(2).to_json %>"></div>
-                </div>
-              </div>
-
-            <% end %>
-
-          </div>
-        </div>
-
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-           <div class="row">
-
-            <h2 style="margin-top: 20px"><%= message_tab_three %></h2>
-            <% steps_tab_three.each_with_index do |team, i| %>
-
-              <div class="col-3 d-flex justify-content-center">
-                <div style="width: 120px; display: flex; align-items: center; justify-content: center">
-                  <div class=" bg-success text-center box-donate2" style="border-radius: 5px">
-                    <h1 class='m-0 text-white'># <%= i + 1%></h1>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-9">
-                <div class="card-product mt-4">
-                  <% if team[0][-1].photo.attached? %>
-                    <%= cl_image_tag team[0][-1].photo.key %>
-                  <% else %>
-                    <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
-                  <% end %>
-                  <div id="chart-home-team-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= team.last(2).to_json %>"></div>
+                  <div id="chart-home-walker-<%= i + 1%>" style="margin-left: 16px; height: 150px; width: 70%" data-steps="<%= walker.last(2).to_json %>"></div>
                 </div>
               </div>
 

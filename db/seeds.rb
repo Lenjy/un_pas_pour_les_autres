@@ -97,6 +97,17 @@ tables_5_6 = Enterprise.create!(name: "Tables 5 et 6")
 tables_1_2 = Enterprise.create!(name: "Tables 1 et 2")
 tables_3_4 = Enterprise.create!(name: "Tables 3 et 4")
 
+
+photo_tables_5_6 = URI.open('./app/assets/images/github_logo.png')
+tables_5_6.photo.attach(io: photo_tables_5_6, filename: 'github.png', content_type: 'image/png')
+
+photo_tables_1_2 = URI.open('./app/assets/images/reddit_logo.png')
+tables_1_2.photo.attach(io: photo_tables_1_2, filename: 'reddit.png', content_type: 'image/png')
+
+photo_tables_3_4 = URI.open('./app/assets/images/vscode_logo.png')
+tables_3_4.photo.attach(io: photo_tables_3_4, filename: 'vscode.png', content_type: 'image/png')
+
+
 puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
 # CAMPAIGNS
@@ -141,26 +152,6 @@ benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "
 
 maylis = User.create!(first_name: "Maylis", last_name: "de La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mdlmaylis@gmail.com", password: "123456", password_confirmation: "123456")
 
-
-
-
-
-photo_basil = URI.open('./app/assets/images/basil.jpeg')
-basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
-
-photo_arthur = URI.open('./app/assets/images/arthur.jpeg')
-arthur.photo.attach(io: photo_arthur, filename: 'arthur_demo.jpg', content_type: 'image/jpg')
-
-photo_benjamin = URI.open('./app/assets/images/benjamin.jpeg')
-benjamin.photo.attach(io: photo_benjamin, filename: 'benjamin_demo.jpg', content_type: 'image/jpg')
-
-photo_maylis = URI.open('./app/assets/images/maylis.webp')
-maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
-
-
-
-
-
 mamoun = User.create!(first_name: "Mamoun", last_name: "Benbra", nickname: "mamoun", address: "4 rue Victor Masse", phone_number: "0675674509", email: "mamounbenbra@gmail.com", password: "123456", password_confirmation: "123456")
 
 henrik = User.create!(first_name: "Henrik", last_name: "Duerrfeld", nickname: "henrik", address: "20 rue Victor Masse", phone_number: "0675674512", email: "henrik.duerrfeld.20002@gmail.com", password: "123456", password_confirmation: "123456")
@@ -192,6 +183,71 @@ nicolas = User.create!(first_name: "Nicolas", last_name: "Dubet", nickname: "nic
 lylian = User.create!(first_name: "Lylian", last_name: "Krizoua", nickname: "lylian", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krizoualylian@gmail.com", password: "123456", password_confirmation: "123456")
 
 chris = User.create!(first_name: "Chris", last_name: "Mendy", nickname: "kris", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krismendy@gmail.com", password: "123456", password_confirmation: "123456")
+
+
+photo_basil = URI.open('./app/assets/images/basil.jpeg')
+basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
+
+photo_arthur = URI.open('./app/assets/images/arthur.jpeg')
+arthur.photo.attach(io: photo_arthur, filename: 'arthur_demo.jpg', content_type: 'image/jpg')
+
+photo_benjamin = URI.open('./app/assets/images/benjamin.jpeg')
+benjamin.photo.attach(io: photo_benjamin, filename: 'benjamin_demo.jpg', content_type: 'image/jpg')
+
+photo_maylis = URI.open('./app/assets/images/maylis.webp')
+maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
+
+photo_mamoun = URI.open('./app/assets/images/mamoun.jpeg')
+mamoun.photo.attach(io: photo_mamoun, filename: 'mamoun_demo.jpg', content_type: 'image/jpg')
+
+photo_henrik = URI.open('./app/assets/images/henrik.jpeg')
+henrik.photo.attach(io: photo_henrik, filename: 'henrik_demo.jpg', content_type: 'image/jpg')
+
+photo_jiwon = URI.open('./app/assets/images/jiwon.jpeg')
+jiwon.photo.attach(io: photo_jiwon, filename: 'jiwon_demo.jpg', content_type: 'image/jpg')
+
+photo_audrey = URI.open('./app/assets/images/audrey.jpeg')
+audrey.photo.attach(io: photo_audrey, filename: 'audrey_demo.jpg', content_type: 'image/jpg')
+
+photo_anne = URI.open('./app/assets/images/anne.jpeg')
+anne.photo.attach(io: photo_anne, filename: 'anne_demo.jpg', content_type: 'image/jpg')
+
+photo_mathieu = URI.open('./app/assets/images/mathieu.jpeg')
+mathieu.photo.attach(io: photo_mathieu, filename: 'mathieu_demo.jpg', content_type: 'image/jpg')
+
+photo_maxime = URI.open('./app/assets/images/maxime.jpeg')
+maxime.photo.attach(io: photo_maxime, filename: 'maxime_demo.jpg', content_type: 'image/jpg')
+
+photo_johann = URI.open('./app/assets/images/johann.jpeg')
+johann.photo.attach(io: photo_johann, filename: 'johann_demo.jpg', content_type: 'image/jpg')
+
+photo_chenchen = URI.open('./app/assets/images/chenchen.jpeg')
+chenchen.photo.attach(io: photo_chenchen, filename: 'chenchen_demo.jpg', content_type: 'image/jpg')
+
+photo_germain = URI.open('./app/assets/images/germain.jpeg')
+germain.photo.attach(io: photo_germain, filename: 'germain_demo.jpg', content_type: 'image/jpg')
+
+photo_julien = URI.open('./app/assets/images/julien.jpeg')
+julien.photo.attach(io: photo_julien, filename: 'julien_demo.jpg', content_type: 'image/jpg')
+
+photo_cindy = URI.open('./app/assets/images/cindy.jpeg')
+cindy.photo.attach(io: photo_cindy, filename: 'cindy_demo.jpg', content_type: 'image/jpg')
+
+photo_louis = URI.open('./app/assets/images/louis.jpeg')
+louis.photo.attach(io: photo_louis, filename: 'louis_demo.jpg', content_type: 'image/jpg')
+
+photo_nicolas = URI.open('./app/assets/images/nicolas.jpeg')
+nicolas.photo.attach(io: photo_nicolas, filename: 'nicolas_demo.jpg', content_type: 'image/jpg')
+
+photo_lylian = URI.open('./app/assets/images/lylian.jpeg')
+lylian.photo.attach(io: photo_lylian, filename: 'lylian_demo.jpg', content_type: 'image/jpg')
+
+photo_chris = URI.open('./app/assets/images/chris.jpeg')
+chris.photo.attach(io: photo_chris, filename: 'chris_demo.jpg', content_type: 'image/jpg')
+
+
+
+
 
 
 
@@ -303,34 +359,6 @@ date = Date.today
   end
 
 end
-
-# steps_basil = Step.create!(
-#   date: Date.today,
-#   nb_steps: 12145,
-#   week: 1,
-#   user_id: basil.id,
-# )
-
-# steps_arthur = Step.create!(
-#   date: Date.today,
-#   nb_steps: 11147,
-#   week: 1,
-#   user_id: arthur.id,
-# )
-
-# steps_benjamin = Step.create!(
-#   date: Date.today,
-#   nb_steps: 14500,
-#   week: 1,
-#   user_id: benjamin.id,
-# )
-
-# steps_maylis = Step.create!(
-#   date: Date.today,
-#   nb_steps: 8943,
-#   week: 1,
-#   user_id: maylis.id,
-# )
 
 puts "Created #{Step.all.size} steps instances for users in seeds.rb"
 
