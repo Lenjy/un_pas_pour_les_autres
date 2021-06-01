@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-
+  skip_after_action :verify_authorized, only: [:search]
 
   def index
     if params[:query].present?
       @users = policy_scope(User).search_by_full_name(params[:query])
     else
       @users = policy_scope(User)
+    end
+  end
+
+  def search
+    if params[:query].present?
+      @users = policy_scope(User).search_by_full_name(params[:query])
+    end
+    respond_to do |format|
+      format.json { render json: { html: render_to_string(partial: 'users/user_list.html', formats: :html, locals: {users: @users})}}
     end
   end
 

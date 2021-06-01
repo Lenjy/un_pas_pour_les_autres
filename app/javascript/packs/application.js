@@ -34,12 +34,13 @@ import { initChartkickTopCompanies } from "../plugins/init_chartkick";
 import { initChartkickTopWalkers } from "../plugins/init_chartkick";
 import { initChartkickTopTeams } from "../plugins/init_chartkick";
 
-
+import { searchPeople } from "../components/search_people";
 import { donate_event } from "../components/donate_event";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   donate_event();
+  searchPeople();
   // initSelect2();
   initChartkickWeek();
   initChartkickMonth();

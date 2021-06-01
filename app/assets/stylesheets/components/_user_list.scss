@@ -1,0 +1,42 @@
+.user-list {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 8px 8px;
+  border: 1px solid rgb(235,235,235);
+  width: 212px;
+}
+
+.user-list .user-list-content {
+  flex-grow: 1;
+  padding: 0 8px;
+}
+
+.user-list p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.user-list small {
+  color: #999999;
+  font-weight: bold;
+}
+.user-list .user-list-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.user-list:hover .user-list-actions {
+  opacity: 1;
+}
+
+.user-list .user-list-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.user-list .user-list-actions a:hover {
+  color: #555555;
+}

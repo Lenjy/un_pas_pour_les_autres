@@ -11,14 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item" style="margin-right: 300px">
+        <li class="nav-item" style="margin-right: 450px">
           <%= form_tag users_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
               params[:query],
-              class: "form-control mr-3",
+              class: "form-control",
+              id: "search",
               placeholder: "Search for someone" %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
           <% end %>
+          <div id="user-list" style="position: absolute">
+          </div>
         </li>
         <li class="nav-item mr-3">
           <% if CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last != nil  %>
