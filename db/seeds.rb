@@ -84,14 +84,10 @@ restos_du_coeur = CharityEvent.create!(
   total_donation: 0
   )
 
-  puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
+puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
 
 
 
-<<<<<<< HEAD
-=======
-# le_wagon = Enterprise.create!(name: "Le Wagon")
->>>>>>> master
 
 # ENTERPRISES
 
@@ -135,58 +131,20 @@ puts "Created #{Campaign.all.size} campaigns in seeds.rb"
 
 # basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
 
-<<<<<<< HEAD
-# # USERS
-
-# basil = User.all.where(email: "basil.lizotte@gmail.com").first
-# arthur = User.all.where(email: "maguinarthur@gmail.com").first
-# benjamin = User.all.where(email: "be.eycken@gmail.com").first
-# maylis = User.all.where(email: "mdlmaylis@gmail.com").first
-=======
 # USERS=
->>>>>>> master
 
 basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil.lizotte@gmail.com", password: "123456", password_confirmation: "123456")
 
-<<<<<<< HEAD
-basil = User.create!(first_name: "Basil", last_name: "Lizotte", nickname: "lizottebasil", address: "4 rue Victor Masse", phone_number: "0675674509", email: "basil@gmail.com", password: "123456", password_confirmation: "123456")
-
-arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maguinarthur@gmail.com", password: "123456", password_confirmation: "123456")
-
-benjamin = User.create!(first_name: "Benjamein", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456")
-
-maylis = User.create!(first_name: "Maylis", last_name: "De La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maylis@gmail.com", password: "123456", password_confirmation: "123456")
-
-# # FAKE USERS
-
-# for i in (1..8) do
-
-#   test_one = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_two = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_three = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_four = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_five = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_six = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_seven = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test_eight = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_one = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_two = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_three = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_four = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_five = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_six = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_seven = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-#   test2_eight = User.create!(first_name: "fake", last_name: "fake", nickname: "fake", address: "4 rue Victor Masse", phone_number: "0675674509", email: "fake_@gmail.com", password: "123456", password_confirmation: "123456")
-
-# end
-
-=======
 arthur = User.create!(first_name: "Arthur", last_name: "Maguin", nickname: "maguinarthur", address: "20 rue Victor Masse", phone_number: "0675674512", email: "maguinarthur@gmail.com", password: "123456", password_confirmation: "123456")
 
 benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "eyckenbenjamin", address: "20 rue Victor Masse", phone_number: "0675674512", email: "be.eycken@gmail.com", password: "123456", password_confirmation: "123456")
 
 maylis = User.create!(first_name: "Maylis", last_name: "de La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mdlmaylis@gmail.com", password: "123456", password_confirmation: "123456")
 
+
+
+
+
 photo_basil = URI.open('./app/assets/images/basil.jpeg')
 basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
 
@@ -198,34 +156,22 @@ benjamin.photo.attach(io: photo_benjamin, filename: 'benjamin_demo.jpg', content
 
 photo_maylis = URI.open('./app/assets/images/maylis.webp')
 maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
+
+
+
+
 
 mamoun = User.create!(first_name: "Mamoun", last_name: "Benbra", nickname: "mamoun", address: "4 rue Victor Masse", phone_number: "0675674509", email: "mamounbenbra@gmail.com", password: "123456", password_confirmation: "123456")
 
 henrik = User.create!(first_name: "Henrik", last_name: "Duerrfeld", nickname: "henrik", address: "20 rue Victor Masse", phone_number: "0675674512", email: "henrik.duerrfeld.20002@gmail.com", password: "123456", password_confirmation: "123456")
->>>>>>> master
 
-photo_basil = URI.open('./app/assets/images/basil.jpeg')
-basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
-
-<<<<<<< HEAD
-photo_arthur = URI.open('./app/assets/images/arthur.jpeg')
-arthur.photo.attach(io: photo_arthur, filename: 'arthur_demo.jpg', content_type: 'image/jpg')
-
-photo_benjamin = URI.open('./app/assets/images/benjamin.jpeg')
-benjamin.photo.attach(io: photo_benjamin, filename: 'benjamin_demo.jpg', content_type: 'image/jpg')
-
-photo_maylis = URI.open('./app/assets/images/maylis.webp')
-maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
-
-=======
 jiwon = User.create!(first_name: "Jiwon", last_name: "Eun", nickname: "jiwon", address: "4 rue Victor Masse", phone_number: "0675674509", email: "jiwon.eun@gmail.com", password: "123456", password_confirmation: "123456")
 
 audrey = User.create!(first_name: "Audrey", last_name: "Lm", nickname: "audrey", address: "20 rue Victor Masse", phone_number: "0675674512", email: "audreylm33@gmail.com", password: "123456", password_confirmation: "123456")
 
-anne = User.create!(first_name: "Anne", last_name: "Eycken", nickname: "anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
+anne = User.create!(first_name: "Anne", last_name: "Lepetit", nickname: "nne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
 
 mathieu = User.create!(first_name: "Mathieu", last_name: "Chaplain", nickname: "mathieu", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mathieuchaplain@gmail.com", password: "123456", password_confirmation: "123456")
-
 
 maxime = User.create!(first_name: "Maxime", last_name: "Jacob", nickname: "mjacob", address: "4 rue Victor Masse", phone_number: "0675674509", email: "mjacob.bayer@gmail.com", password: "123456", password_confirmation: "123456")
 
@@ -233,23 +179,20 @@ johann = User.create!(first_name: "Johann", last_name: "Bzaih", nickname: "johan
 
 chenchen = User.create!(first_name: "Chenchen", last_name: "Zheng", nickname: "chenchen", address: "20 rue Victor Masse", phone_number: "0675674512", email: "chenchenzheng42@gmail.com", password: "123456", password_confirmation: "123456")
 
-
 germain = User.create!(first_name: "Germain", last_name: "Loret", nickname: "germain", address: "4 rue Victor Masse", phone_number: "0675674509", email: "germain.loret@gmail.com", password: "123456", password_confirmation: "123456")
 
-julien = User.create!(first_name: "Julien", last_name: "Loiseau", nickname: "ulien", address: "20 rue Victor Masse", phone_number: "0675674512", email: "julien.loiseau@edu.escp.eu", password: "123456", password_confirmation: "123456")
+julien = User.create!(first_name: "Julien", last_name: "Loiseau", nickname: "julien", address: "20 rue Victor Masse", phone_number: "0675674512", email: "julien.loiseau@edu.escp.eu", password: "123456", password_confirmation: "123456")
 
-cindy = User.create!(first_name: "Anne", last_name: "Eycken", nickname: "lepetit.anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
-
+cindy = User.create!(first_name: "Cindy", last_name: "Grenet", nickname: "cindyyyy4", address: "20 rue Victor Masse", phone_number: "0675674512", email: "cindyyyy4@gmail.com", password: "123456", password_confirmation: "123456")
 
 louis = User.create!(first_name: "Louis", last_name: "Decheff", nickname: "louis", address: "4 rue Victor Masse", phone_number: "0675674509", email: "louisdecheff@gmail.com", password: "123456", password_confirmation: "123456")
 
 nicolas = User.create!(first_name: "Nicolas", last_name: "Dubet", nickname: "nicolas", address: "20 rue Victor Masse", phone_number: "0675674512", email: "nicolas.dubet@gmail.com", password: "123456", password_confirmation: "123456")
 
-Lylian = User.create!(first_name: "Lylian", last_name: "Krizoua", nickname: "lylian", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krizoualylian@gmail.com", password: "123456", password_confirmation: "123456")
+lylian = User.create!(first_name: "Lylian", last_name: "Krizoua", nickname: "lylian", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krizoualylian@gmail.com", password: "123456", password_confirmation: "123456")
 
 chris = User.create!(first_name: "Chris", last_name: "Mendy", nickname: "kris", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krismendy@gmail.com", password: "123456", password_confirmation: "123456")
 
-puts "Created #{User.all.size} users in seeds.rb"
 
 
 basil = User.all.where(email: "basil.lizotte@gmail.com").first
@@ -283,13 +226,10 @@ chris = User.all.where(email: "krismendy@gmail.com").first
 
 
 
->>>>>>> master
 basil.enterprise = tables_5_6
 arthur.enterprise = tables_5_6
 benjamin.enterprise = tables_5_6
 maylis.enterprise = tables_5_6
-<<<<<<< HEAD
-=======
 
 jiwon.enterprise = tables_1_2
 audrey.enterprise = tables_1_2
@@ -310,8 +250,32 @@ louis.enterprise = tables_3_4
 nicolas.enterprise = tables_3_4
 lylian.enterprise = tables_3_4
 chris.enterprise = tables_3_4
->>>>>>> master
 
+
+basil.save
+arthur.save
+benjamin.save
+maylis.save
+
+jiwon.save
+audrey.save
+anne.save
+mathieu.save
+
+maxime.save
+johann.save
+chenchen.save
+mamoun.save
+
+julien.save
+germain.save
+cindy.save
+henrik.save
+
+louis.save
+nicolas.save
+lylian.save
+chris.save
 
 
 
@@ -421,8 +385,6 @@ puts "Created #{Team.all.size} team instances in seeds.rb"
 
 
 # JOINED TEAMS
-<<<<<<< HEAD
-=======
 
 
 JoinedTeam.create!(
@@ -488,29 +450,10 @@ JoinedTeam.create!(
 JoinedTeam.create!(
   user: julien,
   team: sound_on)
->>>>>>> master
 
 JoinedTeam.create!(
   user: germain,
   team: sound_on)
-
-<<<<<<< HEAD
-JoinedTeam.create!(
-  user: arthur,
-  team: uppla)
-
-JoinedTeam.create!(
-  user: basil,
-  team: uppla)
-
-JoinedTeam.create!(
-  user: benjamin,
-  team: uppla)
-
-JoinedTeam.create!(
-  user: maylis,
-  team: uppla)
-=======
 
 JoinedTeam.create!(
   user: louis,
@@ -523,14 +466,12 @@ JoinedTeam.create!(
 JoinedTeam.create!(
   user: lylian,
   team: feeler)
->>>>>>> master
 
 JoinedTeam.create!(
   user: chris,
   team: feeler)
 
 puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
-<<<<<<< HEAD
 
 
 # JOINED CAMPAIGNS
@@ -554,7 +495,73 @@ JoinedCampaign.create!(
   user: benjamin,
   campaign: campaign_restos_du_coeur_tables_5_6
   )
-=======
->>>>>>> master
+
+JoinedCampaign.create!(
+  user: mamoun,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: henrik,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+
+JoinedCampaign.create!(
+  user: jiwon,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: audrey,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: anne,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: mathieu,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+
+JoinedCampaign.create!(
+  user: maxime,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: johann,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: chenchen,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+
+JoinedCampaign.create!(
+  user: cindy,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: julien,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: germain,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: louis,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: nicolas,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: lylian,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: chris,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
 
 puts "Created #{JoinedCampaign.all.size} joined campaign instances in seeds.rb"
