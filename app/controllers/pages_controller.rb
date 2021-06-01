@@ -52,9 +52,17 @@ class PagesController < ApplicationController
     @week_steps = []
     date_to_check = Date.today
     @week = []
-    7.times do
-      @week << current_user.steps.where(date: date_to_check).first
-      date_to_check = date_to_check.yesterday
+    if current_user.steps.where( date: Date.today) != nil
+      7.times do
+        @week << current_user.steps.where(date: date_to_check).first
+        date_to_check = date_to_check.yesterday
+      end
+    else
+      fictional_date = Step.create!(user: current_user, nb_steps: FitnessApi.new(current_user, current_user.token).get_daily_step, date: Date.today)
+      7.times do
+        @week << current_user.steps.where(date: fictional_date).first
+        fictional_date = fictional_date.yesterday
+      end
     end
     @week.reverse!.each do |steps|
       if steps.nil?

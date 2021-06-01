@@ -16,13 +16,23 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable
+        #  omniauth_providers: [:google_oauth2]
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   # validates :phone_number, presence: true
   # validates :address, presence: true
   # validates :nickname, presence: true, uniqueness: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_full_name,
+    against: [ :first_name,
+               :last_name,
+               :nickname ],
+    using: {
+      tsearch: { prefix: true }
+    }
 
 
   def self.from_omniauth(access_token)
@@ -37,7 +47,7 @@ class User < ApplicationRecord
           token: access_token.credentials.token
         )
       end
-      
+
     user.update!( token: access_token.credentials.token)
     FitnessApi.new(user, user.token).get_info_month
 

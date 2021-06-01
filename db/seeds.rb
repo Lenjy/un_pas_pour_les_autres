@@ -7,20 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-# JoinedTeam.destroy_all
-# puts 'JT destroyed'
-# Step.destroy_all
-# puts 'steps destroyed'
-# # User.destroy_all
-# # puts 'users destroyed'
-# Team.destroy_all
-# puts 'teams destroyed'
-# Campaign.destroy_all
-# puts 'caamp destroyed'
-# Enterprise.destroy_all
-# puts 'enterp destroyed'
-# CharityEvent.destroy_all
-# puts 'ch ev destroyed'
+JoinedTeam.destroy_all
+puts '- Joined Teams destroyed'
+JoinedCampaign.destroy_all
+puts '- Joined Campaigns destroyed'
+DonationPayment.destroy_all
+puts '- Donation Payments destroyed'
+Step.destroy_all
+puts '- Steps destroyed'
+User.destroy_all
+puts '- Users destroyed'
+Team.destroy_all
+puts '- Teams destroyed'
+Campaign.destroy_all
+puts '- Campaigns destroyed'
+Enterprise.destroy_all
+puts '- Enterprises destroyed'
+CharityEvent.destroy_all
+puts '- Charity Events destroyed'
 
 
 
@@ -80,22 +84,22 @@ restos_du_coeur = CharityEvent.create!(
   total_donation: 0
   )
 
-  puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
+puts "Created #{CharityEvent.all.size} charity events in seeds.rb"
 
 
+
+
+# ENTERPRISES
 
 # le_wagon = Enterprise.create!(name: "Le Wagon")
 
-#   # ENTERPRISES
-
-
- tables_5_6 = Enterprise.create!(name: "Tables 5 et 6")
- tables_1_2 = Enterprise.create!(name: "Tables 1 et 2")
- tables_3_4 = Enterprise.create!(name: "Tables 3 et 4")
+tables_5_6 = Enterprise.create!(name: "Tables 5 et 6")
+tables_1_2 = Enterprise.create!(name: "Tables 1 et 2")
+tables_3_4 = Enterprise.create!(name: "Tables 3 et 4")
 
 puts "Created #{Enterprise.all.size} enterprises in seeds.rb"
 
-# # CAMPAIGNS
+# CAMPAIGNS
 
 campaign_restos_du_coeur_tables_5_6 = Campaign.create!(
   step_conversion: 0,
@@ -137,6 +141,10 @@ benjamin = User.create!(first_name: "Benjamin", last_name: "Eycken", nickname: "
 
 maylis = User.create!(first_name: "Maylis", last_name: "de La Monneraye", nickname: "dlmmaylis", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mdlmaylis@gmail.com", password: "123456", password_confirmation: "123456")
 
+
+
+
+
 photo_basil = URI.open('./app/assets/images/basil.jpeg')
 basil.photo.attach(io: photo_basil, filename: 'basil_demo.jpg', content_type: 'image/jpg')
 
@@ -149,19 +157,21 @@ benjamin.photo.attach(io: photo_benjamin, filename: 'benjamin_demo.jpg', content
 photo_maylis = URI.open('./app/assets/images/maylis.webp')
 maylis.photo.attach(io: photo_maylis, filename: 'maylis_demo.jpg', content_type: 'image/jpg')
 
+
+
+
+
 mamoun = User.create!(first_name: "Mamoun", last_name: "Benbra", nickname: "mamoun", address: "4 rue Victor Masse", phone_number: "0675674509", email: "mamounbenbra@gmail.com", password: "123456", password_confirmation: "123456")
 
 henrik = User.create!(first_name: "Henrik", last_name: "Duerrfeld", nickname: "henrik", address: "20 rue Victor Masse", phone_number: "0675674512", email: "henrik.duerrfeld.20002@gmail.com", password: "123456", password_confirmation: "123456")
-
 
 jiwon = User.create!(first_name: "Jiwon", last_name: "Eun", nickname: "jiwon", address: "4 rue Victor Masse", phone_number: "0675674509", email: "jiwon.eun@gmail.com", password: "123456", password_confirmation: "123456")
 
 audrey = User.create!(first_name: "Audrey", last_name: "Lm", nickname: "audrey", address: "20 rue Victor Masse", phone_number: "0675674512", email: "audreylm33@gmail.com", password: "123456", password_confirmation: "123456")
 
-anne = User.create!(first_name: "Anne", last_name: "Eycken", nickname: "anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
+anne = User.create!(first_name: "Anne", last_name: "Lepetit", nickname: "anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
 
 mathieu = User.create!(first_name: "Mathieu", last_name: "Chaplain", nickname: "mathieu", address: "20 rue Victor Masse", phone_number: "0675674512", email: "mathieuchaplain@gmail.com", password: "123456", password_confirmation: "123456")
-
 
 maxime = User.create!(first_name: "Maxime", last_name: "Jacob", nickname: "mjacob", address: "4 rue Victor Masse", phone_number: "0675674509", email: "mjacob.bayer@gmail.com", password: "123456", password_confirmation: "123456")
 
@@ -169,23 +179,20 @@ johann = User.create!(first_name: "Johann", last_name: "Bzaih", nickname: "johan
 
 chenchen = User.create!(first_name: "Chenchen", last_name: "Zheng", nickname: "chenchen", address: "20 rue Victor Masse", phone_number: "0675674512", email: "chenchenzheng42@gmail.com", password: "123456", password_confirmation: "123456")
 
-
 germain = User.create!(first_name: "Germain", last_name: "Loret", nickname: "germain", address: "4 rue Victor Masse", phone_number: "0675674509", email: "germain.loret@gmail.com", password: "123456", password_confirmation: "123456")
 
-julien = User.create!(first_name: "Julien", last_name: "Loiseau", nickname: "ulien", address: "20 rue Victor Masse", phone_number: "0675674512", email: "julien.loiseau@edu.escp.eu", password: "123456", password_confirmation: "123456")
+julien = User.create!(first_name: "Julien", last_name: "Loiseau", nickname: "julien", address: "20 rue Victor Masse", phone_number: "0675674512", email: "julien.loiseau@edu.escp.eu", password: "123456", password_confirmation: "123456")
 
-cindy = User.create!(first_name: "Anne", last_name: "Eycken", nickname: "lepetit.anne", address: "20 rue Victor Masse", phone_number: "0675674512", email: "lepetit.anne@gmail.com", password: "123456", password_confirmation: "123456")
-
+cindy = User.create!(first_name: "Cindy", last_name: "Grenet", nickname: "cindyyyy4", address: "20 rue Victor Masse", phone_number: "0675674512", email: "cindyyyy4@gmail.com", password: "123456", password_confirmation: "123456")
 
 louis = User.create!(first_name: "Louis", last_name: "Decheff", nickname: "louis", address: "4 rue Victor Masse", phone_number: "0675674509", email: "louisdecheff@gmail.com", password: "123456", password_confirmation: "123456")
 
 nicolas = User.create!(first_name: "Nicolas", last_name: "Dubet", nickname: "nicolas", address: "20 rue Victor Masse", phone_number: "0675674512", email: "nicolas.dubet@gmail.com", password: "123456", password_confirmation: "123456")
 
-Lylian = User.create!(first_name: "Lylian", last_name: "Krizoua", nickname: "lylian", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krizoualylian@gmail.com", password: "123456", password_confirmation: "123456")
+lylian = User.create!(first_name: "Lylian", last_name: "Krizoua", nickname: "lylian", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krizoualylian@gmail.com", password: "123456", password_confirmation: "123456")
 
 chris = User.create!(first_name: "Chris", last_name: "Mendy", nickname: "kris", address: "20 rue Victor Masse", phone_number: "0675674512", email: "krismendy@gmail.com", password: "123456", password_confirmation: "123456")
 
-puts "Created #{User.all.size} users in seeds.rb"
 
 
 basil = User.all.where(email: "basil.lizotte@gmail.com").first
@@ -244,73 +251,91 @@ nicolas.enterprise = tables_3_4
 lylian.enterprise = tables_3_4
 chris.enterprise = tables_3_4
 
-# # STEPS
 
-# def is_integer(number)
-#   number.floor == number
-# end
+basil.save
+arthur.save
+benjamin.save
+maylis.save
 
+jiwon.save
+audrey.save
+anne.save
+mathieu.save
 
-# (3..30).each do |i|
+maxime.save
+johann.save
+chenchen.save
+mamoun.save
 
-#   Step.create!(
-#   date: Date.parse("2021-05-#{i}") ,
-#   nb_steps: rand(1000..15000),
-#   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-#   user_id: basil.id)
+julien.save
+germain.save
+cindy.save
+henrik.save
 
-#   Step.create!(
-#   date: Date.parse("2021-05-#{i}") ,
-#   nb_steps: rand(1000..15000),
-#   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-#   user_id: arthur.id)
-
-#   Step.create!(
-#   date: Date.parse("2021-05-#{i}") ,
-#   nb_steps: rand(1000..15000),
-#   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-#   user_id: benjamin.id)
-
-#   Step.create!(
-#   date: Date.parse("2021-05-#{i}") ,
-#   nb_steps: rand(1000..15000),
-#   week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
-#   user_id: maylis.id)
-
-# end
-
-# # steps_basil = Step.create!(
-# #   date: Date.today,
-# #   nb_steps: 12145,
-# #   week: 1,
-# #   user_id: basil.id,
-# # )
-
-# # steps_arthur = Step.create!(
-# #   date: Date.today,
-# #   nb_steps: 11147,
-# #   week: 1,
-# #   user_id: arthur.id,
-# # )
-
-# # steps_benjamin = Step.create!(
-# #   date: Date.today,
-# #   nb_steps: 14500,
-# #   week: 1,
-# #   user_id: benjamin.id,
-# # )
-
-# # steps_maylis = Step.create!(
-# #   date: Date.today,
-# #   nb_steps: 8943,
-# #   week: 1,
-# #   user_id: maylis.id,
-# # )
-
-# puts "Created #{Step.all.size} steps instances for users in seeds.rb"
+louis.save
+nicolas.save
+lylian.save
+chris.save
 
 
-# # TEAMS
+
+puts "Created #{User.all.size} users in seeds.rb"
+
+
+
+# STEPS
+
+def is_integer(number)
+  number.floor == number
+end
+
+date = Date.today
+
+(3..61).each do |i|
+
+  User.all.each do |user|
+    Step.create!(
+      date: date,
+      nb_steps: rand(1000..15000),
+      week: (is_integer((i-3)/7) ? (i-3)/7 + 1 : ((i-3)/7).floor + 1),
+      user_id: user.id)
+    date = date.yesterday
+  end
+
+end
+
+# steps_basil = Step.create!(
+#   date: Date.today,
+#   nb_steps: 12145,
+#   week: 1,
+#   user_id: basil.id,
+# )
+
+# steps_arthur = Step.create!(
+#   date: Date.today,
+#   nb_steps: 11147,
+#   week: 1,
+#   user_id: arthur.id,
+# )
+
+# steps_benjamin = Step.create!(
+#   date: Date.today,
+#   nb_steps: 14500,
+#   week: 1,
+#   user_id: benjamin.id,
+# )
+
+# steps_maylis = Step.create!(
+#   date: Date.today,
+#   nb_steps: 8943,
+#   week: 1,
+#   user_id: maylis.id,
+# )
+
+puts "Created #{Step.all.size} steps instances for users in seeds.rb"
+
+
+# TEAMS
 
 shoes_qui_peut = Team.create!(
 name: "Un pas pour les autres",
@@ -413,7 +438,6 @@ JoinedTeam.create!(
   user: germain,
   team: sound_on)
 
-
 JoinedTeam.create!(
   user: louis,
   team: feeler)
@@ -432,3 +456,95 @@ JoinedTeam.create!(
 
 puts "Created #{JoinedTeam.all.size} joined team instances in seeds.rb"
 
+
+# JOINED CAMPAIGNS
+
+JoinedCampaign.create!(
+  user: arthur,
+  campaign: campaign_restos_du_coeur_tables_5_6
+  )
+
+JoinedCampaign.create!(
+  user: maylis,
+  campaign: campaign_restos_du_coeur_tables_5_6
+  )
+
+JoinedCampaign.create!(
+  user: basil,
+  campaign: campaign_restos_du_coeur_tables_5_6
+  )
+
+JoinedCampaign.create!(
+  user: benjamin,
+  campaign: campaign_restos_du_coeur_tables_5_6
+  )
+
+JoinedCampaign.create!(
+  user: mamoun,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: henrik,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+
+JoinedCampaign.create!(
+  user: jiwon,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: audrey,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: anne,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: mathieu,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+
+JoinedCampaign.create!(
+  user: maxime,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: johann,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+JoinedCampaign.create!(
+  user: chenchen,
+  campaign: campaign_restos_du_coeur_tables_1_2)
+
+
+JoinedCampaign.create!(
+  user: cindy,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: julien,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: germain,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: louis,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: nicolas,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: lylian,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+JoinedCampaign.create!(
+  user: chris,
+  campaign: campaign_restos_du_coeur_tables_3_4)
+
+
+puts "Created #{JoinedCampaign.all.size} joined campaign instances in seeds.rb"

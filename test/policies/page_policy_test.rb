@@ -1,3 +1,4 @@
+
 require 'test_helper'
 
 class PagePolicyTest < ActiveSupport::TestCase

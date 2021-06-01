@@ -5,22 +5,27 @@ Rails.application.routes.draw do
   get 'steps/new'
   get 'steps/show'
   root to: 'pages#home'
-  
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:show] do 
-    resources :friend_requests, only: [:create] do 
+  resources :users, only: [:index, :show] do
+    collection do
+      post 'search'
+    end
+    resources :friend_requests, only: [:create]do 
       member do 
         patch :accept 
         patch :decline
       end 
     end 
-  end 
+  end
+
+
   resources :campaigns
   resources :charity_events, only: [:show]
   resources :teams, only: [:show]
-  resources :donation_payments, only: [:show, :create] do 
+  resources :donation_payments, only: [:show, :create] do
     resources :payments, only: :new
-  end 
+  end
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'donate', to: 'pages#donate', as: 'donate'
   get 'secret', to: 'pages#secret', as: 'secret'

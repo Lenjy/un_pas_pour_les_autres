@@ -1,8 +1,26 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  skip_after_action :verify_authorized, only: [:search]
+
+  def index
+    if params[:query].present?
+      @users = policy_scope(User).search_by_full_name(params[:query])
+    else
+      @users = policy_scope(User)
+    end
+  end
+
+  def search
+    if params[:query].present?
+      @users = policy_scope(User).search_by_full_name(params[:query])
+    end
+    respond_to do |format|
+      format.json { render json: { html: render_to_string(partial: 'users/user_list.html', formats: :html, locals: {users: @users})}}
+    end
+  end
 
   def show
-    # if current_user.steps.where( date: Date.today) != nil 
+    # if current_user.steps.where( date: Date.today) != nil
     #   current_user.steps.where( date: Date.today).nb_steps = FitnessApi.new(current_user, current_user.token).get_daily_step
     #   current_user.steps.where( date: Date.today).save
     # else
@@ -36,8 +54,8 @@ class UsersController < ApplicationController
       end
       date_to_check = date_to_check.next_day
     end
-    if @week.last.nil?
-      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+    if @week.last.nil? && @week.first.nil?
+      @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
     elsif
       date_tmp = Date.today
       6.times do
@@ -56,13 +74,11 @@ class UsersController < ApplicationController
     @month.each do |steps|
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
-
-    if @month.first.nil? 
-
-      @month_message = "in progress"
-    else 
+    if @month == []
+      @month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
+    else
       @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
-    end  
+    end
 
   end
 
