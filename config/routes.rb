@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get 'steps/show'
   root to: 'pages#home'
 
-  # , controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:index, :show] do
     collection do
       post 'search'
