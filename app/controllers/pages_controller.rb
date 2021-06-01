@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     top_three_companies_generation
     top_three_walkers_generation
     # top_three_teams_generation
+
   end
 
   def dashboard
@@ -16,6 +17,7 @@ class PagesController < ApplicationController
     month_array_generation
     team_one_array_generation
     daily_step
+    set_friend_requests
   end
 
   def donate
@@ -85,6 +87,7 @@ class PagesController < ApplicationController
     @month.each do |steps|
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
+
     if @month == []
       @month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
     else
@@ -162,5 +165,11 @@ class PagesController < ApplicationController
   def is_integer(number)
     number.floor == number
   end
+
+  def set_friend_requests  
+    @pending_friend_requests = current_user.friend_requests_as_receiver.where(status: :pending)
+    @accepted_friend_requests_received = current_user.friend_requests_as_receiver.where(status: :accepted)
+    @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
+  end 
 
 end

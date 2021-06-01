@@ -11,8 +11,15 @@ Rails.application.routes.draw do
     collection do
       post 'search'
     end
-    resources :friend_requests, only: [:create]
+    resources :friend_requests, only: [:create]do 
+      member do 
+        patch :accept 
+        patch :decline
+      end 
+    end 
   end
+
+
   resources :campaigns
   resources :charity_events, only: [:show]
   resources :teams, only: [:show]

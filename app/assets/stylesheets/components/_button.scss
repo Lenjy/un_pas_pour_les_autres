@@ -11,6 +11,21 @@
   }
 }
 
+#charity-btn {
+  color: #4F4F4F;
+  background-color: #FCFCFC;
+  opacity: 0.8;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  border: 1px solid #4F4F4F;
+  &:hover {
+    color: #FCFCFC;
+    background-color: #4F4F4F;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
 #donate-button {
   color: white;
   background-color: $success;
