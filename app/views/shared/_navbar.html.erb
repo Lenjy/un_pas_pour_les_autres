@@ -31,16 +31,28 @@
           <%= link_to dashboard_path, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
           <div class="notif">
             <i class="far fa-bell fa-lg" id="navbarDropdown" data="{ toggle: 'dropdown' }"></i>
-            <div style="border-radius: 50%;padding: 0px 6px;background-color: #4F4F4F;color: white;position: absolute;top: 22px;right: 140px;">
-              <p style="margin: 0px 0px;"> <%= @count_new_notifs %> </p>
+            <div style="border-radius: 50%;background-color: #4F4F4F;color: white;position: absolute;top: 22px;right: 140px;right: 140px;width: 20px;height: 20px;text-align: center;">
+              <p style="margin: -2px 0px;"> <%= @count_new_notifs %> </p>
             </div>
           </div>
           <% end %>
 
           <% unless @notifs == 0 %>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <% @notifs.each do |friends| %>
-                <p style="width: 300px; padding: 8px; margin-bottom: 0px"><%= friends.asker.first_name %> <%= friends.asker.last_name %> is waiting for you to <strong><%= link_to "accept", dashboard_path %> or <%= link_to "decline", dashboard_path, style: "color: #8bbabb" %>  </strong><%= friends.asker.teams.first.name %></p>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="margin: 0px 0px;">
+              <h4 class="text-center pt-2 text-success"><strong>Demande d'ami :</strong></h4>
+              <hr>
+              <% @notifs.each do |friend| %>
+                <div class="d-flex">
+                  <% if friend.asker.photo.attached? %>
+                    <%= cl_image_tag friend.asker.photo.key, crop: :fill, style: "width: 60px;height: 60px;border-radius: 50%;", class: "mx-3" %>
+                  <% end %>
+                  <p style="width: 300px; padding: 8px; margin-bottom: 0px">
+                    <strong><%= link_to  "#{friend.asker.first_name} #{friend.asker.last_name}", user_path(friend.asker.id), class: "show"%></strong> vous demande en amis.
+                  </p>
+                </div>
+                <% if friend != @notifs.last %>
+                <hr>
+                <% end  %>
               <% end %>
             </div>
           <% end %>
