@@ -54,8 +54,8 @@ class UsersController < ApplicationController
       end
       date_to_check = date_to_check.next_day
     end
-    if @week.last.nil?
-      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+    if @week.last.nil? && @week.first.nil?
+      @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
     elsif
       date_tmp = Date.today
       6.times do
@@ -74,8 +74,11 @@ class UsersController < ApplicationController
     @month.each do |steps|
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
-
-    @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    if @month == []
+      @month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
+    else
+      @month_message = "#{I18n.l @month.first.date, format: "%B %Y"}".capitalize
+    end
 
   end
 
