@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+
+  def index
+    @users = policy_scope(User)
+  end
+
   def show
-    # if current_user.steps.where( date: Date.today) != nil 
+    # if current_user.steps.where( date: Date.today) != nil
     #   current_user.steps.where( date: Date.today).nb_steps = FitnessApi.new(current_user, current_user.token).get_daily_step
     #   current_user.steps.where( date: Date.today).save
     # else
