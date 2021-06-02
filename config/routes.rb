@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     collection do
       post 'search'
     end
-    resources :friend_requests, only: [:create]do 
-      member do 
-        patch :accept 
+    resources :friend_requests, only: [:create]do
+      member do
+        patch :accept
         patch :decline
-      end 
-    end 
+      end
+    end
   end
 
 

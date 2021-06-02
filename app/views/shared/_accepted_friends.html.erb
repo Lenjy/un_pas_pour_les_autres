@@ -1,23 +1,44 @@
-    <div class="card-product">
+<div>
+
+    <div class="card-product-infos">
         <% @accepted_friend_requests_received.each do |friend_request| %>
-            <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
-            <div class="card-product-infos">
-                <div>
-                    <h2><%= friend_request.asker.nickname %></h2>
-                    <p><%= friend_request.asker.teams.first.name %></p>
-                </div>
+
+            <%= link_to user_path(friend_request.asker) do %>
+            <div class="avatar_wrap" style="background:pink; width: 40px">
+
+
+                <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
+                            <div class="avatar_bio"><%= friend_request.asker.nickname  %></div>
             </div>
+            <%end %>
         <% end %>
 
-        <% @accepted_friend_requests_sent.each do |friend_request| %>
+
+    <% @accepted_friend_requests_sent.each do |friend_request| %>
+        <%= link_to user_path(friend_request.receiver) do %>
+        <div class="avatar_wrap">
             <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-bordered"} %>
-            <div class="card-product-infos">
-                <div>
-                    <h2><%= friend_request.receiver.nickname %></h2>
-                    <p><%= friend_request.receiver.first.name %></p>
-                </div>
-            </div>
-        <% end %>
-</div>
+            <div class="avatar_bio"><%= friend_request.receiver.nickname  %></div>
+        </div>
+        <%end %>
+    <% end %>
+    </div>
 
+</div>
+<%= console  %>
 <%# it is working %>
+
+
+
+<script>
+    document.querySelectorAll('.avatar_wrap').forEach(item => {
+        item.addEventListener('mouseover', event => {
+            item.getElementsByClassName('avatar_bio')[0].classList.add("show_me")
+        })
+    })
+    document.querySelectorAll('.avatar_wrap').forEach(item => {
+        item.addEventListener('mouseleave', event => {
+            item.getElementsByClassName('avatar_bio')[0].classList.remove("show_me")
+        })
+    })
+</script>
