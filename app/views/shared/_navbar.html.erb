@@ -1,17 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
   <div class="d-flex align-items-center">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo.png", :style => "width: 200px" %>
+      <%= image_tag "unpaspourlesautres_logo.png", :style => "width: 200px" %>
     <% end %>
     <%# <li class="nav-item" style=""> %>
-    <%= form_tag users_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control btn-user-list",
-        id: "search",
-        placeholder: "Trouver un ami" %>
-    <% end %>
-    <div id="user-list" style="position: absolute">
+    <div>
+      <%= form_tag users_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control btn-user-list",
+          id: "search",
+          placeholder: "Trouver un participant" %>
+      <% end %>
+      <div id="user-list" style="position: absolute">
+      </div>
     </div>
   </div>
   <%# </li> %>
