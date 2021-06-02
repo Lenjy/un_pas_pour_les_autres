@@ -3,7 +3,7 @@
 const calculate = (conversion_proposal) => {
     const steps = parseInt(document.querySelector('#total_steps').value);
     const donation_output = document.querySelector('#donation_output');
-    let steps_calculation = steps / parseInt(conversion_proposal.value);
+    let steps_calculation = (steps / parseInt(conversion_proposal.value)).toFixed(2);
     donation_output.value = steps_calculation;
 }
 
