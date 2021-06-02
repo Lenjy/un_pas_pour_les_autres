@@ -3,64 +3,53 @@
     <h1 class="charity_event_title"><%= @charity_event.title %></h1>
   </div>
   <div class="d-flex justify-content-center mt-4">
-     <h1> du <%= @charity_event.date_beginning.strftime("%d %B") %> au <%= @charity_event.date_ending.strftime("%d %B") %></h1>
+    <h1> du <%= @charity_event.date_beginning.strftime("%d %B") %> au <%= @charity_event.date_ending.strftime("%d %B") %></h1>
   </div>
 </div>
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-8 ">
-            <div class="row">
-                <div class="col-8 ">
-                    <h2>Présentation de l'asso</h2>
-                    <p>Elle a pour objectif d'aider les plus démunis et de participer à la lutte contre l'exclusion sociale. Les personnes accueillies bénéficiant de ces aides sont des personnes dans la précarité, et malheureusement tous les profils sont représentés, qu'il s'agisse de personnes seules ou de familles monoparentales, des chômeurs en fin de droit (la moitié des personnes accueillies sont au chômage, déclarait Olivier Berthe en novembre 2013), de retraités disposant du seul « minimum vieillesse » ou encore de jeunes de moins de 25 ans ne disposant pas du RSA. Les Restos du cœur parlent d'une pauvreté prenant un autre visage, avec la venue des travailleurs pauvres. En 2016, 926 000 personnes ont été accueillies par les Restos du Cœur. C'est un nombre qui, contrairement à ce que pensait Coluche à sa création, augmente chaque année.</p>
-                    <p>Les Restos du cœur sont attentifs au bon emploi des fonds mis à leur disposition par les donateurs et les collectivités publiques. Organisation essentiellement financée par les donateurs et les collectivités publiques et animée par des bénévoles, les frais généraux sont très réduits (7 % des ressources en 2012-2013), les dépenses superflues sont éliminées. La procédure d'appels d'offres permet d'obtenir les meilleurs prix. Ainsi, plus de 90 % des ressources financières sont consacrées aux actions.</p>
-                 </div>
+        <div class="col-5">
+            <div class="donate-explanations">
+                <div class="title"><p class="p-none">Comment faire un don</p></div>
+                <p class="card-category-description">
+                    Sélectionner via notre simulateur de pas le nombre de pas que vous souhaitez offir pour 1€, cela calculera le montant de votre donation automatiquement
+                </p>
             </div>
-            <div class="row mt-5">
-                <div class="col-8 ">
-                    <h2>Ce que fait l'asso</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-8 ">
-                    <h2>A quoi sert l'argent</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                </div>
-            </div>
+            
         </div>
-
-        <div class="col-4 card-category">
-            <%= form_tag donation_payments_path, method: "post" do %>
-                <div>
-                    <div class="d-flex card-category-input">
+        <div class="col-7">
+            <div class="computed-donation">
+                <div class="title">
+                    <p class="p-none">Votre simulateur de don</p>
+                </div>
+            <div class="card-category">
+                <%= form_tag donation_payments_path, method: "post" do %>
+                    <div>
+                        <p>Vous avez effectué 
                         <input disabled type="number" value=<%= @step_count %> id="total_steps" name="" class="box-donate">
-                        <i class="fas fa-shoe-prints ml-2 shoes"></i>
+                        pas depuis le début de l'évènement</p>
+                            
+                        <p>Si vous offrez<input type="number" name="" id="conversion_proposal">
+                            pas / 1 euro <i class="fas fa-euro-sign ml-2 euro"></i>
+                        </p>
+                        <p>
+                            cela permet de récolter <input type="text" name="amount" id="donation_output">
+                            pour <%@charity_event.title%><i class="fas fa-praying-hands ml-2 hands"></i>
+                        </p>
+                        <%= hidden_field_tag 'charity_event_id', @charity_event.title %>
+                        <%= submit_tag 'Faire la donation', id: 'donate-button' %>
                     </div>
-                        
-                    <div class="d-flex card-category-input">
-                        <input type="number" name="" class="box-donate" id="conversion_proposal">
-                        <i class="fas fa-shoe-prints ml-2 shoes"></i>
-                        <p class="p-emoticons">/ 1</p><i class="fas fa-euro-sign ml-2 euro"></i>
-                    </div>
-
-                    <div class="d-flex card-category-input">
-                        <input type="text" name="amount" class="box-donate" id="donation_output">
-                        <i class="fas fa-praying-hands ml-2 hands"></i><br/>
-                    </div>
-                     <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
-                     <%= submit_tag 'Donate', id: 'donate-button' %>
-                </div>
-
-            <% end %>
+                <% end %>
+            </div>
         </div>
-
-
     </div>
-    <div class="banner">
-        <div style="height: 45px; margin-bottom: 25px">
-            <span id="banner" style="color: white"></span>
-        </div>
+</div>
+
+
+
+<div class="banner">
+    <div style="height: 45px; margin-bottom: 25px">
+        <span id="banner" style="color: white"></span>
     </div>
 </div>
