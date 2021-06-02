@@ -137,10 +137,17 @@ class PagesController < ApplicationController
     @date_ending = @charity_event.date_ending
     Enterprise.all.each do |enterprise|
       sum_steps = enterprise.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
-      @sorted_companies << [["Entreprise instance", enterprise],
-                            ["# de pas - Entreprise", sum_steps],
+      if enterprise.users == []
+        @sorted_companies << [["Entreprise instance", enterprise],
+                            ["# de pas - Entreprise", 0],
                             ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
-                            ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+                            ["# de pas moyen (employé)", 0]]
+      else
+        @sorted_companies << [["Entreprise instance", enterprise],
+                              ["# de pas - Entreprise", sum_steps],
+                              ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
+                              ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+      end
     end
     @top_three_companies = @sorted_companies.sort_by! { |array| array[-1][-1]}.first(3).reverse
   end
