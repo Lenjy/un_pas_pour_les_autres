@@ -50,12 +50,27 @@
     color: grey;
   }
 
+<style>
+
+.avatar_wrap{
+    position: relative;
+}
+
+.show_me {
+    display: block!important;
+}
+
+.avatar_bio{
+    display:none;
+}
+
 </style>
 
 
 <script>
     document.querySelectorAll('.avatar_wrap').forEach(item => {
         item.addEventListener('mouseover', event => {
+            console.log(event)
             item.getElementsByClassName('avatar_bio')[0].classList.add("show_me")
         })
     })

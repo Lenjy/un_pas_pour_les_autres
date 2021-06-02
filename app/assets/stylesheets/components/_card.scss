@@ -1,16 +1,55 @@
 // GRANDE CARTE
 
+.card-category-description {
+  background-size: cover;
+  background-position: center;
+  height: 270px;
+  color: black;
+  font-size: 18px;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 24px;
+/*   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+ */}
+
+.p-none  {
+  margin-bottom: inherit;
+  margin-top: inherit;
+}
+
+.title {
+  background-size: cover;
+  background-position: center;
+  background-color: #6da8b3;
+  color: white; 
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin-bottom: 5px;
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
   height: 100%;
-  color: white;
-  font-size: 24px;
+  color: black;
+  font-size: 16px;
   font-weight: bold;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10px;
+  padding: 24px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+/*   margin-bottom: 40px; */
 }
 
 .card-category-input {
@@ -191,8 +230,18 @@
   padding: 16px;
 }
 
-.avatar_bio {
+.avatar-bio {
   display: none;
   background-color: white;
   border-radius: 10px;
 }
+
+
+.donate-explanations {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.computed-donation {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
