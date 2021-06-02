@@ -34,6 +34,8 @@ class UsersController < ApplicationController
     month_array_generation
     # private methods TEAM STATISTICS
     team_one_array_generation
+    @receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id).where(status: :accepted)
+    @asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id).where(status: :accepted)
   end
 
   private

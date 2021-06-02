@@ -37,14 +37,16 @@
     </div>
   </div>
   <div>
-    <%= simple_form_for [@user, @friend_request] do |f| %>
-      <%= f.submit "Ajouter en ami", id: 'donate-button'%>
-    <% end %>
+    <% if @asker != [] && @receiver != [] %>
+      <%= simple_form_for [@user, @friend_request] do |f| %>
+        <%= f.submit "Ajouter en ami", id: 'donate-button'%>
+      <% end %>
+    <% end  %>  
   </div>
 </div>
-<% asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id).where(status: :accepted) %>
-<% receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id).where(status: :accepted) %>
-<% if asker != [] || receiver != [] %>
+<%# <% asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id).where(status: :accepted) %>
+<%# <% receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id).where(status: :accepted) %>
+<% if @asker != [] || @receiver != [] %>
   <div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
     <div style="padding-top: 30px;">
       <h1> Vos statistiques </h1>
