@@ -17,10 +17,10 @@
         <div style="color: white">
           <h5 style="color: white; font-size: 30px; margin-bottom: 20px; margin-top: 50px">Fin des dons dans :</h5>
           <div class="d-flex">
-            <span class="countdown-box"><h1 id="countdown-d"></h1><h5>jours</h5></span>
-            <span class="countdown-box"><h1 id="countdown-h"></h1><h5>heures</h5></span>
-            <span class="countdown-box"><h1 id="countdown-m"></h1><h5>minutes</h5></span>
-            <span class="countdown-box"><h1 id="countdown-s"></h1><h5>secondes</h5></span>
+            <span class="countdown-box"><h1 id="countdown-d"></h1><h5 class="m-0">jours</h5></span>
+            <span class="countdown-box"><h1 id="countdown-h"></h1><h5 class="m-0">heures</h5></span>
+            <span class="countdown-box"><h1 id="countdown-m"></h1><h5 class="m-0">minutes</h5></span>
+            <span class="countdown-box"><h1 id="countdown-s"></h1><h5 class="m-0">secondes</h5></span>
           </div>
         </div>
       </div>
@@ -32,11 +32,12 @@
               <%= cl_image_tag "rvmakbvta1d8hsdxfddk", class: "logo-charity"%>
               <div>
                 <h3 class="mt-2 ml-4"><strong><%= @charity_event.charity_name %></strong></h3>
-                <p class="ml-4" style="font-size: 16px;"><%= @charity_event.title %></p>
+                <p class="ml-4" style="text-shadow: none; font-size: 16px"><%= @charity_event.title %></p>
+
               </div>
             </div>
-            <p class="mt-2" style="font-size: 16px;"><%= @charity_event.description %></p>
-            <p class="mt-2 mb-2"> <span style="color: green">Evenement ouvert</span>  Ferme le 6 juin 2021</p>
+            <p class="mt-2" style="font-size: 16px; text-shadow: none"><%= @charity_event.description %></p>
+            <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></p>
             <div class="d-flex mt-4">
               <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-btn" %>
               <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px"%>
@@ -90,9 +91,8 @@
 
   <%= render 'shared/tasks_navbar_homepage',
   label: "Palmarès en cours",
-  tab_one: "Meilleures Entreprises",
-  tab_two: "Meilleurs Marcheurs",
-  tab_three: "Meilleures Teams",
+  tab_one: "Meilleures entreprises",
+  tab_two: "Meilleurs marcheurs",
   message_tab_one: "Les Top entreprises sont triées par nombre de pas moyen par employé.", steps_tab_one: @top_three_companies,
   message_tab_two: "Les Top marcheurs sont triés par nombre de pas total sur l'évènement.", steps_tab_two: @top_three_walkers,
   myclass: "" %>
