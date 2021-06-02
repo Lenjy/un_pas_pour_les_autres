@@ -38,7 +38,7 @@
                             cela permet de récolter <input type="text" name="amount" id="donation_output">
                             pour <%@charity_event.title%><i class="fas fa-praying-hands ml-2 hands"></i>
                         </p>
-                        <%= hidden_field_tag 'charity_event_id', @charity_event.title %>
+                        <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
                         <%= submit_tag 'Faire la donation', id: 'donate-button' %>
 
                     </div>
