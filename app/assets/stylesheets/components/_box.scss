@@ -3,7 +3,7 @@
     text-align: center;
     color: black;
     background-color: white;
-    width: 100px;
+    width: 80px;
     margin-top: 23px;
     font-size: 19px;
     font-weight: bold;
@@ -17,12 +17,33 @@ input#conversion_proposal {
     font-size: inherit;
     line-height: inherit;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #6da8b3;
     text-align: center;
-    width: 100px;
+    width: 180px;
     font-weight: bold;
+    border-bottom: 2px solid #6da8b3;
+    
 }
+input#conversion_proposal:focus {
+    outline: none!important;
+}
+
+input#conversion_proposal::-webkit-outer-spin-button,
+input#conversion_proposal::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+input#conversion_proposal::placeholder  {
+    font-size :16px;
+    font-weight: 400;
+    font-style: italic;
+    color: #6da8b3;
+  }
+
 
 input#donation_output {
     margin: 0;
@@ -30,9 +51,21 @@ input#donation_output {
     font-size: inherit;
     line-height: inherit;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #6da8b3;
     text-align: center;
-    width: 100px;
+    width: 150px;
     font-weight: bold;
+    border-bottom: 2px solid #6da8b3;
+}
+
+input#donation_output::placeholder  {
+    font-size :16px;
+    font-weight: 400;
+    font-style: italic;
+    color: #6da8b3;
+  }
+
+  input#donation_output:focus {
+    outline: none!important;
 }

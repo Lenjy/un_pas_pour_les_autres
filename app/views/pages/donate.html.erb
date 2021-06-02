@@ -14,7 +14,7 @@
             <div class="donate-explanations">
                 <div class="title"><p class="p-none">Comment faire un don</p></div>
                 <p class="card-category-description">
-                    Sélectionner via notre simulateur de pas le nombre de pas que vous souhaitez offir pour 1€, cela calculera le montant de votre donation automatiquement
+                    Sélectionner via notre simulateur de pas <strong>le nombre de pas que vous souhaitez offir pour 1€</strong>, cela calculera le montant de votre donation automatiquement
                 </p>
             </div>
             
@@ -29,14 +29,10 @@
                     <div>
                         <p>Vous avez effectué 
                         <input disabled type="number" value=<%= @step_count %> id="total_steps" name="" class="box-donate">
-                        pas depuis le début de l'évènement</p>
-                            
-                        <p>Si vous offrez<input type="number" name="" id="conversion_proposal">
-                            pas / 1 euro cela permet de récolter
-                        </p>
-                        <p>
-                            <input type="text" name="amount" id="donation_output"> euros 
-                            pour <%=@charity_event.title%><i class="fas fa-praying-hands ml-2 hands"></i>
+                        pas depuis le début de l'évènement. Si vous offrez<input required min="1" type="number" name="" id="conversion_proposal" placeholder="beaucouuuup de">
+                            pas pour 1 euro cela permet de récolter
+                            <input type="text" name="amount" id="donation_output" min="0" placeholder="des millions "> d'euros 
+                            pour l'<%=@charity_event.title%>
                         </p>
                         <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
                         <%= submit_tag 'Faire la donation', id: 'donate-button' %>
