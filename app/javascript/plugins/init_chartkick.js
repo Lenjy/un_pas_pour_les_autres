@@ -27,7 +27,8 @@ const initChartkickTeamOne = () => {
   const div_team_one = document.getElementById('chart-team-one');
   if (div_team_one) {
     const data_team_one = JSON.parse(div_team_one.dataset.steps);
-    new Chartkick.ColumnChart("chart-team-one", data_team_one, { colors: ["rgb(109, 168, 179)"], label: "Nombre de pas",discrete: "true", legend: "false"  });
+    new Chartkick.ColumnChart("chart-team-one", data_team_one, {
+      colors: ["rgb(109, 168, 179)"], label: "Nombre de pas" });
   };}
 
 const initChartkickTopCompanies = () => {
@@ -75,4 +76,5 @@ export { initChartkickTopCompanies };
 export { initChartkickTopWalkers };
 export { initChartkickTopTeams };
 export {initChartkickPreviousMonth};
+
 
