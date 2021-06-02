@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   def home
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
-    # top_three_companies_generation
-    # top_three_walkers_generation
+    top_three_companies_generation
+    top_three_walkers_generation
     # top_three_teams_generation
 
   end
@@ -167,11 +167,11 @@ class PagesController < ApplicationController
     number.floor == number
   end
 
-  def set_friend_requests  
+  def set_friend_requests
     @pending_friend_requests = current_user.friend_requests_as_receiver.where(status: :pending)
     @accepted_friend_requests_received = current_user.friend_requests_as_receiver.where(status: :accepted)
     @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
-  end 
+  end
 
   def get_donation_event
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
