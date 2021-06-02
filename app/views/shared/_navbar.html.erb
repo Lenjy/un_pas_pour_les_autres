@@ -57,7 +57,7 @@
                     <%= cl_image_tag friend.asker.photo.key, crop: :fill, style: "width: 60px;height: 60px;border-radius: 50%;", class: "mx-3" %>
                   <% end %>
                   <p style="width: 300px; padding: 8px; margin-bottom: 0px">
-                    <strong><%= link_to  "#{friend.asker.first_name} #{friend.asker.last_name}", user_path(friend.asker.id), class: "show"%></strong> vous demande en amis.
+                    <strong><%= link_to  "#{friend.asker.first_name} #{friend.asker.last_name}", dashboard_path(anchor: "social_div"), class: "show"%></strong> vous demande en amis.
                   </p>
                 </div>
                 <% if friend != @notifs.last %>
