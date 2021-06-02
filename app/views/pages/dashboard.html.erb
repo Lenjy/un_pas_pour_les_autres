@@ -116,10 +116,13 @@
 <div class="container" style="width:100%; height: auto;">
   <div>
     <div class="row">
-      <div class="col-6">
+
+      <div class="card-trip-statistics col-6" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px" >
+        <h2>Mes amis</h2>
         <%= render  'shared/accepted_friends'%>
       </div>
-      <div class="col-6">
+      <div class="card-trip-statistics col-6" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px">
+        <h2>Demandes d'amis en cours</h2>
         <%= render 'shared/pending_friends'%>
       </div>
     <div>

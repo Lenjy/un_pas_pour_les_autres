@@ -32,7 +32,6 @@ import { initChartkickMonth } from "../plugins/init_chartkick";
 import { initChartkickTeamOne } from "../plugins/init_chartkick";
 import { initChartkickTopCompanies } from "../plugins/init_chartkick";
 import { initChartkickTopWalkers } from "../plugins/init_chartkick";
-import { initChartkickTopTeams } from "../plugins/init_chartkick";
 import { initChartkickPreviousMonth } from "../plugins/init_chartkick";
 
 import { searchPeople } from "../components/search_people";
@@ -49,7 +48,6 @@ document.addEventListener('turbolinks:load', () => {
   initChartkickTeamOne();
   initChartkickTopCompanies();
   initChartkickTopWalkers();
-  initChartkickTopTeams();
   initChartkickPreviousMonth();
 });
 

@@ -4,11 +4,13 @@
         <% @accepted_friend_requests_received.each do |friend_request| %>
 
             <%= link_to user_path(friend_request.asker) do %>
-            <div class="avatar_wrap" style="background:pink; width: 40px">
+            <div class="avatar_wrap" style="width: 40px">
 
 
-                <%= cl_image_tag friend_request.asker.photo.key, {class:"avatar-bordered"} %>
-                            <div class="avatar_bio"><%= friend_request.asker.nickname  %></div>
+                <%= cl_image_tag friend_request.asker.photo.key, class:"avatar-bordered", style:"width: 70px" %>
+                            <div class="avatar_bio">
+                              <%= friend_request.asker.nickname  %>
+                            </div>
             </div>
             <%end %>
         <% end %>
@@ -18,7 +20,9 @@
         <%= link_to user_path(friend_request.receiver) do %>
         <div class="avatar_wrap">
             <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-bordered"} %>
-            <div class="avatar_bio"><%= friend_request.receiver.nickname  %></div>
+            <div class="avatar_bio">
+              <%= friend_request.receiver.nickname  %>
+            </div>
         </div>
         <%end %>
     <% end %>
@@ -26,6 +30,25 @@
 
 </div>
 
+<style>
+
+  .avatar_wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+  }
+
+  .show_me {
+      display: block!important;
+      text-decoration: none;
+  }
+
+  .avatar_bio {
+    display: none;
+    text-decoration: none;
+    margin-left: 8px;
+    color: grey;
+  }
 
 <style>
 
