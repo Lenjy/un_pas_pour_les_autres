@@ -6,11 +6,7 @@
             <div>
                 <h2><%= friend_request.asker.first_name%></h2>
                 <p><%= friend_request.asker.teams.first.name %></p>
-                <p><%= if friend_request.asker.enterprise.nil?
-                        
-                    else 
-                        friend_request.asker.enterprise.first.name 
-                    end %></p>
+                <p></p>
                 <p><%#= friend_request.asker.steps.where(date: Date.today).first.nb_steps %></p>
             </div>
         </div>
