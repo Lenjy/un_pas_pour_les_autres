@@ -18,6 +18,7 @@ class PagesController < ApplicationController
     team_one_array_generation
     daily_step
     set_friend_requests
+    get_donation_event
   end
 
   def donate
@@ -172,4 +173,10 @@ class PagesController < ApplicationController
     @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
   end 
 
+  def get_donation_event
+    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @all_steps_events = current_user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
+    @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
+    @donation_events = @sum_steps * 0.0005
+  end
 end
