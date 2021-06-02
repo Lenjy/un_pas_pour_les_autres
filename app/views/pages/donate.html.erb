@@ -1,9 +1,10 @@
-<div class="banner_show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path "frgowuivphntswpt8jx7"%>'); height: 400px;">
+<div class="banner_show" style="background-image: linear-gradient(139deg, rgba(8, 33, 37,0.5),rgba(109, 167, 178, 0.5) 65.8%, white 66%), url('<%= cl_image_path "frgowuivphntswpt8jx7"%>'); height: 400px;">
+
   <div class="d-flex justify-content-center mt-5">
     <h1 class="charity_event_title"><%= @charity_event.title %></h1>
   </div>
   <div class="d-flex justify-content-center mt-4">
-    <h1> du <%= @charity_event.date_beginning.strftime("%d %B") %> au <%= @charity_event.date_ending.strftime("%d %B") %></h1>
+     <h2 style="color: white"> du <%= I18n.l @charity_event.date_beginning, format:"%d %B" %> au <%= I18n.l @charity_event.date_ending, format:"%d %B" %></h2>
   </div>
 </div>
 
@@ -39,6 +40,7 @@
                         </p>
                         <%= hidden_field_tag 'charity_event_id', @charity_event.title %>
                         <%= submit_tag 'Faire la donation', id: 'donate-button' %>
+
                     </div>
                 <% end %>
             </div>

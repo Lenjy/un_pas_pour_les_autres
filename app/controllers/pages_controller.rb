@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   def home
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
-    # top_three_companies_generation
-    # top_three_walkers_generation
+    top_three_companies_generation
+    top_three_walkers_generation
     # top_three_teams_generation
 
   end
@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   def dashboard
     week_array_generation
     month_array_generation
+    previous_month_array_generation
     team_one_array_generation
     daily_step
     set_friend_requests
@@ -97,6 +98,21 @@ class PagesController < ApplicationController
 
   end
 
+  def previous_month_array_generation
+    @previous_month_steps = {}
+    @previous_month = current_user.steps.select { |ins| ins.date.month == Date.today.prev_month.month }
+    @previous_month = @previous_month.sort_by { |ins| ins.date }
+    @previous_month.each do |steps|
+      @previous_month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
+    end
+    if @previous_month == []
+      @previous_month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
+    else
+      @previous_month_message = "#{I18n.l @previous_month.first.date, format: "%B %Y"}".capitalize
+    end
+
+  end
+
   def team_one_array_generation
     @team_one_steps = []
     @team = current_user.teams.first.users
@@ -121,10 +137,17 @@ class PagesController < ApplicationController
     @date_ending = @charity_event.date_ending
     Enterprise.all.each do |enterprise|
       sum_steps = enterprise.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
-      @sorted_companies << [["Entreprise instance", enterprise],
-                            ["# de pas - Entreprise", sum_steps],
+      if enterprise.users == []
+        @sorted_companies << [["Entreprise instance", enterprise],
+                            ["# de pas - Entreprise", 0],
                             ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
-                            ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+                            ["# de pas moyen (employé)", 0]]
+      else
+        @sorted_companies << [["Entreprise instance", enterprise],
+                              ["# de pas - Entreprise", sum_steps],
+                              ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
+                              ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+      end
     end
     @top_three_companies = @sorted_companies.sort_by! { |array| array[-1][-1]}.first(3).reverse
   end
@@ -144,34 +167,34 @@ class PagesController < ApplicationController
     @top_three_walkers = @sorted_walkers.sort_by! { |array| array[1][-1]}.last(3).reverse
   end
 
-  # def top_three_teams_generation
-  #   @sorted_teams = []
-  #   @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
-  #   @date_beginning = @charity_event.date_beginning
-  #   @date_ending = @charity_event.date_ending
-  #   Team.all.each do |team|
-  #     sum_steps = team.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
-  #     team_donation = 0
-  #     team.users.each do |user|
-  #       joined_campaign = JoinedCampaign.where("? = user_id AND ? = campaign_id", user.id, user.enterprise.campaigns.where(charity_event: @charity_event).first.id).first
-  #       team_donation += joined_campaign.user_donation_event + joined_campaign.conversion_enterprise_donation
-  #     end
-  #     @sorted_teams << [["Team instance", team],
-  #                      ["# de pas - Team", sum_steps],
-  #                      ["Donation en-cours", team_donation]]
-  #   end
-  #   @top_three_teams = @sorted_teams.sort_by! { |array| array[1][-1]}.last(3).reverse
-  # end
+  def top_three_teams_generation
+    @sorted_teams = []
+    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @date_beginning = @charity_event.date_beginning
+    @date_ending = @charity_event.date_ending
+    Team.all.each do |team|
+      sum_steps = team.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
+      team_donation = 0
+      team.users.each do |user|
+        joined_campaign = JoinedCampaign.where("? = user_id AND ? = campaign_id", user.id, user.enterprise.campaigns.where(charity_event: @charity_event).first.id).first
+        team_donation += joined_campaign.user_donation_event + joined_campaign.conversion_enterprise_donation
+      end
+      @sorted_teams << [["Team instance", team],
+                       ["# de pas - Team", sum_steps],
+                       ["Donation en-cours", team_donation]]
+    end
+    @top_three_teams = @sorted_teams.sort_by! { |array| array[1][-1]}.last(3).reverse
+  end
 
   def is_integer(number)
     number.floor == number
   end
 
-  def set_friend_requests  
+  def set_friend_requests
     @pending_friend_requests = current_user.friend_requests_as_receiver.where(status: :pending)
     @accepted_friend_requests_received = current_user.friend_requests_as_receiver.where(status: :accepted)
     @accepted_friend_requests_sent = current_user.friend_requests_as_asker.where(status: :accepted)
-  end 
+  end
 
   def get_donation_event
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last

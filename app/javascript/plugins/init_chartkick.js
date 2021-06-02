@@ -16,12 +16,19 @@ const initChartkickMonth = () => {
     new Chartkick.LineChart("chart-month", data_month, { curve: true, colors: ["rgb(109, 168, 179)"], label: "Nombre de pas" });
   };}
 
+const initChartkickPreviousMonth = () => {
+  const div_previous_month = document.getElementById('chart-previous-month');
+  if (div_previous_month) {
+    const data_previous_month = JSON.parse(div_previous_month.dataset.steps);
+    new Chartkick.LineChart("chart-previous-month", data_previous_month, { curve: true, colors: ["rgb(109, 168, 179)"], label: "Nombre de pas" });
+  };}
 
 const initChartkickTeamOne = () => {
   const div_team_one = document.getElementById('chart-team-one');
   if (div_team_one) {
     const data_team_one = JSON.parse(div_team_one.dataset.steps);
-    new Chartkick.ColumnChart("chart-team-one", data_team_one, { colors: ["rgb(109, 168, 179)"], label: "Nombre de pas",discrete: "true", legend: "false"  });
+    new Chartkick.ColumnChart("chart-team-one", data_team_one, {
+      colors: ["rgb(109, 168, 179)"], label: "Nombre de pas" });
   };}
 
 const initChartkickTopCompanies = () => {
@@ -68,4 +75,6 @@ export { initChartkickTeamOne };
 export { initChartkickTopCompanies };
 export { initChartkickTopWalkers };
 export { initChartkickTopTeams };
+export {initChartkickPreviousMonth};
+
 

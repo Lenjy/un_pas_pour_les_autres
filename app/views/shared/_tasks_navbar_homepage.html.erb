@@ -1,12 +1,13 @@
 <div class="d-block show col-md-auto col-md-auto <%= myclass %>" style="">
+  <div class="card-trip-statistics" style="box-shadow: 0 0 15px rgb(0 0 0 / 20%)">
     <h1><%= label %></h1>
     <div class="card-trip-statistics">
       <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist">
         <li class="nav-item col-6" role="presentation" style="padding-right: 0px; padding-left: 0px">
-          <a class="nav-link user-tasks-navbar-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><%= tab_one %></a>
+          <a class="nav-link user-tasks-navbar-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;"><%= tab_one %></a>
         </li>
         <li class="nav-item col-6" role="presentation" style="padding-right: 0px; padding-left: 0px">
-          <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><%= tab_two %></a>
+          <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;"><%= tab_two %></a>
         </li>
       </ul>
 
@@ -16,7 +17,7 @@
 
           <div class="row">
 
-            <h2 style="margin-top: 20px"><%= message_tab_one %></h2>
+            <h2 style="margin-top: 20px; font-size: 24px"><em><%= message_tab_one %></em></h2>
             <% steps_tab_one.each_with_index do |company, i| %>
 
               <div class="col-3 d-flex justify-content-center">
@@ -28,7 +29,7 @@
               </div>
 
               <div class="col-9">
-                <div class="card-product mt-4">
+                <div class="card-product home mt-4">
                   <% if company[0][-1].photo.attached? %>
                     <%= cl_image_tag company[0][-1].photo.key %>
                   <% else %>
@@ -46,7 +47,7 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
             <div class="row">
-            <h2 style="margin-top: 20px"><%= message_tab_two %></h2>
+            <h2 style="margin-top: 20px; font-size: 24px"><em><%= message_tab_two %></em></h2>
             <% steps_tab_two.each_with_index do |walker, i| %>
 
               <div class="col-3 d-flex justify-content-center">
@@ -58,7 +59,7 @@
               </div>
 
               <div class="col-9">
-                <div class="card-product mt-4">
+                <div class="card-product home mt-4">
                   <% if walker[0][-1].photo.attached? %>
                     <%= cl_image_tag walker[0][-1].photo.key %>
                   <% else %>
@@ -76,3 +77,4 @@
 
     </div>
   </div>
+</div>

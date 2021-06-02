@@ -206,6 +206,12 @@
   border: solid 2px #167FFB;
 }
 
+.card-product.home img {
+  border: none;
+  flex: 0 0 100px;
+  object-fit: contain;
+}
+
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
@@ -230,6 +236,7 @@
   border-radius: 10px;
 }
 
+
 .donate-explanations {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -237,3 +244,4 @@
 .computed-donation {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+

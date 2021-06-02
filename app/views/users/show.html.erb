@@ -1,68 +1,85 @@
-<%= render "shared/banner" %>
-
-<div class="container text-center mt-2" style="position: relative;
-    top: -120px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center">
-
-  <% if @user.photo.attached?  %>
-    <%= cl_image_tag @user.photo.key, class: "avatar-large-centered", crop: :fill %>
-  <% else %>
-    <img class="avatar-large-centered" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
-  <% end %>
-  <%#= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-link' %>
-
-<%= simple_form_for [@user, @friend_request] do |f| %>
-  <%= f.submit "Add Friends", id: 'donate-button'%>
-<% end %>
-
+<div style="    width: 100%;background-color: #6da8b3;height: 200px;"> 
 </div>
-
-<div class="container text-center">
-
-  <div class="d-flex justify-content-between">
-
-    <div class="counter-left">
-      <h4><strong>Nombre de pas</strong></h4>
-      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
-      <div class="d-flex align-items-center">
-        <i class="fas fa-shoe-prints mr-2" style="font-size: 24px"></i>
-        <% if @user.steps.where(date: Date.today).first.nil? %>
-          <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter("no data", :delimiter => ',') %></h2>
-        <% else %>
-          <h2 class="btn btn-lg btn-primary disabled"><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></h2>
-        <% end %>
-      </div>
+<div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+  <div style="display: flex;align-items: center;">
+    <% if @user.photo.attached?  %>
+      <%= cl_image_tag @user.photo.key, style:"width: 220px;height: 220px;border-radius: 50%;", crop: :fill %>
+    <% else %>
+      <img style="width: 160px;height: 160px;border-radius: 50%;" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+    <% end %>
+  </div>
+  <div style="display: flex;align-content: center;flex-direction: column;justify-content: center;align-items: flex-start;">
+    <div style="margin-left: 10px;margin-bottom: 16px;">
+      <h4><strong><%= "#{@user.first_name} #{@user.last_name}"%></strong></h4>
+      <p style="margin: 0px 0px; opacity: 0.5;"> inscrit depuis le <%= I18n.l @user.created_at, format:"%d %B %Y" %> </p>
     </div>
-
-    <div class="counter-right">
-      <h4><strong>Total dons</strong></h4>
-      <p><em>au <%= I18n.l Date.today, format:"%d %B %Y" %></em></p>
-      <div class="d-flex align-items-center">
-        <h2 class="btn btn-lg btn-primary mr-2 disabled">45</h2>
-        <i class="fas fa-hand-holding-usd" style="font-size: 24px"></i>
+    <div class="d-flex">
+      <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
+        <div style="margin: 10px 10px;">
+          <p style="margin: 6px 0px;"> Nombre de pas </p>
+          <% if @user.steps.where(date: Date.today) == [] %>
+            <h1><strong>0</strong></h1>
+          <% else %>
+            <h1><strong><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
+          <% end %>
+        </div>
+      </div>
+      <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
+        <div style="margin: 10px 10px;">
+          <p style="margin: 6px 0px;"> Total don </p>
+          <% if @donation_events.nil? %>
+            <h1><strong>0</strong></h1>
+          <% else %>
+            <h1><strong><%=@donation_events.round(1)%>€</strong></h1>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
-  <%= render 'shared/tasks_navbar_personal',
-  label: "Vos statistiques",
-  tab_one: "Semaine",
-  tab_two: "Mois",
-  tab_three: "Kilomètres",
-  id_tab_one: "week", message_tab_one: @week_message, steps_tab_one: @week_steps,
-  id_tab_two: "month", message_tab_two: @month_message, steps_tab_two: @month_steps,
-  myclass: "" %>
-
-
-  <%# <%= render 'shared/tasks_navbar_team',
-  label: "Vos teams",
-  tab_one: "Team 1",
-  tab_two: "Team 2",
-  tab_three: "Team 3",
-  id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
-  myclass: "mt-5" %>
-
+  <div>
+    <%= simple_form_for [@user, @friend_request] do |f| %>
+      <%= f.submit "Ajouter en ami", id: 'donate-button'%>
+    <% end %>
+  </div>
 </div>
+<% asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id).where(status: :accepted) %>
+<% receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id).where(status: :accepted) %>
+<% if asker != [] || receiver != [] %>
+  <div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+    <div style="padding-top: 30px;">
+      <h1> Vos statistiques </h1>
+      <h5 style="opacity: 0.5;"><%= @week_message %> </h5>
+    </div>
+    <div class="card-trip-statistics" style="padding: 20px 220px;">
+      <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist" style="">
+        <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+          <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">semaines</a>
+        </li>
+        <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+          <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">mois</a>
+        </li>
+        <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
+          <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Kilomètres</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+        <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
+      </div>
+
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div>
+          <div id="chart-month" style="height: 300px; margin-top: 40px" data-steps="<%= @month_steps.to_json %>"></div>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div>
+          <div id="chart-previous-month" style="height: 300px; margin-top: 40px" data-steps="<%= @previous_month_steps.to_json %>"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end  %>

@@ -1,5 +1,5 @@
 <%# <%= render "shared/banner" %>
-<div style="    width: 100%;background-color: #6da8b3;height: 200px;"> 
+<div style="    width: 100%;background-color: #6da8b3;height: 200px;">
 </div>
 <div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
   <div style="display: flex;align-items: center;">
@@ -30,10 +30,10 @@
     </div>
   </div>
   <div>
-    <%= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-success' %>
+    <%= link_to "éditer son profil", edit_user_registration_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px; width: 177px" %>
   </div>
 </div>
-<div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+<div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; padding-bottom: 30px">
   <div style="padding-top: 30px;">
     <h1> Vos statistiques </h1>
     <h5 style="opacity: 0.5;"><%= @week_message %> </h5>
@@ -41,18 +41,18 @@
   <div class="card-trip-statistics" style="padding: 20px 220px;">
     <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist" style="">
       <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
-        <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">semaines</a>
+        <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">Semaine</a>
       </li>
       <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
-        <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">mois</a>
+        <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mois</a>
       </li>
       <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
-        <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Kilomètres</a>
+        <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">mois dernier</a>
       </li>
     </ul>
   </div>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
     </div>
 
@@ -64,7 +64,7 @@
 
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <div>
-        <p style="height: 400px; font-size: 20px; margin: 70px 70px 0px 70px">Sorry, we haven't configured this data yet with <strong>Google APIs</strong>. Our developers are currently working to make this data available.</p>
+        <div id="chart-previous-month" style="height: 300px; margin-top: 40px" data-steps="<%= @previous_month_steps.to_json %>"></div>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@
   tab_three: "Kilomètres",
   id_tab_one: "week", message_tab_one: @week_message, steps_tab_one: @week_steps,
   id_tab_two: "month", message_tab_two: @month_message, steps_tab_two: @month_steps,
-  myclass: "" %> 
+  myclass: "" %>
 </div>
 
 <div class="container text-center bg-white" style="width: 100%;margin-top: 40px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"  >
@@ -103,7 +103,7 @@
   tab_three: "Team 3",
   id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
   myclass: "mt-5" %>
-  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
+  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px; position: relative; z-index: 667; background: white; padding: 10px 0px;margin-top: -28px">
     <% @team.each do |member| %>
     <div style="display: flex;align-items: center;">
       <%= cl_image_tag member.photo.key, class: "avatar-bordered", style:"margin-right: 8px;"%>
@@ -124,3 +124,4 @@
       </div>
     <div>
 </div>
+
