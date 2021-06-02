@@ -1,7 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png", :style => "width: 200px" %>
-  <% end %>
+  <div class="d-flex align-items-center">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo.png", :style => "width: 200px" %>
+    <% end %>
+    <%# <li class="nav-item" style=""> %>
+    <%= form_tag users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control btn-user-list",
+        id: "search",
+        placeholder: "Trouver un ami" %>
+    <% end %>
+    <div id="user-list" style="position: absolute">
+    </div>
+  </div>
+  <%# </li> %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,26 +24,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding: 20px 40px;">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item" style="margin-right: 450px">
-          <%= form_tag users_path, method: :get, class: "d-flex" do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control btn-user-list",
-              id: "search",
-              placeholder: "Trouver un ami" %>
-          <% end %>
-          <div id="user-list" style="position: absolute">
-          </div>
-        </li>
-        <li class="btn btn-primary mr-2 rounded">
-          <% if CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last != nil  %>
-            <%= link_to "Découvrir l'évènement", charity_event_path(CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last), class:"nav-link p-0", style:"color: white; width: max-content" %>
-          <% else %>
-            <%= link_to "Découvrir l'évènement", root_path, class: "nav-link p-0", style:"color: white; width: max-content" %>
-          <% end %>
-        </li>
-        <li class="btn btn-success mr-2 rounded">
-          <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white; width: max-content"%>
+        <li class="btn btn-success mr-2 rounded" style="">
+          <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white; width: max-content;"%>
         </li>
         <li class="nav-item">
           <%= link_to "Profil", dashboard_path, class: "nav-link" %>
@@ -82,15 +77,9 @@
           <% end  %>
         </li>
       <% else %>
-        <li class="nav-item mr-3">
-          <%= link_to "Découvrir #{CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last.charity_name}", charity_event_path(CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last), class: "nav-link bg-primary text-white", id: "charity-button" %>
-        </li>
-        <li class="btn btn-success mr-2">
-          <%= link_to "Faire un don", donate_path, class: "nav-link p-0", :style => "color: white"%>
-        </li>
         <li class="nav-item">
           <%# <%= link_to "Login", new_user_session_path, class: "nav-link"%>
-          <%= link_to "Log in", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-info" %>
+          <%= link_to "Se connecter", user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-info" %>
         </li>
       <% end %>
     </ul>
