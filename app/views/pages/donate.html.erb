@@ -32,11 +32,11 @@
                         pas depuis le début de l'évènement</p>
                             
                         <p>Si vous offrez<input type="number" name="" id="conversion_proposal">
-                            pas / 1 euro <i class="fas fa-euro-sign ml-2 euro"></i>
+                            pas / 1 euro cela permet de récolter
                         </p>
                         <p>
-                            cela permet de récolter <input type="text" name="amount" id="donation_output">
-                            pour <%@charity_event.title%><i class="fas fa-praying-hands ml-2 hands"></i>
+                            <input type="text" name="amount" id="donation_output"> euros 
+                            pour <%=@charity_event.title%><i class="fas fa-praying-hands ml-2 hands"></i>
                         </p>
                         <%= hidden_field_tag 'charity_event_id', @charity_event.id %>
                         <%= submit_tag 'Faire la donation', id: 'donate-button' %>
