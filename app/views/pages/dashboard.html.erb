@@ -1,5 +1,5 @@
 <%# <%= render "shared/banner" %>
-<div style="    width: 100%;background-color: #6da8b3;height: 200px;"> 
+<div style="    width: 100%;background-color: #6da8b3;height: 200px;">
 </div>
 <div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
   <div style="display: flex;align-items: center;">
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div>
-    <%= link_to "éditer son profil", edit_user_registration_path, class: 'btn btn-success' %>
+    <%= link_to "éditer son profil", edit_user_registration_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px; width: 177px" %>
   </div>
 </div>
 <div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
@@ -52,7 +52,7 @@
     </ul>
   </div>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
     </div>
 
@@ -75,7 +75,7 @@
   tab_three: "Kilomètres",
   id_tab_one: "week", message_tab_one: @week_message, steps_tab_one: @week_steps,
   id_tab_two: "month", message_tab_two: @month_message, steps_tab_two: @month_steps,
-  myclass: "" %> 
+  myclass: "" %>
 </div>
 
 <div class="container text-center bg-white" style="width: 100%;margin-top: 40px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;"  >
@@ -124,3 +124,4 @@
       </div>
     <div>
 </div>
+
