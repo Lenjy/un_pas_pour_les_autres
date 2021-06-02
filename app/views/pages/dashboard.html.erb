@@ -33,7 +33,7 @@
     <%= link_to "éditer son profil", edit_user_registration_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px; width: 177px" %>
   </div>
 </div>
-<div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+<div class="container text-center bg-white" style="width: 100%;margin-top: -70px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; padding-bottom: 30px">
   <div style="padding-top: 30px;">
     <h1> Vos statistiques </h1>
     <h5 style="opacity: 0.5;"><%= @week_message %> </h5>
@@ -103,7 +103,7 @@
   tab_three: "Team 3",
   id_tab_one: "team-one", message_tab_one: @team_message, steps_tab_one: @team_one_steps,
   myclass: "mt-5" %>
-  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px">
+  <div class="d-flex justify-content-around" style="margin-left: 58px; margin-right: 6px; margin-bottom: 40px; position: relative; z-index: 667; background: white; padding: 10px 0px;margin-top: -28px">
     <% @team.each do |member| %>
     <div style="display: flex;align-items: center;">
       <%= cl_image_tag member.photo.key, class: "avatar-bordered", style:"margin-right: 8px;"%>
