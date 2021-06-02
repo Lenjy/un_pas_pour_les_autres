@@ -61,7 +61,7 @@
               <div class="col-9">
                 <div class="card-product home mt-4">
                   <% if walker[0][-1].photo.attached? %>
-                    <%= cl_image_tag walker[0][-1].photo.key %>
+                    <%= cl_image_tag walker[0][-1].photo.key, style:"border-radius: 50%;" %>
                   <% else %>
                     <%= cl_image_tag 'pq_lvrytp' %>
                   <% end %>
