@@ -17,7 +17,7 @@
         <div style="color: white">
           <h5 style="color: white; font-size: 30px; margin-bottom: 20px; margin-top: 50px">Fin des dons dans :</h5>
           <div class="d-flex">
-            <span class="countdown-box"><h1 id="countdown-d"></h1><h5 class="m-0">jours</h5></span>
+            <span class="countdown-box" style="margin-left: 0px;"><h1 id="countdown-d"></h1><h5 class="m-0">jours</h5></span>
             <span class="countdown-box"><h1 id="countdown-h"></h1><h5 class="m-0">heures</h5></span>
             <span class="countdown-box"><h1 id="countdown-m"></h1><h5 class="m-0">minutes</h5></span>
             <span class="countdown-box"><h1 id="countdown-s"></h1><h5 class="m-0">secondes</h5></span>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="col-6 ">
-        <div class="card-trip ml-5" style= "height: 100%; border-radius: 20px; width: 450px">
+        <div class="card-trip ml-5" style= "height: 100%; border-radius: 8px; width: 450px">
           <div class="container my-3">
             <div class="d-flex align-items-center">
               <%= cl_image_tag "rvmakbvta1d8hsdxfddk", class: "logo-charity"%>
@@ -40,7 +40,7 @@
             <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></p>
             <div class="d-flex mt-4">
               <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-btn" %>
-              <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white; border-radius: 10px"%>
+              <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white"%>
             </div>
           </div>
         </div>
