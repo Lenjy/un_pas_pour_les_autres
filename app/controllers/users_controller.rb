@@ -82,6 +82,21 @@ class UsersController < ApplicationController
 
   end
 
+  def previous_month_array_generation
+    @previous_month_steps = {}
+    @previous_month = @user.steps.select { |ins| ins.date.month == Date.today.prev_month.month }
+    @previous_month = @previous_month.sort_by { |ins| ins.date }
+    @previous_month.each do |steps|
+      @previous_month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
+    end
+    if @previous_month == []
+      @previous_month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
+    else
+      @previous_month_message = "#{I18n.l @previous_month.first.date, format: "%B %Y"}".capitalize
+    end
+
+  end
+
   def team_one_array_generation
     @team_one_steps = []
     @team = @user.teams.first.users
