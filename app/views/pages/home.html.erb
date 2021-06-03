@@ -62,7 +62,7 @@
         <h1>Evenements passés</h1>
       </div>
       <% @charity_events_past.each do |event| %>
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center" style="padding: 0px 30px;">
           <div class="card-product home mt-4">
             <% if event.photo.attached? %>
               <%= cl_image_tag event.photo.key, crop: :fill %>
