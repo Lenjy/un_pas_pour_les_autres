@@ -123,13 +123,19 @@ class UsersController < ApplicationController
 
   def get_donation_event
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
-    @all_steps_events = current_user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
+    @all_steps_events = @user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005
     if @user.donation_payment_ids != []
       @user.donation_payment_ids.each do |dons|
         @donation_events += dons
       end
+    end
+    # attention pas dynamique pour la suite, il faut pas faire .first mais .where
+    if @donation_events != @user.joined_campaigns.first.user_donation_event
+      campagne = @user.joined_campaigns.first
+      campagne.user_donation_event = @donation_events
+      campagne.save!
     end
   end
 
