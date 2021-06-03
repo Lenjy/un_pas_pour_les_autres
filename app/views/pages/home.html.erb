@@ -75,7 +75,7 @@
                 <p><%= event.description %></p>
               </div>
               <div class="text-center box-donate2" style="border-radius: 5px;">
-                <p class='m-0'>Dons récoltés : <strong><%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</strong></p>
+                <p class='m-0'>Dons récoltés : <strong style="font-size: 16px; text-align:left"><%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</strong></p>
               </div>
             </div>
           </div>
@@ -85,15 +85,17 @@
   </div>
 </div>
 
-<div style="">
-  <div class="container text-center mt-5 mb-3">
+<div style="background-image: linear-gradient(rgba(8, 33, 37,0.5),rgba(109, 167, 178, 0.5)), url('<%= cl_image_path("dn98m8xebo6vxhtfz6se")%>'); height: 950px; display: flex; background-size: cover">
+  <div class="container text-center mt-5 mb-3 p-0">
 
     <%= render 'shared/tasks_navbar_homepage',
     label: "Palmarès en cours",
     tab_one: "Meilleures entreprises",
     tab_two: "Meilleurs marcheurs",
-    message_tab_one: "Les Top entreprises sont triées par nombre de pas moyen par employé.", steps_tab_one: @top_three_companies,
-    message_tab_two: "Les Top marcheurs sont triés par nombre de pas total sur l'évènement.", steps_tab_two: @top_three_walkers,
+    message_tab_one: "Les Meilleures entreprises sont triées par nombre de pas moyen par employé.", steps_tab_one: @top_three_companies,
+    rounded_max_one: @rounded_max_company,
+    message_tab_two: "Les Meilleurs marcheurs sont triés par nombre de pas total sur l'évènement.", steps_tab_two: @top_three_walkers,
+    rounded_max_two: @rounded_max_walker,
     myclass: "" %>
 
   </div>

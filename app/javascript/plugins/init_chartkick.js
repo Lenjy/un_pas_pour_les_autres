@@ -32,26 +32,38 @@ const initChartkickTeamOne = () => {
   };}
 
 const initChartkickTopCompanies = () => {
-  // const div_home = document.getElementById('chart-home-company-1');
   const three_companies = document.querySelectorAll('*[id^="chart-home-company"]');
   if (three_companies) {
     three_companies.forEach((company, index) => {
       // console.log(index + 1);
       const data_company = JSON.parse(company.dataset.steps);
-      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"] });
+      const max_company = JSON.parse(company.dataset.max);
+      // console.log(data_company);
+      // console.log(max_company);
+      new Chartkick.BarChart(`chart-home-company-${index + 1}`,
+                              data_company,
+                              { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"],
+                                max: max_company
+                              });
     });
   };
 }
 
 const initChartkickTopWalkers = () => {
-  // const div_home = document.getElementById('chart-home-company-1');
   const three_walkers = document.querySelectorAll('*[id^="chart-home-walker"]');
   if (three_walkers) {
     three_walkers.forEach((walker, index) => {
       // console.log(walker);
       // console.log(index + 1);
       const data_walkers = JSON.parse(walker.dataset.steps);
-      new Chartkick.BarChart(`chart-home-walker-${index + 1}`, data_walkers, { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"]});
+      const max_walkers = JSON.parse(walker.dataset.max);
+      // console.log(data_walkers);
+      // console.log(max_walkers);
+      new Chartkick.BarChart(`chart-home-walker-${index + 1}`,
+                              data_walkers,
+                              { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"],
+                                max: max_walkers
+                              });
     });
   };
 }

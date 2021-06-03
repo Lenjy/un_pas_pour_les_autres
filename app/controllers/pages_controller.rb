@@ -9,7 +9,6 @@ class PagesController < ApplicationController
     top_three_companies_generation
     top_three_walkers_generation
     # top_three_teams_generation
-
   end
 
   def dashboard
@@ -89,7 +88,6 @@ class PagesController < ApplicationController
     @month.each do |steps|
       @month_steps[I18n.l steps.date, format:'%d %B'] = steps.nb_steps
     end
-
     if @month == []
       @month_message = "#{I18n.l Date.today, format: "%B %Y"}".capitalize
     else
@@ -148,6 +146,8 @@ class PagesController < ApplicationController
       end
     end
     @top_three_companies = @sorted_companies.sort_by! { |array| array[1][-1]}.first(3).reverse
+    @max_company = @top_three_companies.map {|element| element.last(1).flatten}.map(&:last).max
+    @rounded_max_company = (@max_company / 10000 + 1).round * 10000
   end
 
   def top_three_walkers_generation
@@ -163,6 +163,8 @@ class PagesController < ApplicationController
                          ["Dons", joined_campaign.user_donation_event]]
     end
     @top_three_walkers = @sorted_walkers.sort_by! { |array| array[1][-1]}.last(3).reverse
+    @max_walker = @top_three_walkers.map {|element| element[1].flatten}.map(&:last).max
+    @rounded_max_walker = (@max_walker / 10000 + 1).round * 10000
   end
 
   # def top_three_teams_generation

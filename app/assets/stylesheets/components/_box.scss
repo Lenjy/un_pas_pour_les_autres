@@ -17,13 +17,13 @@ input#conversion_proposal {
     font-size: inherit;
     line-height: inherit;
     border: none;
-    font-size: 16px;
+    font-size: 19px;
     color: #6da8b3;
     text-align: center;
     width: 180px;
     font-weight: bold;
     border-bottom: 2px solid #6da8b3;
-    
+
 }
 input#conversion_proposal:focus {
     outline: none!important;
@@ -38,7 +38,7 @@ input#conversion_proposal::-webkit-inner-spin-button {
 
 
 input#conversion_proposal::placeholder  {
-    font-size :16px;
+    font-size :19px;
     font-weight: 400;
     font-style: italic;
     color: #6da8b3;
@@ -51,7 +51,7 @@ input#donation_output {
     font-size: inherit;
     line-height: inherit;
     border: none;
-    font-size: 16px;
+    font-size: 19px;
     color: #6da8b3;
     text-align: center;
     width: 150px;
@@ -60,7 +60,7 @@ input#donation_output {
 }
 
 input#donation_output::placeholder  {
-    font-size :16px;
+    font-size :19px;
     font-weight: 400;
     font-style: italic;
     color: #6da8b3;
