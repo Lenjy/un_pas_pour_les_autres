@@ -37,7 +37,7 @@
               </div>
             </div>
             <p class="mt-2" style="font-size: 16px; text-shadow: none"><%= @charity_event.description %></p>
-            <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></p>
+            <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <span><%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></span></p>
             <div class="d-flex mt-4">
               <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-btn" %>
               <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white"%>
@@ -99,13 +99,15 @@
 
 </div>
 
-
+<%# A LAISSER POUR LE COUNTDOWN TIMER %>
+<span id="date-ending" style="display: none"><%= @charity_event.date_ending%></span>
 
 
 <%# A LAISSER - CODE JAVASCRIPT POUR COUNTDOWN %>
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Jun 7, 2021 12:00:00").getTime();
+const dateEndOfEvent = document.getElementById("date-ending");
+var countDownDate = new Date(dateEndOfEvent.innerHTML).getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
