@@ -29,15 +29,29 @@
 
 
     <% @accepted_friend_requests_sent.each do |friend_request| %>
-        <%= link_to user_path(friend_request.receiver) do %>
-        <div class="avatar_wrap">
-            <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-bordered"} %>
-            <div>
-                <h1><%= friend_request.receiver.nickname  %></h1>
+         <hr>
+            <div class="avatar_wrap d-flex justify-content-between" style="">
+                <div style="margin-right: 20px;">
+                    <%= link_to user_path(friend_request.receiver) do %>
+                    <%= cl_image_tag friend_request.receiver.photo.key, class:"avatar-bordered", style:"width: 70px" %>
+                    <%end %>
+                </div>
+                <div class="flex-grow-1">
+                    <p class="text-success"style="margin: 0px 0px;"><strong><%= friend_request.receiver.nickname %></strong></p>
+                    <p style="margin: 0px 0px;">Name : <%= friend_request.receiver.first_name %> <%= friend_request.receiver.last_name %></p>
+                    <p style="margin: 0px 0px;">Entreprise : <%= friend_request.receiver.enterprise.name %></p>
+                    <p style="margin: 0px 0px;">Team : <%= friend_request.receiver.teams.first.name %></p>
+                </div>
+                <div class="text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 120px;border-radius: 8px;">
+                    <div style="margin: 10px 10px;">
+                        <p style="margin: 6px 0px;font-size: 12px;">Pas du jour :</p>
+                        <% if current_user.steps.where(date: Date.today) == [] %>
+                            <% Step.create!(date: Date.today,user_id: friend_request.receiver.id, nb_steps: 0)  %>
+                        <% end %>
+                        <h1 class="font-size: 40px;"><strong><%= number_with_delimiter(friend_request.receiver.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
+                    </div>
+                </div>
             </div>
-        </div>
-        <%end %>
-    <% end %>
     </div>
 
 </div>
