@@ -37,7 +37,7 @@
               </div>
             </div>
             <p class="mt-2" style="font-size: 16px; text-shadow: none"><%= @charity_event.description %></p>
-            <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></p>
+            <p class="mt-2 mb-2" style=" text-shadow: none"> <span style="color: rgb(25, 205, 29)"><strong>Evenement en cours</strong></span> jusqu'au <span><%= I18n.l @charity_event.date_ending, format:"%d %B %Y"%></span></p>
             <div class="d-flex mt-4">
               <%= link_to "Découvrir #{@charity_event.charity_name}", charity_event_path(@charity_event), class: "mr-3 p-2", id: "charity-btn" %>
               <%= link_to "Faire un don", donate_path, class: "btn btn-success p-2", :style => "color: white"%>
@@ -75,7 +75,7 @@
                 <p><%= event.description %></p>
               </div>
               <div class="text-center box-donate2" style="border-radius: 5px;">
-                <p class='m-0'><strong>Dons récoltés: <%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</strong></p>
+                <p class='m-0'>Dons récoltés : <strong><%= number_with_delimiter(event.total_donation, :delimiter => ' ') %> €</strong></p>
               </div>
             </div>
           </div>
@@ -85,27 +85,29 @@
   </div>
 </div>
 
-<hr>
+<div style="">
+  <div class="container text-center mt-5 mb-3">
 
-<div class="container text-center mt-5 mb-3">
+    <%= render 'shared/tasks_navbar_homepage',
+    label: "Palmarès en cours",
+    tab_one: "Meilleures entreprises",
+    tab_two: "Meilleurs marcheurs",
+    message_tab_one: "Les Top entreprises sont triées par nombre de pas moyen par employé.", steps_tab_one: @top_three_companies,
+    message_tab_two: "Les Top marcheurs sont triés par nombre de pas total sur l'évènement.", steps_tab_two: @top_three_walkers,
+    myclass: "" %>
 
-  <%= render 'shared/tasks_navbar_homepage',
-  label: "Palmarès en cours",
-  tab_one: "Meilleures entreprises",
-  tab_two: "Meilleurs marcheurs",
-  message_tab_one: "Les Top entreprises sont triées par nombre de pas moyen par employé.", steps_tab_one: @top_three_companies,
-  message_tab_two: "Les Top marcheurs sont triés par nombre de pas total sur l'évènement.", steps_tab_two: @top_three_walkers,
-  myclass: "" %>
-
+  </div>
 </div>
 
-
+<%# A LAISSER POUR LE COUNTDOWN TIMER %>
+<span id="date-ending" style="display: none"><%= @charity_event.date_ending%></span>
 
 
 <%# A LAISSER - CODE JAVASCRIPT POUR COUNTDOWN %>
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Jun 7, 2021 12:00:00").getTime();
+const dateEndOfEvent = document.getElementById("date-ending");
+var countDownDate = new Date(dateEndOfEvent.innerHTML).getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {

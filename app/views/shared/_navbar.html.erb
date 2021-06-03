@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
   <div class="d-flex align-items-center">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand", style: "margin-left: 1.5rem; margin-right: 3rem" do %>
       <%= image_tag "unpaspourlesautres_logo.png", :style => "width: 200px" %>
     <% end %>
     <%# <li class="nav-item" style=""> %>
@@ -9,6 +9,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control btn-user-list",
+          autocomplete: "off",
           id: "search",
           placeholder: "Trouver un participant" %>
       <% end %>

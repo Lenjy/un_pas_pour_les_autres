@@ -48,3 +48,14 @@
 .btn-user-list {
   width: 212px;
 }
+
+#edit-button {
+  margin-bottom: 0.5rem;
+  margin-left: 20px;
+  color: rgba(109, 168, 179, 0.5);
+  font-size: 22px;
+  transition: color 0.3s ease;
+  &:hover{
+    color: rgba(109, 168, 179, 1)
+  }
+}

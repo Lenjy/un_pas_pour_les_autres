@@ -139,17 +139,15 @@ class PagesController < ApplicationController
       sum_steps = enterprise.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
       if enterprise.users == []
         @sorted_companies << [["Entreprise instance", enterprise],
-                            ["# de pas - Entreprise", 0],
-                            ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
-                            ["# de pas moyen (employé)", 0]]
+                            ["Ratio pas / employé", 0],
+                            ["Total de pas", 0]]
       else
         @sorted_companies << [["Entreprise instance", enterprise],
-                              ["# de pas - Entreprise", sum_steps],
-                              ["Donation en-cours", Campaign.where(enterprise_id: enterprise.id).first.max_contribution],
-                              ["# de pas moyen (employé)", sum_steps / enterprise.users.count]]
+                              ["Ratio pas / employé", sum_steps / enterprise.users.count],
+                              ["Total de pas", sum_steps]]
       end
     end
-    @top_three_companies = @sorted_companies.sort_by! { |array| array[-1][-1]}.first(3).reverse
+    @top_three_companies = @sorted_companies.sort_by! { |array| array[1][-1]}.first(3).reverse
   end
 
   def top_three_walkers_generation
@@ -161,30 +159,30 @@ class PagesController < ApplicationController
       joined_campaign = JoinedCampaign.where("? = user_id AND ? = campaign_id", user.id, user.enterprise.campaigns.where(charity_event: @charity_event).first.id).first
       sum_steps = user.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
       @sorted_walkers << [["User instance", user],
-                         ["# de pas totaux", sum_steps],
-                         ["Donation en-cours", joined_campaign.user_donation_event + joined_campaign.conversion_enterprise_donation]]
+                         ["Total de pas", sum_steps],
+                         ["Dons", joined_campaign.user_donation_event]]
     end
     @top_three_walkers = @sorted_walkers.sort_by! { |array| array[1][-1]}.last(3).reverse
   end
 
-  def top_three_teams_generation
-    @sorted_teams = []
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
-    @date_beginning = @charity_event.date_beginning
-    @date_ending = @charity_event.date_ending
-    Team.all.each do |team|
-      sum_steps = team.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
-      team_donation = 0
-      team.users.each do |user|
-        joined_campaign = JoinedCampaign.where("? = user_id AND ? = campaign_id", user.id, user.enterprise.campaigns.where(charity_event: @charity_event).first.id).first
-        team_donation += joined_campaign.user_donation_event + joined_campaign.conversion_enterprise_donation
-      end
-      @sorted_teams << [["Team instance", team],
-                       ["# de pas - Team", sum_steps],
-                       ["Donation en-cours", team_donation]]
-    end
-    @top_three_teams = @sorted_teams.sort_by! { |array| array[1][-1]}.last(3).reverse
-  end
+  # def top_three_teams_generation
+  #   @sorted_teams = []
+  #   @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+  #   @date_beginning = @charity_event.date_beginning
+  #   @date_ending = @charity_event.date_ending
+  #   Team.all.each do |team|
+  #     sum_steps = team.steps.where("? < date AND ? > date", @date_beginning, @date_ending).sum(:nb_steps)
+  #     team_donation = 0
+  #     team.users.each do |user|
+  #       joined_campaign = JoinedCampaign.where("? = user_id AND ? = campaign_id", user.id, user.enterprise.campaigns.where(charity_event: @charity_event).first.id).first
+  #       team_donation += joined_campaign.user_donation_event + joined_campaign.conversion_enterprise_donation
+  #     end
+  #     @sorted_teams << [["Team instance", team],
+  #                      ["# de pas - Team", sum_steps],
+  #                      ["Donation en-cours", team_donation]]
+  #   end
+  #   @top_three_teams = @sorted_teams.sort_by! { |array| array[1][-1]}.last(3).reverse
+  # end
 
   def is_integer(number)
     number.floor == number
