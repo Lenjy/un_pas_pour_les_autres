@@ -2,17 +2,29 @@
 
     <div class="card-product-infos">
         <% @accepted_friend_requests_received.each do |friend_request| %>
-
-            <%= link_to user_path(friend_request.asker) do %>
-            <div class="avatar_wrap" style="width: 40px">
-
-
-                <%= cl_image_tag friend_request.asker.photo.key, class:"avatar-bordered", style:"width: 70px" %>
-                            <div class="avatar_bio">
-                              <%= friend_request.asker.nickname  %>
-                            </div>
+            <hr>
+            <div class="avatar_wrap d-flex justify-content-between" style="">
+                <div style="margin-right: 20px;">
+                    <%= link_to user_path(friend_request.asker) do %>
+                    <%= cl_image_tag friend_request.asker.photo.key, class:"avatar-bordered", style:"width: 70px" %>
+                    <%end %>
+                </div>
+                <div class="flex-grow-1">
+                    <p class="text-success"style="margin: 0px 0px;"><strong><%= friend_request.asker.nickname %></strong></p>
+                    <p style="margin: 0px 0px;">Name : <%= friend_request.asker.first_name %> <%= friend_request.asker.last_name %></p>
+                    <p style="margin: 0px 0px;">Entreprise : <%= friend_request.asker.enterprise.name %></p>
+                    <p style="margin: 0px 0px;">Team : <%= friend_request.asker.teams.first.name %></p>
+                </div>
+                <div class="text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 120px;border-radius: 8px;">
+                    <div style="margin: 10px 10px;">
+                        <p style="margin: 6px 0px;font-size: 12px;">Pas du jour :</p>
+                        <% if current_user.steps.where(date: Date.today) == [] %>
+                            <% Step.create!(date: Date.today,user_id: friend_request.asker.id, nb_steps: 0)  %>
+                        <% end %>
+                        <h1 class="font-size: 40px;"><strong><%= number_with_delimiter(friend_request.asker.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
+                    </div>
+                </div>
             </div>
-            <%end %>
         <% end %>
 
 
@@ -20,8 +32,8 @@
         <%= link_to user_path(friend_request.receiver) do %>
         <div class="avatar_wrap">
             <%= cl_image_tag friend_request.receiver.photo.key, {class:"avatar-bordered"} %>
-            <div class="avatar_bio">
-              <%= friend_request.receiver.nickname  %>
+            <div>
+                <h1><%= friend_request.receiver.nickname  %></h1>
             </div>
         </div>
         <%end %>
@@ -50,8 +62,6 @@
     color: grey;
   }
 
-<style>
-
 .avatar_wrap{
     position: relative;
 }
@@ -68,7 +78,7 @@
 
 
 <script>
-    document.querySelectorAll('.avatar_wrap').forEach(item => {
+    <%# document.querySelectorAll('.avatar_wrap').forEach(item => {
         item.addEventListener('mouseover', event => {
             console.log(event)
             item.getElementsByClassName('avatar_bio')[0].classList.add("show_me")
@@ -78,5 +88,5 @@
         item.addEventListener('mouseleave', event => {
             item.getElementsByClassName('avatar_bio')[0].classList.remove("show_me")
         })
-    })
+    }) %>
 </script>
