@@ -47,7 +47,7 @@
     </div>
   </div>
   <div>
-    <% if @asker != [] && @receiver != [] %>
+    <% if @asker == [] && @receiver == [] %>
       <%= simple_form_for [@user, @friend_request] do |f| %>
         <%= f.submit "Ajouter en ami", id: 'donate-button'%>
       <% end %>
