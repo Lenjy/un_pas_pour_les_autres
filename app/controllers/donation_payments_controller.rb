@@ -18,7 +18,7 @@ class DonationPaymentsController < ApplicationController
       
         @donation_payment.update(checkout_session: session.id)
         p session
-        if Rails.env.production?
+        if Rails.env.development?
           session.success_url = "https://www.unpaspourlesautres.me/donation_payments/#{@donation_payment}"
           session.cancel_url = "https://www.unpaspourlesautres.me/"
         end
