@@ -22,7 +22,6 @@ class DonationPaymentsController < ApplicationController
           session.success_url = "https://www.unpaspourlesautres.me/donation_payments/#{@donation_payment}"
           session.cancel_url = "https://www.unpaspourlesautres.me/"
         end
-        raise
         redirect_to new_donation_payment_payment_path(@donation_payment)
       end
 
