@@ -206,5 +206,11 @@ class PagesController < ApplicationController
         @donation_events += dons
       end
     end
+    # attention pas dynamique pour la suite, il faut pas faire .first mais .where
+    if @donation_events != current_user.joined_campaigns.first.user_donation_event
+      campagne = current_user.joined_campaigns.first
+      campagne.user_donation_event = @donation_events
+      campagne.save!
+    end
   end
 end
