@@ -38,7 +38,7 @@ const initChartkickTopCompanies = () => {
     three_companies.forEach((company, index) => {
       // console.log(index + 1);
       const data_company = JSON.parse(company.dataset.steps);
-      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)"] });
+      new Chartkick.BarChart(`chart-home-company-${index + 1}`, data_company, { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"] });
     });
   };
 }
@@ -51,7 +51,7 @@ const initChartkickTopWalkers = () => {
       // console.log(walker);
       // console.log(index + 1);
       const data_walkers = JSON.parse(walker.dataset.steps);
-      new Chartkick.BarChart(`chart-home-walker-${index + 1}`, data_walkers, { colors: ["rgb(109, 168, 179)"]});
+      new Chartkick.BarChart(`chart-home-walker-${index + 1}`, data_walkers, { colors: ["rgb(109, 168, 179)", "rgba(109, 168, 179, 0.2)"]});
     });
   };
 }
