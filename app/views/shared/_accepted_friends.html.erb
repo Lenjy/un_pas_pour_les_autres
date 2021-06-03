@@ -18,7 +18,7 @@
                 <div class="text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 120px;border-radius: 8px;">
                     <div style="margin: 10px 10px;">
                         <p style="margin: 6px 0px;font-size: 12px;">Pas du jour :</p>
-                        <% if current_user.steps.where(date: Date.today) == [] %>
+                        <% if friend_request.receiver.steps.where(date: Date.today) == [] %>
                             <% Step.create!(date: Date.today,user_id: friend_request.asker.id, nb_steps: 0)  %>
                         <% end %>
                         <h1 class="font-size: 40px;"><strong><%= number_with_delimiter(friend_request.asker.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
@@ -45,7 +45,7 @@
                 <div class="text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 120px;border-radius: 8px;">
                     <div style="margin: 10px 10px;">
                         <p style="margin: 6px 0px;font-size: 12px;">Pas du jour :</p>
-                        <% if current_user.steps.where(date: Date.today) == [] %>
+                        <% if friend_request.receiver.steps.where(date: Date.today) == [] %>
                             <% Step.create!(date: Date.today,user_id: friend_request.receiver.id, nb_steps: 0)  %>
                         <% end %>
                         <h1 class="font-size: 40px;"><strong><%= number_with_delimiter(friend_request.receiver.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
