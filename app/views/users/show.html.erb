@@ -16,7 +16,7 @@
     <div class="d-flex">
       <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
         <div style="margin: 10px 10px;">
-          <p style="margin: 6px 0px;"> Nombre de pas </p>
+          <p style="margin: 6px 0px;"> Pas du jour : </p>
           <% if @user.steps.where(date: Date.today) == [] %>
             <h1><strong>0</strong></h1>
           <% else %>
@@ -26,7 +26,17 @@
       </div>
       <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
         <div style="margin: 10px 10px;">
-          <p style="margin: 6px 0px;"> Total don </p>
+          <p style="margin: 6px 0px;"> Total de pas : </p>
+          <% if @user.steps.where(date: Date.today) == [] %>
+            <h1><strong><%= @sum_steps %></strong></h1>
+          <% else %>
+            <h1><strong><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
+          <% end %>
+        </div>
+      </div>
+      <div class="m-2 text-white" style="background-color: rgb(109, 168, 179);width: 150px;height: 100px;border-radius: 8px;">
+        <div style="margin: 10px 10px;">
+          <p style="margin: 6px 0px;"> Total de dons : </p>
           <% if @donation_events.nil? %>
             <h1><strong>0</strong></h1>
           <% else %>
@@ -55,13 +65,13 @@
     <div class="card-trip-statistics" style="padding: 20px 220px;">
       <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist" style="">
         <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
-          <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">semaines</a>
+          <a class="nav-link user-tasks-navbar-tab active" id="home-tab left" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="border-top-left-radius: 20px;border-bottom-left-radius: 20px;">semaine</a>
         </li>
         <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
           <a class="nav-link user-tasks-navbar-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">mois</a>
         </li>
         <li class="nav-item col-4" role="presentation" style="padding: 0px 0px">
-          <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Kilomètres</a>
+          <a class="nav-link user-tasks-navbar-tab" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px;">précédent mois</a>
         </li>
       </ul>
     </div>

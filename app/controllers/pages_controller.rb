@@ -201,5 +201,10 @@ class PagesController < ApplicationController
     @all_steps_events = current_user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005
+    if current_user.donation_payment_ids != []
+      current_user.donation_payment_ids.each do |dons|
+        @donation_events += dons
+      end
+    end
   end
 end
