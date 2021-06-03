@@ -1,17 +1,22 @@
-<div style="    width: 100%;background-color: #6da8b3;height: 200px;"> 
+<div style="    width: 100%;background-color: #6da8b3;height: 200px;">
 </div>
 <div class="container bg-white rounded d-flex" style="width: 100%;height: 300px;position: relative;top: -100px; justify-content: space-around;align-items: center; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
   <div style="display: flex;align-items: center;">
     <% if @user.photo.attached?  %>
-      <%= cl_image_tag @user.photo.key, style:"width: 220px;height: 220px;border-radius: 50%;", crop: :fill %>
+      <%= cl_image_tag @user.photo.key, style:"width: 220px;height: 220px;border-radius: 50%; box-shadow: 0px 3px 20px rgb(0 0 0 / 15%)", crop: :fill %>
     <% else %>
-      <img style="width: 160px;height: 160px;border-radius: 50%;" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
+      <img style="width: 160px;height: 160px;border-radius: 50%; box-shadow: 0px 3px 20px rgb(0 0 0 / 15%)" alt="avatar-large" src="https://images.unsplash.com/photo-1590860773824-a6767b15dd59?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fG5vdGhpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
     <% end %>
   </div>
   <div style="display: flex;align-content: center;flex-direction: column;justify-content: center;align-items: flex-start;">
-    <div style="margin-left: 10px;margin-bottom: 16px;">
-      <h4><strong><%= "#{@user.first_name} #{@user.last_name}"%></strong></h4>
-      <p style="margin: 0px 0px; opacity: 0.5;"> inscrit depuis le <%= I18n.l @user.created_at, format:"%d %B %Y" %> </p>
+    <div class="d-flex" style="margin-left: 10px;margin-bottom: 16px;">
+      <div>
+        <h4><strong><%= "#{@user.first_name } #{@user.last_name}"%></strong></h4>
+        <p style="margin: 0px 0px; opacity: 0.5;"> inscrit depuis le <%= I18n.l @user.created_at, format:"%d %B %Y" %> </p>
+      </div>
+      <% if @user.enterprise.photo.attached? %>
+        <div style="margin-left: 150px"><%= cl_image_tag @user.enterprise.photo.key, style: "height: 50px" %></div>
+      <% end %>
     </div>
     <div class="d-flex">
       <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
@@ -51,7 +56,7 @@
       <%= simple_form_for [@user, @friend_request] do |f| %>
         <%= f.submit "Ajouter en ami", id: 'donate-button'%>
       <% end %>
-    <% end  %>  
+    <% end  %>
   </div>
 </div>
 <%# <% asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id).where(status: :accepted) %>
@@ -76,7 +81,7 @@
       </ul>
     </div>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div id="chart-week" style="height: 300px; margin-top: 40px" data-steps="<%= @week_steps.to_json %>"></div>
       </div>
 
