@@ -33,7 +33,7 @@
         <div style="margin: 10px 10px;">
           <p style="margin: 6px 0px;"> Total de pas : </p>
           <% if @user.steps.where(date: Date.today) == [] %>
-            <h1><strong><%= @sum_steps %></strong></h1>
+            <h1><strong><%= number_with_delimiter(@sum_steps, :delimiter => ',') %></strong></h1>
           <% else %>
             <h1><strong><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
           <% end %>
