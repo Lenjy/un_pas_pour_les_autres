@@ -69,15 +69,18 @@ class PagesController < ApplicationController
       date_to_check = date_to_check.next_day
     end
     if @week.last.nil? && @week.first.nil?
-      @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+      # @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+      @week_message = "Semaine du 31 mai au 6 juin "
     elsif
       date_tmp = Date.today
       6.times do
         date_tmp = date_tmp.yesterday
       end
-      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l date_tmp, format:"%d %B %Y"}"
+      @week_message = "Semaine du 31 mai au 6 juin "
+      # @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l date_tmp, format:"%d %B %Y"}"
     else
-      @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
+      @week_message = "Semaine du 31 mai au 6 juin "
+      # @week_message = "Semaine du #{I18n.l @week.first.date, format:"%d %B %Y"} au #{I18n.l @week.last.date, format:"%d %B %Y"}"
     end
   end
 
@@ -202,8 +205,8 @@ class PagesController < ApplicationController
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005
     if current_user.donation_payment_ids != []
-      current_user.donation_payment_ids.each do |dons|
-        @donation_events += dons
+      current_user.donation_payments.each do |dons|
+        @donation_events = @donation_events + ( dons.amount_cents / 100 )
       end
     end
     # attention pas dynamique pour la suite, il faut pas faire .first mais .where
