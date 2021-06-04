@@ -201,7 +201,7 @@ class PagesController < ApplicationController
 
   def get_donation_event
     @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
-    @all_steps_events = current_user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
+    @all_steps_events = current_user.steps.select{ |step| step.date >= @charity_event.date_beginning}.select{ |step| step.date <= @charity_event.date_ending}
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005
     if current_user.donation_payment_ids != []
