@@ -1,5 +1,5 @@
-<div class="d-block show col-md-auto col-md-auto <%= myclass %>" style="">
-  <div class="card-trip-statistics" style="box-shadow: 0 0 15px rgb(0 0 0 / 20%)">
+<div class="d-block show col-md-auto col-md-auto <%= myclass %>" style="padding: 0px">
+  <div class="card-trip-statistics" style="box-shadow: 0 0 15px rgb(0 0 0 / 20%); border-radius: 4px">
     <h1><%= label %></h1>
     <div class="card-trip-statistics">
       <ul class="nav nav-tabs user-tasks-navbar btn-group" id="myTab" role="tablist">
@@ -15,9 +15,9 @@
 
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+        <h2 style="margin-top: 20px; font-size: 24px"><em><%= message_tab_one %></em></h2>
           <div class="row">
 
-            <h2 style="margin-top: 20px; font-size: 24px"><em><%= message_tab_one %></em></h2>
             <% steps_tab_one.each_with_index do |company, i| %>
 
               <div class="col-3 d-flex justify-content-center">
@@ -35,7 +35,7 @@
                   <% else %>
                     <img src="https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg" alt="No image available">
                   <% end %>
-                  <div id="chart-home-company-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= company.last(2).to_json %>"></div>
+                  <div id="chart-home-company-<%= i + 1%>" style="margin-left: 16px; width: 70%" data-steps="<%= company.last(2).to_json %>" data-max="<%= rounded_max_one %>"></div>
                 </div>
               </div>
 
@@ -46,8 +46,8 @@
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-            <div class="row">
             <h2 style="margin-top: 20px; font-size: 24px"><em><%= message_tab_two %></em></h2>
+            <div class="row">
             <% steps_tab_two.each_with_index do |walker, i| %>
 
               <div class="col-3 d-flex justify-content-center">
@@ -65,7 +65,8 @@
                   <% else %>
                     <%= cl_image_tag 'pq_lvrytp' %>
                   <% end %>
-                  <div id="chart-home-walker-<%= i + 1%>" style="margin-left: 16px; height: 150px; width: 70%" data-steps="<%= walker.last(2).to_json %>"></div>
+                  <div id="chart-home-walker-<%= i + 1%>" style="margin-left: 16px; height: 150px; width: 70%" data-steps="<%= walker.last(2).to_json %>" data-max="<%= rounded_max_two %>">
+                  </div>
                 </div>
               </div>
 
