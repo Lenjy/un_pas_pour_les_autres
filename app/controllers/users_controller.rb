@@ -59,15 +59,16 @@ class UsersController < ApplicationController
       date_to_check = date_to_check.next_day
     end
     if @week.last.nil? && @week.first.nil?
-      @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+      # @week_message = "Semaine du #{I18n.l Date.today - 7, format:"%d %B %Y"} au #{I18n.l Date.today, format:"%d %B %Y"}"
+      @week_message = "Semaine du 29 mai au 4 juin "
     elsif
       date_tmp = Date.today
       6.times do
         date_tmp = date_tmp.yesterday
       end
-      @week_message = "Semaine en cours"
+      @week_message = "Semaine du 29 mai au 4 juin "
     else
-      @week_message = "Semaine en cours"
+      @week_message = "Semaine du 29 mai au 4 juin "
     end
   end
 
