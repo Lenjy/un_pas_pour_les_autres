@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
   skip_after_action :verify_authorized, only: [:search]
 
   def index
@@ -36,8 +36,10 @@ class UsersController < ApplicationController
     get_donation_event
     # private methods TEAM STATISTICS
     team_one_array_generation
-    @receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id)
-    @asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id)
+    if !current_user.nil?
+      @receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id)
+      @asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id)
+    end
   end
 
   private

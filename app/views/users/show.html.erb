@@ -28,7 +28,7 @@
           <h1><strong><%= number_with_delimiter(@user.steps.where(date: Date.today).first.nb_steps, :delimiter => ',') %></strong></h1>
         </div>
       </div>
-      <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);width: 150px;height: 100px;border-radius: 8px;">
+      <div class="m-2 text-success" style="background-color: rgba(109, 168, 179, 0.2);height: 100px;border-radius: 8px;">
         <div style="margin: 10px 10px;">
           <p style="margin: 6px 0px;"> Total de pas : </p>
           <h1><strong><%= number_with_delimiter(@sum_steps, :delimiter => ',') %></strong></h1>

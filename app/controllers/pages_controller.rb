@@ -1,7 +1,7 @@
 # require "open-uri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :secret ]
+  skip_before_action :authenticate_user!, only: [ :home, :donate ]
 
   def home
     # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
@@ -25,7 +25,11 @@ class PagesController < ApplicationController
   def donate
     # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
     @charity_event = CharityEvent.last
-    @step_count = current_user.steps.where("date BETWEEN ? AND ?", @charity_event.date_beginning, @charity_event.date_ending).sum(:nb_steps)
+    if current_user.nil?
+      @step_count = 0
+    else
+      @step_count = current_user.steps.where("date BETWEEN ? AND ?", @charity_event.date_beginning, @charity_event.date_ending).sum(:nb_steps)
+    end
     #define the status / ou filtre date
   end
 
