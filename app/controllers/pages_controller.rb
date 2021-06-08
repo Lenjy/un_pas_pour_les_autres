@@ -1,10 +1,11 @@
 # require "open-uri"
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :secret ]
+  skip_before_action :authenticate_user!, only: [ :home, :donate ]
 
   def home
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
     @charity_events_past = CharityEvent.where("date_ending < ?", Time.zone.now).order(date_ending: :desc)
     top_three_companies_generation
     top_three_walkers_generation
@@ -22,8 +23,13 @@ class PagesController < ApplicationController
   end
 
   def donate
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
-    @step_count = current_user.steps.where("date BETWEEN ? AND ?", @charity_event.date_beginning, @charity_event.date_ending).sum(:nb_steps)
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
+    if current_user.nil?
+      @step_count = 0
+    else
+      @step_count = current_user.steps.where("date BETWEEN ? AND ?", @charity_event.date_beginning, @charity_event.date_ending).sum(:nb_steps)
+    end
     #define the status / ou filtre date
   end
 
@@ -133,7 +139,8 @@ class PagesController < ApplicationController
 
   def top_three_companies_generation
     @sorted_companies = []
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
     @date_beginning = @charity_event.date_beginning
     @date_ending = @charity_event.date_ending
     Enterprise.all.each do |enterprise|
@@ -155,7 +162,8 @@ class PagesController < ApplicationController
 
   def top_three_walkers_generation
     @sorted_walkers = []
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
     @date_beginning = @charity_event.date_beginning
     @date_ending = @charity_event.date_ending
     User.all.each do |user|
@@ -200,7 +208,8 @@ class PagesController < ApplicationController
   end
 
   def get_donation_event
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
     @all_steps_events = current_user.steps.select{ |step| step.date >= @charity_event.date_beginning}.select{ |step| step.date <= @charity_event.date_ending}
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005

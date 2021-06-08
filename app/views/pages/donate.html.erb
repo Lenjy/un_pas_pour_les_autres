@@ -27,6 +27,9 @@
             <div class="card-category">
                 <%= form_tag donation_payments_path, method: "post" do %>
                     <div>
+                        <% if current_user.nil? %>
+                            <h6> Vous n'etes pas connecté, nous ne sommes pas en mesure de connaitre votre nombre de pas total </h6>
+                        <% end %>
                         <p>Vous avez effectué 
                         <input disabled type="number" value=<%= @step_count %> id="total_steps" name="" class="box-donate">
                         pas depuis le début de l'évènement. Si vous offrez<input required min="1" type="number" name="" id="conversion_proposal" placeholder="beaucouuuup de">

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
   skip_after_action :verify_authorized, only: [:search]
 
   def index
@@ -36,8 +36,10 @@ class UsersController < ApplicationController
     get_donation_event
     # private methods TEAM STATISTICS
     team_one_array_generation
-    @receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id)
-    @asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id)
+    if !current_user.nil?
+      @receiver = current_user.friend_requests_as_receiver.where(asker_id: @user.id)
+      @asker = current_user.friend_requests_as_asker.where(receiver_id: @user.id)
+    end
   end
 
   private
@@ -123,7 +125,8 @@ class UsersController < ApplicationController
   end
 
   def get_donation_event
-    @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    # @charity_event = CharityEvent.where("? BETWEEN date_beginning AND date_ending", Time.zone.now).last
+    @charity_event = CharityEvent.last
     @all_steps_events = @user.steps.select{ |step| step.date > @charity_event.date_beginning}.select{ |step| step.date < @charity_event.date_ending}
     @sum_steps = @all_steps_events.sum{|step| step.nb_steps}
     @donation_events = @sum_steps * 0.0005
